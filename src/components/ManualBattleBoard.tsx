@@ -3,23 +3,39 @@ import './ManualBattleBoard.css';
 import { ArrowLeft, BookOpen, User, Maximize2, RotateCcw, RefreshCw, Layers, Paperclip } from 'lucide-react';
 import { Card, Deck } from '../types';
 import { gameReducer, initialState } from '../engine/GameReducer';
-import { CardInstance, PlayerState } from '../engine/GameState';
+import { CardInstance, PlayerState, GameState, GameAction } from '../engine/GameState';
 
 interface ManualBattleBoardProps {
   onBack: () => void;
   deck?: Deck;
   allCards?: Card[];
   savedDecks?: Deck[];
+  externalState?: GameState;
+  externalDispatch?: (action: GameAction) => void;
+  isOnline?: boolean;
+  isHost?: boolean;
 }
 
-const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({ onBack, deck, allCards = [], savedDecks = [] }) => {
-  const [state, dispatch] = useReducer(gameReducer, initialState);
-  const [selectedCard, setSelectedCard] = useState<{instance: CardInstance, location: string} | null>(null);
+const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({ 
+  onBack, deck, allCards = [], savedDecks = [], 
+  externalState, externalDispatch, isOnline = false, isHost = false 
+}) => {
+  const [internalState, internalDispatch] = useReducer(gameReducer, initialState);
+  
+  const state = externalState || internalState;
+  const dispatch = (action: GameAction) => {
+      if (externalDispatch) {
+          externalDispatch(action);
+      } else {
+          internalDispatch(action);
+      }
+  };
+
+  const [selectedCard, setSelectedCard] = useState<{instance: CardInstance, location: string, isOpponent?: boolean} | null>(null);
   const [showDeckTopCount, setShowDeckTopCount] = useState<number | null>(null);
-  const [gameStarted, setGameStarted] = useState(false);
+  const [gameStarted, setGameStarted] = useState(isOnline || !!deck);
   const [attachMode, setAttachMode] = useState<CardInstance | null>(null);
 
-  // Sync saved decks from local storage
   const [localSavedDecks, setLocalSavedDecks] = useState<Deck[]>(savedDecks);
   useEffect(() => {
     const stored = localStorage.getItem('hp-tcg-decks');
@@ -31,14 +47,23 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({ onBack, deck, all
   const startGameWithDeck = (selectedDeck: Deck) => {
     if (allCards.length === 0) return;
 
-    const playerDeckCards = selectedDeck.cardIds
+    const shuffle = (array: any[]) => {
+      const newArray = [...array];
+      for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+      }
+      return newArray;
+    };
+
+    const pDeckCards = shuffle(selectedDeck.cardIds
       .map(id => allCards.find(c => c.cardNumber === id))
-      .filter(Boolean) as Card[];
+      .filter(Boolean) as Card[]);
     
     const opponentDeck = localSavedDecks.length > 1 ? localSavedDecks[1] : selectedDeck;
-    const opponentDeckCards = opponentDeck.cardIds
+    const opponentDeckCards = shuffle(opponentDeck.cardIds
       .map(id => allCards.find(c => c.cardNumber === id))
-      .filter(Boolean) as Card[];
+      .filter(Boolean) as Card[]);
 
     const playerPartner = allCards.find(c => c.cardNumber === selectedDeck.partnerId);
     const opponentPartner = allCards.find(c => c.cardNumber === opponentDeck.partnerId) || playerPartner;
@@ -53,15 +78,26 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({ onBack, deck, all
 
     dispatch({ 
       type: 'START_GAME', 
-      playerDeck: playerDeckCards, 
+      playerDeck: pDeckCards, 
       opponentDeck: opponentDeckCards,
       playerPartner: playerPartner,
       opponentPartner: opponentPartner as Card,
       playerMpCard,
-      opponentMpCard
+      opponentMpCard,
+      playerPartnerId: Math.random().toString(36).substr(2, 9),
+      opponentPartnerId: Math.random().toString(36).substr(2, 9),
+      playerMpCardId: playerMpCard ? Math.random().toString(36).substr(2, 9) : undefined,
+      opponentMpCardId: opponentMpCard ? Math.random().toString(36).substr(2, 9) : undefined,
     });
     setGameStarted(true);
   };
+
+  // Auto-start if deck is provided (for local simulator when entered from builder)
+  useEffect(() => {
+    if (deck && !gameStarted && !isOnline) {
+       startGameWithDeck(deck);
+    }
+  }, [deck]);
 
   const handleMoveCard = (instanceId: string, from: string, to: string) => {
     if (to === 'mainField' && state.player.mainField.length >= 3) {
@@ -73,7 +109,13 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({ onBack, deck, all
       return;
     }
 
-    dispatch({ type: 'MANUAL_MOVE', playerId: 'player', instanceId, from, to });
+    // Find the card details if moving from hand (crucial for online play)
+    let cardDetails: Card | undefined = undefined;
+    if (from === 'hand') {
+       cardDetails = state.player.hand.find(c => c.instanceId === instanceId)?.card;
+    }
+
+    dispatch({ type: 'MANUAL_MOVE', playerId: 'player', instanceId, from, to, card: cardDetails } as any);
     setSelectedCard(null);
   };
 
@@ -92,7 +134,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({ onBack, deck, all
     }
   };
 
-  const renderCard = (instance: CardInstance, location: string, isOpponent: boolean = false, isAttached: boolean = false) => {
+  const renderCard = (instance: CardInstance, location: string, isOpponentSide: boolean = false, isAttached: boolean = false) => {
     const isLife = location === 'life';
     const isResting = !instance.isActive && !isLife;
 
@@ -101,14 +143,14 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({ onBack, deck, all
         <div 
           className={`card-slot ${isResting ? 'resting' : ''} ${isAttached ? 'attached-card-offset' : ''}`}
           onClick={() => {
-            if (isOpponent) return;
             if (attachMode) {
+                if (isOpponentSide) return;
                 const targetLocs = ['mainField', 'supportField', 'partner'];
                 if (instance.instanceId !== attachMode.instanceId && targetLocs.includes(location)) {
                   handleAttach(instance.instanceId);
                 }
             } else {
-                setSelectedCard({ instance, location });
+                setSelectedCard({ instance, location, isOpponent: isOpponentSide });
             }
           }}
         >
@@ -130,7 +172,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({ onBack, deck, all
         </div>
         {!isAttached && instance.attachedItems.map((att, idx) => (
             <div key={att.instanceId} className="attached-item-container" style={{ zIndex: idx + 1 }}>
-                {renderCard(att, location, isOpponent, true)}
+                {renderCard(att, location, isOpponentSide, true)}
             </div>
         ))}
       </div>
@@ -194,13 +236,13 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({ onBack, deck, all
           {!isOpponent && (
             <div className="deck-controls-container">
               <div className="deck-main-actions">
-                <button className="deck-control-btn primary" onClick={() => dispatch({ type: 'DRAW_CARD', playerId: 'player' })} title="Draw Card">Draw</button>
-                <button className="deck-control-btn secondary" onClick={() => dispatch({ type: 'DRAW_FROM_BOTTOM', playerId: 'player' })} title="Draw from Bottom">Btm</button>
+                <button className="deck-control-btn primary" onClick={() => dispatch({ type: 'DRAW_CARD', playerId: 'player', instanceId: Math.random().toString(36).substr(2, 9) })} title="Draw Card">Draw</button>
+                <button className="deck-control-btn secondary" onClick={() => dispatch({ type: 'DRAW_FROM_BOTTOM', playerId: 'player', instanceId: Math.random().toString(36).substr(2, 9) })} title="Draw from Bottom">Btm</button>
               </div>
               <div className="deck-utility-actions">
                 <button className="deck-util-btn" onClick={() => promptOpenTopN()} title="Open Top N"><Layers size={14}/></button>
                 <button className="deck-util-btn" onClick={() => dispatch({ type: 'SHUFFLE_DECK', playerId: 'player'})} title="Shuffle"><RefreshCw size={14}/></button>
-                <button className="deck-util-btn" onClick={() => dispatch({ type: 'SETUP_LIFE', playerId: 'player'})} title="Setup Life (3)">3</button>
+                <button className="deck-util-btn" onClick={() => dispatch({ type: 'SETUP_LIFE', playerId: 'player', instanceIds: [Math.random().toString(36).substr(2, 9), Math.random().toString(36).substr(2, 9), Math.random().toString(36).substr(2, 9)] })} title="Setup Life (3)">3</button>
               </div>
             </div>
           )}
@@ -243,21 +285,23 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({ onBack, deck, all
           </div>
         </div>
 
-        {!isOpponent && (
-          <div className="zone hand-zone">
-            <div className="zone-label">Hand ({player.hand.length})</div>
-            <div className="hand-overlap-container">
-              {player.hand.map((instance, index) => {
-                const overlap = player.hand.length > 12 ? (320 / player.hand.length) : 25;
-                return (
-                  <div key={instance.instanceId} style={{ position: 'absolute', left: `${index * overlap}px`, zIndex: index }}>
-                    {renderCard(instance, 'hand', isOpponent)}
-                  </div>
-                );
-              })}
-            </div>
+        <div className="zone hand-zone">
+          <div className="zone-label">Hand ({player.hand.length})</div>
+          <div className="hand-overlap-container">
+            {player.hand.map((instance, index) => {
+              const overlap = player.hand.length > 12 ? (320 / player.hand.length) : 25;
+              return (
+                <div key={instance.instanceId} style={{ position: 'absolute', left: `${index * overlap}px`, zIndex: index }}>
+                  {isOpponent ? (
+                    <div className="card-slot deck-back"></div>
+                  ) : (
+                    renderCard(instance, 'hand', isOpponent)
+                  )}
+                </div>
+              );
+            })}
           </div>
-        )}
+        </div>
       </div>
     );
   };
@@ -294,9 +338,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({ onBack, deck, all
       )}
       <div className="board-header">
         <button className="back-btn" onClick={onBack}><ArrowLeft size={14} /> Exit</button>
-        <div className="board-title">Manual Duel Simulator</div>
-        <div className="game-info"><span>Turn {state.turnCount}</span><span>{state.phase}</span></div>
-        <button className="back-btn" onClick={() => dispatch({ type: 'NEXT_PHASE' })}>Next Phase</button>
+        <div className="board-title">{isOnline ? (isHost ? 'Online Match (Host)' : 'Online Match (Guest)') : 'Manual Duel Simulator'}</div>
       </div>
       <div className="battle-area">
         {renderPlayerSide(state.opponent, true)}
@@ -313,32 +355,37 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({ onBack, deck, all
               <div className="detail-info">
                 <h3>{selectedCard.instance.card.cardName}</h3>
                 <p className="card-no">{selectedCard.instance.card.cardNumber}</p>
-                {selectedCard.location !== 'hand' && (
-                  <div className="action-group">
-                    <h4>State</h4>
-                    <div className="action-buttons-row">
-                      <button className="action-btn-large" onClick={() => dispatch({ type: 'ACTIVATE_CARD', playerId: 'player', instanceId: selectedCard.instance.instanceId })}><Maximize2 size={16} /> Stand</button>
-                      <button className="action-btn-large" onClick={() => { dispatch({ type: 'REST_CARD', playerId: 'player', instanceId: selectedCard.instance.instanceId }); setSelectedCard(null); }}><RotateCcw size={16} /> Resting (休息)</button>
-                    </div>
-                  </div>
-                )}
-                <div className="action-group">
-                  <h4>Actions</h4>
-                  <div className="move-buttons-grid">
-                    <button onClick={() => { setAttachMode(selectedCard.instance); setSelectedCard(null); }}><Paperclip size={14}/> 装備する</button>
-                    {selectedCard.location !== 'partner' && (
-                      <>
-                        <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'hand')}>Hand</button>
-                        <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'mainField')}>Main</button>
-                        <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'supportField')}>Support</button>
-                        <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'mpField')}>MP</button>
-                        <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'trash')}>Trash</button>
-                        <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'deckTop')}>Deck Top</button>
-                        <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'deckBottom')}>Deck Bottom</button>
-                      </>
+                {!selectedCard.isOpponent && (
+                  <>
+                    {selectedCard.location !== 'hand' && (
+                      <div className="action-group">
+                        <h4>State</h4>
+                        <div className="action-buttons-row">
+                          <button className="action-btn-large" onClick={() => dispatch({ type: 'ACTIVATE_CARD', playerId: 'player', instanceId: selectedCard.instance.instanceId })}><Maximize2 size={16} /> Stand</button>
+                          <button className="action-btn-large" onClick={() => { dispatch({ type: 'REST_CARD', playerId: 'player', instanceId: selectedCard.instance.instanceId }); setSelectedCard(null); }}><RotateCcw size={16} /> Resting (休息)</button>
+                        </div>
+                      </div>
                     )}
-                  </div>
-                </div>
+                    <div className="action-group">
+                      <h4>Actions</h4>
+                      <div className="move-buttons-grid">
+                        <button onClick={() => { setAttachMode(selectedCard.instance); setSelectedCard(null); }}><Paperclip size={14}/> 装備する</button>
+                        {selectedCard.location !== 'partner' && (
+                          <>
+                            <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'hand')}>Hand</button>
+                            <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'mainField')}>Main</button>
+                            <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'supportField')}>Support</button>
+                            <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'mpField')}>MP</button>
+                            <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'trash')}>Trash</button>
+                            <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'deckTop')}>Deck Top</button>
+                            <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'deckBottom')}>Deck Bottom</button>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  </>
+                )}
+                {selectedCard.isOpponent && <div className="opponent-view-only">相手のカード（閲覧のみ）</div>}
                 <button className="close-btn-full" onClick={() => setSelectedCard(null)}>Close</button>
               </div>
             </div>
@@ -350,18 +397,21 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({ onBack, deck, all
           <div className="modal-content deck-open-modal" onClick={e => e.stopPropagation()}>
             <h3 style={{textAlign: 'center', marginBottom: '10px'}}>Deck Top (Showing {Math.min(showDeckTopCount, state.player.deck.length)} cards)</h3>
             <div className="deck-top-grid">
-              {state.player.deck.slice(0, showDeckTopCount).map((card, idx) => (
-                <div key={idx} className="deck-top-item">
-                  <div className="card-slot small"><img src={`/images/${card.cardNumber.replace('/', '_')}.png`} alt={card.cardName} className="card-image" /></div>
-                  <div className="deck-top-actions">
-                    <button onClick={() => { dispatch({ type: 'MANUAL_MOVE', playerId: 'player', from: 'deck', to: 'hand', index: idx }); setShowDeckTopCount(prev => prev ? prev - 1 : 0); }}>Hand</button>
-                    <button onClick={() => { dispatch({ type: 'MANUAL_MOVE', playerId: 'player', from: 'deck', to: 'deckTop', index: idx }); setShowDeckTopCount(prev => prev ? prev - 1 : 0); }}>Top</button>
-                    <button onClick={() => { if (state.player.mainField.length >= 3) { alert("メインフィールドは3枚までです。"); return; } dispatch({ type: 'MANUAL_MOVE', playerId: 'player', from: 'deck', to: 'mainField', index: idx }); setShowDeckTopCount(prev => prev ? prev - 1 : 0); }}>Main</button>
-                    <button onClick={() => { dispatch({ type: 'MANUAL_MOVE', playerId: 'player', from: 'deck', to: 'trash', index: idx }); setShowDeckTopCount(prev => prev ? prev - 1 : 0); }}>Trash</button>
-                    <button onClick={() => { dispatch({ type: 'MANUAL_MOVE', playerId: 'player', from: 'deck', to: 'deckBottom', index: idx }); setShowDeckTopCount(prev => prev ? prev - 1 : 0); }}>Bottom</button>
+              {state.player.deck.slice(0, showDeckTopCount).map((card, idx) => {
+                const generatedId = Math.random().toString(36).substr(2, 9);
+                return (
+                  <div key={idx} className="deck-top-item">
+                    <div className="card-slot small"><img src={`/images/${card.cardNumber.replace('/', '_')}.png`} alt={card.cardName} className="card-image" /></div>
+                    <div className="deck-top-actions">
+                      <button onClick={() => { dispatch({ type: 'MANUAL_MOVE', playerId: 'player', from: 'deck', to: 'hand', index: idx, instanceId: generatedId }); setShowDeckTopCount(prev => prev ? prev - 1 : 0); }}>Hand</button>
+                      <button onClick={() => { dispatch({ type: 'MANUAL_MOVE', playerId: 'player', from: 'deck', to: 'deckTop', index: idx, instanceId: generatedId }); setShowDeckTopCount(prev => prev ? prev - 1 : 0); }}>Top</button>
+                      <button onClick={() => { if (state.player.mainField.length >= 3) { alert("メインフィールドは3枚までです。"); return; } dispatch({ type: 'MANUAL_MOVE', playerId: 'player', from: 'deck', to: 'mainField', index: idx, instanceId: generatedId }); setShowDeckTopCount(prev => prev ? prev - 1 : 0); }}>Main</button>
+                      <button onClick={() => { dispatch({ type: 'MANUAL_MOVE', playerId: 'player', from: 'deck', to: 'trash', index: idx, instanceId: generatedId }); setShowDeckTopCount(prev => prev ? prev - 1 : 0); }}>Trash</button>
+                      <button onClick={() => { dispatch({ type: 'MANUAL_MOVE', playerId: 'player', from: 'deck', to: 'deckBottom', index: idx, instanceId: generatedId }); setShowDeckTopCount(prev => prev ? prev - 1 : 0); }}>Bottom</button>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
             <button className="close-btn" onClick={() => setShowDeckTopCount(null)}>Done</button>
           </div>

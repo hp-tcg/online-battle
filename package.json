@@ -12,10 +12,12 @@
   "dependencies": {
     "html-to-image": "^1.11.13",
     "lucide-react": "^0.300.0",
+    "peerjs": "^1.5.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@types/peerjs": "^0.0.30",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",

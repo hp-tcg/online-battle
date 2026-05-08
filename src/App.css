@@ -550,3 +550,112 @@ select {
   color: var(--gold);
   font-size: 2rem;
 }
+
+/* Online Battle Lobby Styles */
+.online-battle-lobby {
+  background-color: #1a1a1a;
+  min-height: 100vh;
+  color: white;
+  padding: 20px;
+}
+
+.lobby-content {
+  max-width: 800px;
+  margin: 100px auto;
+  text-align: center;
+}
+
+.lobby-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.lobby-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.lobby-btn:hover {
+  transform: translateY(-2px);
+}
+
+.lobby-btn.host {
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  color: white;
+}
+
+.lobby-btn.join {
+  background: linear-gradient(135deg, #7ed321, #5fa916);
+  color: white;
+}
+
+.lobby-divider {
+  margin: 20px 0;
+  font-weight: bold;
+  opacity: 0.5;
+}
+
+.join-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.join-group input {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background: #2a2a2a;
+  color: white;
+  min-width: 300px;
+}
+
+.hosting-info {
+  background: #2a2a2a;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #444;
+}
+
+.id-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.id-display code {
+  background: #111;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  color: #7ed321;
+}
+
+.id-display button {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.waiting-msg {
+  margin-top: 30px;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #aaa;
+}
+
+.menu-btn.online {
+  background: linear-gradient(135deg, #d0021b, #9b0000);
+}

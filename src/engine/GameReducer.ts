@@ -1,8 +1,8 @@
 import { GameState, GameAction, PlayerState, CardInstance, TurnPhase } from './GameState';
 import { Card } from '../types';
 
-const createInstance = (card: Card): CardInstance => ({
-  instanceId: Math.random().toString(36).substr(2, 9),
+const createInstance = (card: Card, instanceId?: string): CardInstance => ({
+  instanceId: instanceId || Math.random().toString(36).substr(2, 9),
   card,
   isActive: true,
   attachedItems: [],
@@ -43,9 +43,12 @@ export const initialState: GameState = {
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
   switch (action.type) {
+    case 'SET_STATE':
+      return action.state;
+
     case 'START_GAME': {
-      const pDeck = shuffle(action.playerDeck);
-      const oDeck = shuffle(action.opponentDeck);
+      const pDeck = action.playerDeck;
+      const oDeck = action.opponentDeck;
       
       return {
         ...state,
@@ -54,19 +57,19 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
           deck: pDeck,
           hand: [],
           life: [],
-          partner: createInstance(action.playerPartner),
-          mpField: action.playerMpCard ? [createInstance(action.playerMpCard)] : [],
+          partner: createInstance(action.playerPartner, action.playerPartnerId),
+          mpField: action.playerMpCard ? [createInstance(action.playerMpCard, action.playerMpCardId)] : [],
         },
         opponent: {
           ...state.opponent,
           deck: oDeck,
           hand: [],
           life: [],
-          partner: createInstance(action.opponentPartner),
-          mpField: action.opponentMpCard ? [createInstance(action.opponentMpCard)] : [],
+          partner: createInstance(action.opponentPartner, action.opponentPartnerId),
+          mpField: action.opponentMpCard ? [createInstance(action.opponentMpCard, action.opponentMpCardId)] : [],
         },
         phase: 'STANDBY',
-        log: [...state.log, 'Game Started! Decks shuffled.'],
+        log: [...state.log, 'Game Started!'],
       };
     }
 
@@ -81,7 +84,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         [target]: {
           ...player,
           deck: remainingDeck,
-          hand: [...player.hand, createInstance(card)],
+          hand: [...player.hand, createInstance(card, action.instanceId)],
         },
         log: [...state.log, `${player.name} draws a card.`],
       };
@@ -101,7 +104,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         [target]: {
           ...player,
           deck: remainingDeck,
-          hand: [...player.hand, createInstance(card)],
+          hand: [...player.hand, createInstance(card, action.instanceId)],
         },
         log: [...state.log, `${player.name} draws from bottom of deck.`],
       };
@@ -114,7 +117,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         ...state,
         [target]: {
           ...player,
-          deck: shuffle(player.deck),
+          deck: action.newDeck || shuffle(player.deck),
         },
         log: [...state.log, `${player.name} shuffled their deck.`],
       };
@@ -126,7 +129,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       if (player.deck.length < 3) return { ...state, log: [...state.log, 'Not enough cards in deck!'] };
       
       const deckCopy = [...player.deck];
-      const setupCards = deckCopy.splice(0, 3).map(createInstance);
+      const setupCards = deckCopy.splice(0, 3).map((c, i) => createInstance(c, action.instanceIds?.[i]));
       // Life cards start active (not resting) and face down (handled in UI)
       const initialLifeCards = setupCards.map(c => ({ ...c, isActive: true }));
 
@@ -320,15 +323,15 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
     case 'MANUAL_MOVE': {
       const target = action.playerId === 'player' ? 'player' : 'opponent';
       const player = state[target];
-      const { from, to, instanceId, index } = action as any;
+      const { from, to, instanceId, index, card } = action as any;
 
       let cardInstance: CardInstance | null = null;
       let newFromState = { ...player };
 
       if (from === 'deck') {
         const deckCopy = [...player.deck];
-        const card = deckCopy.splice(index, 1)[0];
-        cardInstance = createInstance(card);
+        const deckCard = deckCopy.splice(index, 1)[0];
+        cardInstance = createInstance(deckCard, instanceId);
         newFromState.deck = deckCopy;
       } else {
         // Search including attached items
@@ -347,7 +350,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
               const [inst, newAttached] = searchAndRemove(field[i].attachedItems);
               if (inst) {
                 const newField = [...field];
-                newField[i] = { ...field[i], attachedItems: newAttached };
+                newField[i] = { ...field[i], attachedItems: newAttached || [] };
                 return [inst, newField];
               }
             }
@@ -365,6 +368,11 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
             (newFromState as any)[loc] = newField;
             break;
           }
+        }
+
+        // If cardInstance was not found locally but we have the card data (Online Play Hand -> Field)
+        if (!cardInstance && card) {
+           cardInstance = createInstance(card, instanceId);
         }
       }
 

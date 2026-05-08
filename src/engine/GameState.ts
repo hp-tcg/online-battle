@@ -34,11 +34,12 @@ export interface GameState {
 }
 
 export type GameAction =
-  | { type: 'START_GAME'; playerDeck: Card[]; opponentDeck: Card[]; playerPartner: Card; opponentPartner: Card; playerMpCard?: Card; opponentMpCard?: Card }
-  | { type: 'DRAW_CARD'; playerId: 'player' | 'opponent' }
-  | { type: 'DRAW_FROM_BOTTOM'; playerId: 'player' | 'opponent' }
-  | { type: 'SHUFFLE_DECK'; playerId: 'player' | 'opponent' }
-  | { type: 'SETUP_LIFE'; playerId: 'player' | 'opponent' }
+  | { type: 'SET_STATE'; state: GameState }
+  | { type: 'START_GAME'; playerDeck: Card[]; opponentDeck: Card[]; playerPartner: Card; opponentPartner: Card; playerMpCard?: Card; opponentMpCard?: Card; playerPartnerId?: string; opponentPartnerId?: string; playerMpCardId?: string; opponentMpCardId?: string }
+  | { type: 'DRAW_CARD'; playerId: 'player' | 'opponent'; instanceId?: string }
+  | { type: 'DRAW_FROM_BOTTOM'; playerId: 'player' | 'opponent'; instanceId?: string }
+  | { type: 'SHUFFLE_DECK'; playerId: 'player' | 'opponent'; newDeck?: Card[] }
+  | { type: 'SETUP_LIFE'; playerId: 'player' | 'opponent'; instanceIds?: string[] }
   | { type: 'PLAY_CARD'; playerId: 'player' | 'opponent'; instanceId: string; targetField: 'mainField' | 'supportField' | 'mpField' }
   | { type: 'ACTIVATE_CARD'; playerId: 'player' | 'opponent'; instanceId: string }
   | { type: 'REST_CARD'; playerId: 'player' | 'opponent'; instanceId: string }

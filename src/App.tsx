@@ -1,8 +1,9 @@
 import { useState, useEffect, useMemo, useRef } from 'react'
 import { Card, Deck } from './types'
 import './App.css'
-import { Search, Filter, Plus, Trash2, Save, Sword, UserSquare, BookOpen, Download, Upload, Image as ImageIcon, FileJson } from 'lucide-react'
+import { Search, Filter, Plus, Trash2, Save, Sword, UserSquare, BookOpen, Download, Upload, Image as ImageIcon } from 'lucide-react'
 import ManualBattleBoard from './components/ManualBattleBoard'
+import OnlineBattleBoard from './components/OnlineBattleBoard'
 import { toPng } from 'html-to-image'
 
 const getCardNumberBase = (cardNumber: string) => {
@@ -53,7 +54,7 @@ const DEFAULT_DECKS: Deck[] = [
   }
 ]
 
-type AppView = 'menu' | 'builder' | 'manual-battle'
+type AppView = 'menu' | 'builder' | 'manual-battle' | 'online-battle'
 
 function App() {
   const [view, setView] = useState<AppView>('menu')
@@ -269,6 +270,10 @@ function App() {
     return <ManualBattleBoard onBack={() => setView('menu')} deck={currentDeck} allCards={cards} savedDecks={savedDecks} />;
   }
 
+  if (view === 'online-battle') {
+    return <OnlineBattleBoard onBack={() => setView('menu')} allCards={cards} savedDecks={savedDecks} />;
+  }
+
   if (loading) return <div className="loading">魔法の呪文でカードを読み込み中...</div>
 
   if (view === 'menu') {
@@ -288,6 +293,11 @@ function App() {
             <UserSquare size={48} />
             <span>手動対戦</span>
             <small>シミュレーターで対戦</small>
+          </button>
+          <button className="menu-btn online" onClick={() => setView('online-battle')}>
+            <Sword size={48} />
+            <span>オンライン対戦</span>
+            <small>遠くの友達と決闘</small>
           </button>
         </div>
       </div>
