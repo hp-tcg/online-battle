@@ -1,6 +1,6 @@
 import React, { useState, useReducer, useEffect } from 'react';
 import './ManualBattleBoard.css';
-import { ArrowLeft, BookOpen, User, Maximize2, RotateCcw, RefreshCw, Layers, Paperclip } from 'lucide-react';
+import { ArrowLeft, BookOpen, User, RefreshCw, Paperclip } from 'lucide-react';
 import { Card, Deck } from '../types';
 import { gameReducer, initialState } from '../engine/GameReducer';
 import { CardInstance, PlayerState, GameState, GameAction } from '../engine/GameState';
@@ -33,7 +33,6 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
 
   const [selectedCard, setSelectedCard] = useState<{instance: CardInstance, location: string, isOpponent?: boolean} | null>(null);
   const [viewingTrash, setViewingTrash] = useState<'player' | 'opponent' | null>(null);
-  const [showDeckMenu, setShowDeckMenu] = useState(false);
   const [gameStarted, setGameStarted] = useState(isOnline || !!deck);
   const [attachMode, setAttachMode] = useState<CardInstance | null>(null);
 
@@ -456,7 +455,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
                   card: c 
                 }));
 
-                return cards.map((inst, idx) => {
+                return cards.map((inst) => {
                   const card = 'card' in inst ? inst.card : (inst as any);
                   const instanceId = 'instanceId' in inst ? inst.instanceId : Math.random().toString(36).substr(2, 9);
 
@@ -493,7 +492,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
           <div className="modal-content deck-open-modal" onClick={e => e.stopPropagation()}>
             <h3 style={{textAlign: 'center', marginBottom: '10px'}}>{viewingTrash === 'player' ? '自分のトラッシュ' : '相手のトラッシュ'} ({state[viewingTrash].trash.length} cards)</h3>
             <div className="deck-top-grid">
-              {state[viewingTrash].trash.map((inst, idx) => (
+              {state[viewingTrash].trash.map((inst) => (
                 <div key={inst.instanceId} className="deck-top-item">
                   <div className="card-slot small"><img src={`${import.meta.env.BASE_URL}images/${inst.card.cardNumber.replace('/', '_')}.png`} alt={inst.card.cardName} className="card-image" /></div>
                   <div className="deck-top-actions">
