@@ -64,6 +64,20 @@ const OnlineBattleBoard: React.FC<OnlineBattleBoardProps> = ({ onBack, allCards,
             playerMpCardId: action.opponentMpCardId,
             opponentMpCardId: action.playerMpCardId,
           };
+        } else if (action.type === 'SET_STATE') {
+          flippedAction = {
+            type: 'SET_STATE',
+            state: {
+              ...action.state,
+              player: action.state.opponent,
+              opponent: action.state.player,
+              turnOwner: action.state.turnOwner === 'player' ? 'opponent' : 'player',
+              activeSearch: action.state.activeSearch ? {
+                ...action.state.activeSearch,
+                playerId: action.state.activeSearch.playerId === 'player' ? 'opponent' : 'player'
+              } : null
+            }
+          };
         } else if ('playerId' in action) {
           flippedAction = { ...action, playerId: (action as any).playerId === 'player' ? 'opponent' : 'player' } as any;
         }

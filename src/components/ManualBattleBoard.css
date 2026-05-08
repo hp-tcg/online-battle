@@ -196,6 +196,18 @@
   cursor: pointer;
 }
 
+.card-text-side {
+  font-size: 0.8rem;
+  color: #f4e4bc;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: 10px;
+  white-space: pre-wrap;
+  line-height: 1.4;
+  border-left: 2px solid #d4af37;
+}
+
 .deck-menu-content h4 {
   font-size: 0.9rem;
   color: #d4af37;
