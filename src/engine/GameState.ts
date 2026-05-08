@@ -6,6 +6,7 @@ export interface CardInstance {
   instanceId: string; // Unique ID for this instance in game
   card: Card;
   isActive: boolean; // Active (vertical) or Rest (horizontal)
+  isRevealed?: boolean; // Visible to both players
   attachedItems: CardInstance[];
 }
 
@@ -31,6 +32,12 @@ export interface GameState {
   phase: TurnPhase;
   turnCount: number;
   log: string[];
+  activeSearch: {
+    playerId: 'player' | 'opponent';
+    isPublic: boolean;
+    topCount?: number;
+    snapshot?: CardInstance[]; // Fixed set of cards for Open N
+  } | null;
 }
 
 export type GameAction =
@@ -51,5 +58,10 @@ export type GameAction =
   | { type: 'MOVE_TO_MP'; playerId: 'player' | 'opponent'; instanceId: string }
   | { type: 'FLIP_LIFE'; playerId: 'player' | 'opponent'; instanceId: string }
   | { type: 'ATTACH_CARD'; playerId: 'player' | 'opponent'; instanceId: string; parentInstanceId: string }
-  | { type: 'TOGGLE_PARTNER_EFFECT'; playerId: 'player' | 'opponent' }
-  | { type: 'MANUAL_MOVE'; playerId: 'player' | 'opponent'; instanceId?: string; from: string; to: string; index?: number };
+  | { type: 'TOGGLE_PARTNER_EFFECT', playerId: 'player' | 'opponent' }
+  | { type: 'SEARCH_DECK', playerId: 'player' | 'opponent'; isPublic: boolean; topCount?: number }
+  | { type: 'CLOSE_SEARCH', playerId: 'player' | 'opponent' }
+  | { type: 'REVEAL_CARD', playerId: 'player' | 'opponent'; instanceId: string }
+  | { type: 'HIDE_CARD', playerId: 'player' | 'opponent'; instanceId: string }
+  | { type: 'MANUAL_MOVE', playerId: 'player' | 'opponent'; instanceId?: string; from: string; to: string; index?: number; card?: Card };
+

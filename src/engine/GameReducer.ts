@@ -39,6 +39,7 @@ export const initialState: GameState = {
   phase: 'STANDBY',
   turnCount: 0,
   log: ['Welcome to Hogwarts Duel!'],
+  activeSearch: null,
 };
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
@@ -320,6 +321,79 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       };
     }
 
+    case 'SEARCH_DECK': {
+      const target = action.playerId === 'player' ? 'player' : 'opponent';
+      const player = state[target];
+      const type = action.isPublic ? 'publicly' : 'privately';
+      
+      // If topCount is provided, create a snapshot of the current top cards
+      const snapshot = action.topCount 
+        ? player.deck.slice(0, action.topCount).map(c => createInstance(c))
+        : undefined;
+
+      return {
+        ...state,
+        activeSearch: {
+          playerId: action.playerId,
+          isPublic: action.isPublic,
+          topCount: action.topCount,
+          snapshot,
+        },
+        log: [...state.log, `${player.name} is searching their deck ${type}.`],
+      };
+    }
+
+    case 'CLOSE_SEARCH': {
+      const target = action.playerId === 'player' ? 'player' : 'opponent';
+      const player = state[target];
+      return {
+        ...state,
+        activeSearch: null,
+        log: [...state.log, `${player.name} finished searching their deck.`],
+      };
+    }
+
+    case 'REVEAL_CARD': {
+      const target = action.playerId === 'player' ? 'player' : 'opponent';
+      const player = state[target];
+      const update = (cards: CardInstance[]) => cards.map(c => c.instanceId === action.instanceId ? { ...c, isRevealed: true } : c);
+      
+      return {
+        ...state,
+        [target]: {
+          ...player,
+          hand: update(player.hand),
+          life: update(player.life),
+          mainField: update(player.mainField),
+          supportField: update(player.supportField),
+          mpField: update(player.mpField),
+          trash: update(player.trash),
+          partner: player.partner?.instanceId === action.instanceId ? { ...player.partner, isRevealed: true } : player.partner,
+        },
+        log: [...state.log, `${player.name} revealed a card.`],
+      };
+    }
+
+    case 'HIDE_CARD': {
+      const target = action.playerId === 'player' ? 'player' : 'opponent';
+      const player = state[target];
+      const update = (cards: CardInstance[]) => cards.map(c => c.instanceId === action.instanceId ? { ...c, isRevealed: false } : c);
+      
+      return {
+        ...state,
+        [target]: {
+          ...player,
+          hand: update(player.hand),
+          life: update(player.life),
+          mainField: update(player.mainField),
+          supportField: update(player.supportField),
+          mpField: update(player.mpField),
+          trash: update(player.trash),
+          partner: player.partner?.instanceId === action.instanceId ? { ...player.partner, isRevealed: false } : player.partner,
+        }
+      };
+    }
+
     case 'MANUAL_MOVE': {
       const target = action.playerId === 'player' ? 'player' : 'opponent';
       const player = state[target];
@@ -338,7 +412,13 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         const searchAndRemove = (field: CardInstance | CardInstance[] | null): [CardInstance | null, any] => {
           if (!field) return [null, null];
           if (Array.isArray(field)) {
-            const idx = field.findIndex(c => c.instanceId === instanceId);
+            let idx = field.findIndex(c => c.instanceId === instanceId);
+            
+            // Online Play fallback: if ID not found but we're moving from hand and have card data, find by card number
+            if (idx === -1 && from === 'hand' && card) {
+              idx = field.findIndex(c => c.card.cardNumber === card.cardNumber);
+            }
+
             if (idx !== -1) {
               const inst = field[idx];
               const newField = [...field];
@@ -396,6 +476,10 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       return {
         ...state,
         [target]: newToState,
+        activeSearch: state.activeSearch ? {
+          ...state.activeSearch,
+          snapshot: state.activeSearch.snapshot?.filter(c => c.instanceId !== instanceId)
+        } : null,
         log: [...state.log, `${player.name} moved a card from ${from} to ${to}.`],
       };
     }

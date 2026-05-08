@@ -32,7 +32,8 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
   };
 
   const [selectedCard, setSelectedCard] = useState<{instance: CardInstance, location: string, isOpponent?: boolean} | null>(null);
-  const [showDeckTopCount, setShowDeckTopCount] = useState<number | null>(null);
+  const [viewingTrash, setViewingTrash] = useState<'player' | 'opponent' | null>(null);
+  const [showDeckMenu, setShowDeckMenu] = useState(false);
   const [gameStarted, setGameStarted] = useState(isOnline || !!deck);
   const [attachMode, setAttachMode] = useState<CardInstance | null>(null);
 
@@ -92,14 +93,13 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
     setGameStarted(true);
   };
 
-  // Auto-start if deck is provided (for local simulator when entered from builder)
   useEffect(() => {
     if (deck && !gameStarted && !isOnline) {
        startGameWithDeck(deck);
     }
   }, [deck]);
 
-  const handleMoveCard = (instanceId: string, from: string, to: string) => {
+  const handleMoveCard = (instanceId: string, from: string, to: string, card?: Card) => {
     if (to === 'mainField' && state.player.mainField.length >= 3) {
       alert("メインフィールドは3枚までです。");
       return;
@@ -109,9 +109,8 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
       return;
     }
 
-    // Find the card details if moving from hand (crucial for online play)
-    let cardDetails: Card | undefined = undefined;
-    if (from === 'hand') {
+    let cardDetails = card;
+    if (!cardDetails && from === 'hand') {
        cardDetails = state.player.hand.find(c => c.instanceId === instanceId)?.card;
     }
 
@@ -126,22 +125,24 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
     setSelectedCard(null);
   };
 
-  const promptOpenTopN = () => {
-    const val = window.prompt("山札の上から何枚オープンしますか？", "3");
+  const promptOpenTopN = (isPublic: boolean) => {
+    const val = window.prompt(`山札の上から何枚${isPublic ? '公開' : '非公開'}でオープンしますか？`, "3");
     if (val) {
       const n = parseInt(val);
-      if (!isNaN(n)) setShowDeckTopCount(n);
+      if (!isNaN(n)) dispatch({ type: 'SEARCH_DECK', playerId: 'player', isPublic, topCount: n });
     }
   };
 
   const renderCard = (instance: CardInstance, location: string, isOpponentSide: boolean = false, isAttached: boolean = false) => {
     const isLife = location === 'life';
     const isResting = !instance.isActive && !isLife;
+    const isRevealed = instance.isRevealed;
+    const isSmall = isOpponentSide && (location === 'hand' || location === 'deck' || location === 'trash' || location === 'life');
 
     return (
       <div className="card-container-wrapper" key={instance.instanceId}>
         <div 
-          className={`card-slot ${isResting ? 'resting' : ''} ${isAttached ? 'attached-card-offset' : ''}`}
+          className={`card-slot ${isResting ? 'resting' : ''} ${isAttached ? 'attached-card-offset' : ''} ${isSmall ? 'small-card' : ''}`}
           onClick={() => {
             if (attachMode) {
                 if (isOpponentSide) return;
@@ -149,12 +150,26 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
                 if (instance.instanceId !== attachMode.instanceId && targetLocs.includes(location)) {
                   handleAttach(instance.instanceId);
                 }
+            } else if (isLife) {
+                if (isOpponentSide) {
+                  if (isRevealed) setSelectedCard({ instance, location, isOpponent: true });
+                } else {
+                  if (!isRevealed) {
+                    dispatch({ type: 'REVEAL_CARD', playerId: 'player', instanceId: instance.instanceId });
+                  } else {
+                    setSelectedCard({ instance, location, isOpponent: false });
+                  }
+                }
             } else {
-                setSelectedCard({ instance, location, isOpponent: isOpponentSide });
+                if (isOpponentSide) {
+                  setSelectedCard({ instance, location, isOpponent: true });
+                } else {
+                  setSelectedCard({ instance, location, isOpponent: false });
+                }
             }
           }}
         >
-          {isLife ? (
+          {(isLife || (isOpponentSide && location === 'hand')) && !isRevealed ? (
              <div className="deck-back"></div>
           ) : (
              <>
@@ -164,6 +179,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
                  className="card-image"
                />
                {isResting && <div className="resting-overlay">休息</div>}
+               {isLife && isRevealed && <div className="revealed-badge">Revealed</div>}
              </>
           )}
           {instance.attachedItems.length > 0 && (
@@ -222,7 +238,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
                       checked={player.isPartnerEffectUsed} 
                       onChange={() => dispatch({ type: 'TOGGLE_PARTNER_EFFECT', playerId: 'player' })}
                     />
-                    <span>Effect Used</span>
+                    <span>効果使用済</span>
                   </label>
                 </div>
               )}
@@ -232,20 +248,12 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
 
         <div className="zone deck-zone">
           <div className="zone-label">Deck ({player.deck.length})</div>
-          <div className="card-slot deck-back" onClick={() => !isOpponent && dispatch({ type: 'DRAW_CARD', playerId: 'player' })}></div>
-          {!isOpponent && (
-            <div className="deck-controls-container">
-              <div className="deck-main-actions">
-                <button className="deck-control-btn primary" onClick={() => dispatch({ type: 'DRAW_CARD', playerId: 'player', instanceId: Math.random().toString(36).substr(2, 9) })} title="Draw Card">Draw</button>
-                <button className="deck-control-btn secondary" onClick={() => dispatch({ type: 'DRAW_FROM_BOTTOM', playerId: 'player', instanceId: Math.random().toString(36).substr(2, 9) })} title="Draw from Bottom">Btm</button>
-              </div>
-              <div className="deck-utility-actions">
-                <button className="deck-util-btn" onClick={() => promptOpenTopN()} title="Open Top N"><Layers size={14}/></button>
-                <button className="deck-util-btn" onClick={() => dispatch({ type: 'SHUFFLE_DECK', playerId: 'player'})} title="Shuffle"><RefreshCw size={14}/></button>
-                <button className="deck-util-btn" onClick={() => dispatch({ type: 'SETUP_LIFE', playerId: 'player', instanceIds: [Math.random().toString(36).substr(2, 9), Math.random().toString(36).substr(2, 9), Math.random().toString(36).substr(2, 9)] })} title="Setup Life (3)">3</button>
-              </div>
-            </div>
-          )}
+          <div className={`card-slot deck-back ${isOpponent ? 'small-card' : ''}`} onClick={() => {
+            if (!isOpponent) {
+              const instanceId = Math.random().toString(36).substr(2, 9);
+              dispatch({ type: 'DRAW_CARD', playerId: 'player', instanceId });
+            }
+          }}></div>
         </div>
 
         <div className="zone support-field-zone">
@@ -280,7 +288,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
 
         <div className="zone trash-zone">
           <div className="zone-label">Trash ({player.trash.length})</div>
-          <div className="card-slot">
+          <div className={`card-slot ${isOpponent ? 'small-card' : ''}`} onClick={() => setViewingTrash(isOpponent ? 'opponent' : 'player')}>
             {player.trash.length > 0 && renderCard(player.trash[player.trash.length - 1], 'trash', isOpponent)}
           </div>
         </div>
@@ -292,15 +300,89 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
               const overlap = player.hand.length > 12 ? (320 / player.hand.length) : 25;
               return (
                 <div key={instance.instanceId} style={{ position: 'absolute', left: `${index * overlap}px`, zIndex: index }}>
-                  {isOpponent ? (
-                    <div className="card-slot deck-back"></div>
-                  ) : (
-                    renderCard(instance, 'hand', isOpponent)
-                  )}
+                  {renderCard(instance, 'hand', isOpponent)}
                 </div>
               );
             })}
           </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderCardDetailSide = () => {
+    if (!selectedCard) {
+      return (
+        <div className="side-panel-placeholder">
+          <p>カードを選択すると<br/>詳細が表示されます</p>
+        </div>
+      );
+    }
+
+    const { instance, location, isOpponent } = selectedCard;
+    const { card } = instance;
+
+    return (
+      <div className="side-panel-content detail-content">
+        <div className="detail-image-container-side">
+          <img src={`/images/${card.cardNumber.replace('/', '_')}.png`} alt={card.cardName} className="detail-image-side" />
+        </div>
+        <div className="detail-info-side">
+          <h3>{card.cardName}</h3>
+          <p className="card-no">{card.cardNumber}</p>
+          {!isOpponent && (
+            <div className="action-groups-side">
+              <div className="action-group-side">
+                <h4>状態</h4>
+                <div className="action-buttons-grid">
+                  <button className="action-btn-sm" onClick={() => dispatch({ type: 'ACTIVATE_CARD', playerId: 'player', instanceId: instance.instanceId })} disabled={instance.isActive}>スタンド</button>
+                  <button className="action-btn-sm" onClick={() => { dispatch({ type: 'REST_CARD', playerId: 'player', instanceId: instance.instanceId }); setSelectedCard(null); }} disabled={!instance.isActive}>休息</button>
+                  <button className="action-btn-sm" onClick={() => dispatch({ type: instance.isRevealed ? 'HIDE_CARD' : 'REVEAL_CARD', playerId: 'player', instanceId: instance.instanceId })}>
+                    {instance.isRevealed ? '非公開' : '公開'}
+                  </button>
+                </div>
+              </div>
+              <div className="action-group-side">
+                <h4>移動</h4>
+                <div className="move-buttons-grid-side">
+                  {location !== 'partner' && (
+                    <>
+                      <button disabled={location === 'mainField'} onClick={() => handleMoveCard(instance.instanceId, location, 'mainField')}>メイン</button>
+                      <button disabled={location === 'supportField'} onClick={() => handleMoveCard(instance.instanceId, location, 'supportField')}>サポート</button>
+                      <button disabled={location === 'mpField'} onClick={() => handleMoveCard(instance.instanceId, location, 'mpField')}>MP</button>
+                      <button onClick={() => { setAttachMode(instance); setSelectedCard(null); }}>装備する</button>
+                      <button disabled={location === 'trash'} onClick={() => handleMoveCard(instance.instanceId, location, 'trash')}>トラッシュ</button>
+                      <button onClick={() => handleMoveCard(instance.instanceId, location, 'deckTop')}>デッキ上</button>
+                      <button onClick={() => handleMoveCard(instance.instanceId, location, 'deckBottom')}>デッキ下</button>
+                    </>
+                  )}
+                  {location === 'partner' && (
+                    <button onClick={() => { setAttachMode(instance); setSelectedCard(null); }}>装備する</button>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+          {isOpponent && <div className="opponent-view-only">相手のカード</div>}
+          <button className="close-btn-side" onClick={() => setSelectedCard(null)}>閉じる</button>
+        </div>
+      </div>
+    );
+  };
+
+  const renderDeckMenuSide = () => {
+    return (
+      <div className="side-panel-content deck-menu-content">
+        <h4>デッキ操作</h4>
+        <div className="deck-actions-list">
+          <button onClick={() => dispatch({ type: 'DRAW_CARD', playerId: 'player' })}>ドロー</button>
+          <button onClick={() => dispatch({ type: 'DRAW_FROM_BOTTOM', playerId: 'player' })}>デッキの下からドロー</button>
+          <button onClick={() => promptOpenTopN(true)}>上からN枚公開</button>
+          <button onClick={() => promptOpenTopN(false)}>上からN枚非公開で見る</button>
+          <button onClick={() => dispatch({type:'SEARCH_DECK', playerId:'player', isPublic:true})}>公開サーチ</button>
+          <button onClick={() => dispatch({type:'SEARCH_DECK', playerId:'player', isPublic:false})}>非公開サーチ</button>
+          <button onClick={() => dispatch({ type: 'SHUFFLE_DECK', playerId: 'player'})}>シャッフル</button>
+          <button onClick={() => dispatch({ type: 'SETUP_LIFE', playerId: 'player', instanceIds: [Math.random().toString(36).substr(2, 9), Math.random().toString(36).substr(2, 9), Math.random().toString(36).substr(2, 9)] })}>ライフを3枚セット</button>
         </div>
       </div>
     );
@@ -340,80 +422,96 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
         <button className="back-btn" onClick={onBack}><ArrowLeft size={14} /> Exit</button>
         <div className="board-title">{isOnline ? (isHost ? 'Online Match (Host)' : 'Online Match (Guest)') : 'Manual Duel Simulator'}</div>
       </div>
-      <div className="battle-area">
-        {renderPlayerSide(state.opponent, true)}
-        <div className="center-divider"></div>
-        {renderPlayerSide(state.player, false)}
-      </div>
-      {selectedCard && (
-        <div className="modal-overlay" onClick={() => setSelectedCard(null)}>
-          <div className="modal-content detail-modal" onClick={e => e.stopPropagation()}>
-            <div className="detail-layout">
-              <div className="detail-image-container">
-                <img src={`/images/${selectedCard.instance.card.cardNumber.replace('/', '_')}.png`} alt={selectedCard.instance.card.cardName} className="detail-image" />
-              </div>
-              <div className="detail-info">
-                <h3>{selectedCard.instance.card.cardName}</h3>
-                <p className="card-no">{selectedCard.instance.card.cardNumber}</p>
-                {!selectedCard.isOpponent && (
-                  <>
-                    {selectedCard.location !== 'hand' && (
-                      <div className="action-group">
-                        <h4>State</h4>
-                        <div className="action-buttons-row">
-                          <button className="action-btn-large" onClick={() => dispatch({ type: 'ACTIVATE_CARD', playerId: 'player', instanceId: selectedCard.instance.instanceId })}><Maximize2 size={16} /> Stand</button>
-                          <button className="action-btn-large" onClick={() => { dispatch({ type: 'REST_CARD', playerId: 'player', instanceId: selectedCard.instance.instanceId }); setSelectedCard(null); }}><RotateCcw size={16} /> Resting (休息)</button>
-                        </div>
-                      </div>
-                    )}
-                    <div className="action-group">
-                      <h4>Actions</h4>
-                      <div className="move-buttons-grid">
-                        <button onClick={() => { setAttachMode(selectedCard.instance); setSelectedCard(null); }}><Paperclip size={14}/> 装備する</button>
-                        {selectedCard.location !== 'partner' && (
-                          <>
-                            <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'hand')}>Hand</button>
-                            <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'mainField')}>Main</button>
-                            <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'supportField')}>Support</button>
-                            <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'mpField')}>MP</button>
-                            <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'trash')}>Trash</button>
-                            <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'deckTop')}>Deck Top</button>
-                            <button onClick={() => handleMoveCard(selectedCard.instance.instanceId, selectedCard.location, 'deckBottom')}>Deck Bottom</button>
-                          </>
-                        )}
-                      </div>
-                    </div>
-                  </>
-                )}
-                {selectedCard.isOpponent && <div className="opponent-view-only">相手のカード（閲覧のみ）</div>}
-                <button className="close-btn-full" onClick={() => setSelectedCard(null)}>Close</button>
-              </div>
+      <div className="battle-area-new">
+        <div className="game-boards-column">
+          <div className="opponent-board-row">
+            {renderPlayerSide(state.opponent, true)}
+          </div>
+          <div className="center-divider"></div>
+          <div className="player-board-row">
+            <div className="player-board-main">
+              {renderPlayerSide(state.player, false)}
+            </div>
+            <div className="deck-menu-panel-side">
+              {renderDeckMenuSide()}
             </div>
           </div>
         </div>
-      )}
-      {showDeckTopCount !== null && (
-        <div className="modal-overlay" onClick={() => setShowDeckTopCount(null)}>
+        <div className="details-panel-column">
+          {renderCardDetailSide()}
+        </div>
+      </div>
+      {state.activeSearch && (
+        <div className="modal-overlay" onClick={() => { if(state.activeSearch?.playerId === 'player') dispatch({type:'CLOSE_SEARCH', playerId:'player'}); }}>
           <div className="modal-content deck-open-modal" onClick={e => e.stopPropagation()}>
-            <h3 style={{textAlign: 'center', marginBottom: '10px'}}>Deck Top (Showing {Math.min(showDeckTopCount, state.player.deck.length)} cards)</h3>
+            <h3 style={{textAlign: 'center', marginBottom: '10px'}}>
+              {state.activeSearch.playerId === 'player' ? (state.activeSearch.isPublic ? '公開サーチ/オープン' : '非公開サーチ/オープン') : '相手が山札を操作中...'}
+            </h3>
             <div className="deck-top-grid">
-              {state.player.deck.slice(0, showDeckTopCount).map((card, idx) => {
-                const generatedId = Math.random().toString(36).substr(2, 9);
-                return (
-                  <div key={idx} className="deck-top-item">
-                    <div className="card-slot small"><img src={`/images/${card.cardNumber.replace('/', '_')}.png`} alt={card.cardName} className="card-image" /></div>
-                    <div className="deck-top-actions">
-                      <button onClick={() => { dispatch({ type: 'MANUAL_MOVE', playerId: 'player', from: 'deck', to: 'hand', index: idx, instanceId: generatedId }); setShowDeckTopCount(prev => prev ? prev - 1 : 0); }}>Hand</button>
-                      <button onClick={() => { dispatch({ type: 'MANUAL_MOVE', playerId: 'player', from: 'deck', to: 'deckTop', index: idx, instanceId: generatedId }); setShowDeckTopCount(prev => prev ? prev - 1 : 0); }}>Top</button>
-                      <button onClick={() => { if (state.player.mainField.length >= 3) { alert("メインフィールドは3枚までです。"); return; } dispatch({ type: 'MANUAL_MOVE', playerId: 'player', from: 'deck', to: 'mainField', index: idx, instanceId: generatedId }); setShowDeckTopCount(prev => prev ? prev - 1 : 0); }}>Main</button>
-                      <button onClick={() => { dispatch({ type: 'MANUAL_MOVE', playerId: 'player', from: 'deck', to: 'trash', index: idx, instanceId: generatedId }); setShowDeckTopCount(prev => prev ? prev - 1 : 0); }}>Trash</button>
-                      <button onClick={() => { dispatch({ type: 'MANUAL_MOVE', playerId: 'player', from: 'deck', to: 'deckBottom', index: idx, instanceId: generatedId }); setShowDeckTopCount(prev => prev ? prev - 1 : 0); }}>Bottom</button>
+              {(() => {
+                const searcher = state[state.activeSearch.playerId];
+                const isMe = state.activeSearch.playerId === 'player';
+                const showContent = state.activeSearch.isPublic || isMe;
+                
+                // Use snapshot if available (for Open N), otherwise use the current deck (for full search)
+                const cards = state.activeSearch.snapshot || searcher.deck.map(c => ({ 
+                  instanceId: Math.random().toString(36).substr(2, 9), 
+                  card: c 
+                }));
+
+                return cards.map((inst, idx) => {
+                  const card = 'card' in inst ? inst.card : (inst as any);
+                  const instanceId = 'instanceId' in inst ? inst.instanceId : Math.random().toString(36).substr(2, 9);
+
+                  return (
+                    <div key={instanceId} className="deck-top-item">
+                      <div className="card-slot small">
+                        {showContent ? (
+                          <img src={`/images/${card.cardNumber.replace('/', '_')}.png`} alt={card.cardName} className="card-image" />
+                        ) : (
+                          <div className="deck-back"></div>
+                        )}
+                      </div>
+                      {isMe && (
+                        <div className="deck-top-actions">
+                          <button onClick={() => handleMoveCard(instanceId, 'deck', 'hand', card)}>Hand</button>
+                          <button onClick={() => handleMoveCard(instanceId, 'deck', 'deckTop')}>Top</button>
+                          <button onClick={() => { if (state.player.mainField.length >= 3) { alert("メインフィールドは3枚までです。"); return; } handleMoveCard(instanceId, 'deck', 'mainField', card); }}>Main</button>
+                          <button onClick={() => handleMoveCard(instanceId, 'deck', 'trash', card)}>Trash</button>
+                        </div>
+                      )}
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                });
+              })()}
             </div>
-            <button className="close-btn" onClick={() => setShowDeckTopCount(null)}>Done</button>
+            {state.activeSearch.playerId === 'player' && (
+               <button className="close-btn" onClick={() => dispatch({type:'CLOSE_SEARCH', playerId:'player'})}>Done</button>
+            )}
+          </div>
+        </div>
+      )}
+      {viewingTrash && (
+        <div className="modal-overlay" onClick={() => setViewingTrash(null)}>
+          <div className="modal-content deck-open-modal" onClick={e => e.stopPropagation()}>
+            <h3 style={{textAlign: 'center', marginBottom: '10px'}}>{viewingTrash === 'player' ? '自分のトラッシュ' : '相手のトラッシュ'} ({state[viewingTrash].trash.length} cards)</h3>
+            <div className="deck-top-grid">
+              {state[viewingTrash].trash.map((inst, idx) => (
+                <div key={inst.instanceId} className="deck-top-item">
+                  <div className="card-slot small"><img src={`/images/${inst.card.cardNumber.replace('/', '_')}.png`} alt={inst.card.cardName} className="card-image" /></div>
+                  <div className="deck-top-actions">
+                    {viewingTrash === 'player' && (
+                      <>
+                        <button onClick={() => { dispatch({ type: 'MANUAL_MOVE', playerId: 'player', from: 'trash', to: 'hand', instanceId: inst.instanceId }); }}>Hand</button>
+                        <button onClick={() => { dispatch({ type: 'MANUAL_MOVE', playerId: 'player', from: 'trash', to: 'deckBottom', instanceId: inst.instanceId }); }}>Deck Btm</button>
+                      </>
+                    )}
+                    <button onClick={() => setSelectedCard({instance: inst, location: 'trash', isOpponent: viewingTrash === 'opponent'})}>Detail</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <button className="close-btn" onClick={() => setViewingTrash(null)}>Close</button>
           </div>
         </div>
       )}

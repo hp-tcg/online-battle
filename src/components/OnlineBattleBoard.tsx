@@ -66,6 +66,8 @@ const OnlineBattleBoard: React.FC<OnlineBattleBoardProps> = ({ onBack, allCards,
           };
         } else if ('playerId' in action) {
           flippedAction = { ...action, playerId: action.playerId === 'player' ? 'opponent' : 'player' } as GameAction;
+        } else if (action.type === 'SEARCH_DECK' || action.type === 'CLOSE_SEARCH' || action.type === 'REVEAL_CARD' || action.type === 'HIDE_CARD') {
+          flippedAction = { ...action, playerId: action.playerId === 'player' ? 'opponent' : 'player' } as GameAction;
         }
 
         dispatch(flippedAction);
