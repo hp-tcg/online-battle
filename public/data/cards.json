@@ -1,0 +1,6086 @@
+[
+  {
+    "id": 176,
+    "cardNumber": "MP-002",
+    "cardName": "MPカード",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": null,
+    "mp": null,
+    "ap": null,
+    "dp": null,
+    "text": "ゲーム開始時、後攻のプレイヤーはMPカード1枚をMPフィールドに配置する。\nMPカードをゲームから取り除くことで1度だけコスト1を得る。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 4,
+        "value": "スターターデッキ／スリザリン"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/MP-002"
+  },
+  {
+    "id": 43,
+    "cardNumber": "Pt002",
+    "cardName": "ドラコ・マルフォイ",
+    "cardType": {
+      "id": 7,
+      "value": "Partner"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": null,
+    "mp": null,
+    "ap": null,
+    "dp": null,
+    "text": "〔アシスト〕①⤵\n味方キャラ1枚までを、この決闘中、+1/±0する。\n\n〔宣言〕〔相手のターン〕〔決闘中〕〔ゲーム中1回〕\n味方の【スリザリン】カード2枚までを、活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 4,
+        "value": "スターターデッキ／スリザリン"
+      }
+    ],
+    "qas": [
+      {
+        "id": 36,
+        "question": "〔決闘中〕は、どのタイミングで使用できますか。",
+        "answer": "ゲームマニュアルの20p「相手のキャラかパートナーにアタックする」の項目の、「4：〔決闘中〕の使用タイミング①」「7：〔決闘中〕の使用タイミング②」で使用できます。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/Pt002"
+  },
+  {
+    "id": 68,
+    "cardNumber": "S01-010",
+    "cardName": "ホグワーツ魔法魔術学校",
+    "cardType": {
+      "id": 9,
+      "value": "Location"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔宣言〕〔自分のメインフェイズ〕⤵\n味方の【ホグワーツ】カード1枚までを、ターン終了時まで、+2/+2する。\n\n≪ブレイク≫このカードを、サポートフィールドに出す。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 2,
+        "value": "スターターデッキ／グリフィンドール"
+      },
+      {
+        "id": 4,
+        "value": "スターターデッキ／スリザリン"
+      }
+    ],
+    "qas": [
+      {
+        "id": 51,
+        "question": "「≪ブレイク≫このカードを、サポートフィールドに出す。」のブレイクを使用した場合、そのカードはサポートフィールドから捨て札に行きますか。",
+        "answer": "いいえ、ブレイク効果の処理によって、ライフ以外の場所に移動したカードは、捨て札には行きません。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S01-010"
+  },
+  {
+    "id": 82,
+    "cardNumber": "S01-012a",
+    "cardName": "杖",
+    "cardType": {
+      "id": 11,
+      "value": "Item"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 0,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "≪装備≫〔常時〕\nこのカードを装備している【魔法使い】または【魔女】のカードを、+2/±0する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 4,
+        "value": "スターターデッキ／スリザリン"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S01-012a"
+  },
+  {
+    "id": 83,
+    "cardNumber": "S01-013a",
+    "cardName": "組分け儀式",
+    "cardType": {
+      "id": 12,
+      "value": "Event"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔使用〕〔自分のメインフェイズ〕\n自分のパートナーと同じ寮の味方キャラ全てを、ターン終了時まで、+2/+2する。\n※寮とは【グリフィンドール】【スリザリン】【レイブンクロー】【ハッフルパフ】を示す。\n\n≪ブレイク≫このカードを、無償で使用できる。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 4,
+        "value": "スターターデッキ／スリザリン"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S01-013a"
+  },
+  {
+    "id": 72,
+    "cardNumber": "S02-001",
+    "cardName": "ドラコ・マルフォイ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 4,
+    "mp": 1,
+    "ap": 5,
+    "dp": 5,
+    "text": "〔Pリンク【スリザリン】〕〔自動〕〔エントリー〕〔アタック〕\n相手キャラ1枚までを、ターン終了時まで、-1/-1する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 4,
+        "value": "スターターデッキ／スリザリン"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S02-001"
+  },
+  {
+    "id": 73,
+    "cardNumber": "S02-002",
+    "cardName": "ドラコ・マルフォイ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": 2,
+    "dp": 2,
+    "text": "〔Pリンク【スリザリン】〕〔自動〕〔自分のターン終了時〕\n味方キャラ1枚までを活動状態にする。\n\n≪ブレイク≫味方の【スリザリン】カード1枚までを、活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 4,
+        "value": "スターターデッキ／スリザリン"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S02-002"
+  },
+  {
+    "id": 74,
+    "cardNumber": "S02-003",
+    "cardName": "ビンセント・クラッブ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 4,
+    "dp": 4,
+    "text": "〔常時〕\n味方「ドラコ・マルフォイ」のカード全てを、+1/±0する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 4,
+        "value": "スターターデッキ／スリザリン"
+      }
+    ],
+    "qas": [
+      {
+        "id": 41,
+        "question": "Pt003「ハリー・ポッター」の「味方の【グリフィンドール】カード1枚までを、活動状態にする。」によって、Partnerカードを活動状態にできますか。",
+        "answer": "できません。対象となる場所（MPフィールド、デッキなど）が指定されてない効果は、決闘場のカードのみを指定できます。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S02-003"
+  },
+  {
+    "id": 75,
+    "cardNumber": "S02-004",
+    "cardName": "グレゴリー・ゴイル",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 4,
+    "dp": 4,
+    "text": "〔常時〕\n味方「ドラコ・マルフォイ」のカード全てを±0/+1する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 4,
+        "value": "スターターデッキ／スリザリン"
+      }
+    ],
+    "qas": [
+      {
+        "id": 41,
+        "question": "Pt003「ハリー・ポッター」の「味方の【グリフィンドール】カード1枚までを、活動状態にする。」によって、Partnerカードを活動状態にできますか。",
+        "answer": "できません。対象となる場所（MPフィールド、デッキなど）が指定されてない効果は、決闘場のカードのみを指定できます。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S02-004"
+  },
+  {
+    "id": 76,
+    "cardNumber": "S02-005",
+    "cardName": "パンジー・パーキンソン",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": 1,
+    "dp": 1,
+    "text": "≪サポーター≫\n〔宣言〕〔自分のメインフェイズ〕⤵\n味方の【スリザリン】カード1枚までを、ターン終了時まで、+1/+1する。\n\n≪ブレイク≫味方の【スリザリン】カード1枚までを活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 13,
+        "value": "魔女"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 4,
+        "value": "スターターデッキ／スリザリン"
+      }
+    ],
+    "qas": [
+      {
+        "id": 70,
+        "question": "01-050\t「ロランダ・フーチ」の「〔Pリンク「アルバス・ダンブルドア」〕〔宣言〕〔決闘中〕⤵　味方の【教師】カード1枚までを、ターン終了時まで+1/+1する。」を発動した後、そのターン中に01-050「ロランダ・フーチ」が活動状態になった場合、再度〔宣言〕〔決闘中〕⤵を発動することはできますか。",
+        "answer": "可能です。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S02-005"
+  },
+  {
+    "id": 77,
+    "cardNumber": "S02-006",
+    "cardName": "テレンス・ヒッグス",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": 3,
+    "dp": 2,
+    "text": null,
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 16,
+        "value": "クィディッチ"
+      },
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 4,
+        "value": "スターターデッキ／スリザリン"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S02-006"
+  },
+  {
+    "id": 78,
+    "cardNumber": "S02-007",
+    "cardName": "エイドリアン・ピュシー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": 2,
+    "dp": 3,
+    "text": null,
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 16,
+        "value": "クィディッチ"
+      },
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 4,
+        "value": "スターターデッキ／スリザリン"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S02-007"
+  },
+  {
+    "id": 79,
+    "cardNumber": "S02-008",
+    "cardName": "ドラコ・マルフォイ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": 4,
+    "dp": 3,
+    "text": null,
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 4,
+        "value": "スターターデッキ／スリザリン"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S02-008"
+  },
+  {
+    "id": 80,
+    "cardNumber": "S02-009",
+    "cardName": "セブルス・スネイプ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": 3,
+    "dp": 4,
+    "text": null,
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 4,
+        "value": "スターターデッキ／スリザリン"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S02-009"
+  },
+  {
+    "id": 81,
+    "cardNumber": "S02-010",
+    "cardName": "上がれ！",
+    "cardType": {
+      "id": 10,
+      "value": "Magic"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔使用〕〔決闘中〕\n決闘中の味方キャラ1枚までを、この決闘中、+3/±0する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 4,
+        "value": "スターターデッキ／スリザリン"
+      }
+    ],
+    "qas": [
+      {
+        "id": 36,
+        "question": "〔決闘中〕は、どのタイミングで使用できますか。",
+        "answer": "ゲームマニュアルの20p「相手のキャラかパートナーにアタックする」の項目の、「4：〔決闘中〕の使用タイミング①」「7：〔決闘中〕の使用タイミング②」で使用できます。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S02-010"
+  },
+  {
+    "id": 175,
+    "cardNumber": "MP-001",
+    "cardName": "MPカード",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": null,
+    "mp": null,
+    "ap": null,
+    "dp": null,
+    "text": "ゲーム開始時、後攻のプレイヤーはMPカード1枚をMPフィールドに配置する。\nMPカードをゲームから取り除くことで1度だけコスト1を得る。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 2,
+        "value": "スターターデッキ／グリフィンドール"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/MP-001"
+  },
+  {
+    "id": 42,
+    "cardNumber": "Pt001",
+    "cardName": "ハリー・ポッター",
+    "cardType": {
+      "id": 7,
+      "value": "Partner"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": null,
+    "mp": null,
+    "ap": null,
+    "dp": null,
+    "text": "〔アシスト〕①⤵\n味方キャラ1枚までを、この決闘中、+1/±0する。\n\n〔宣言〕〔相手のターン〕〔決闘中〕〔ゲーム中1回〕\n味方の【グリフィンドール】カード2枚までを、活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 2,
+        "value": "スターターデッキ／グリフィンドール"
+      }
+    ],
+    "qas": [
+      {
+        "id": 36,
+        "question": "〔決闘中〕は、どのタイミングで使用できますか。",
+        "answer": "ゲームマニュアルの20p「相手のキャラかパートナーにアタックする」の項目の、「4：〔決闘中〕の使用タイミング①」「7：〔決闘中〕の使用タイミング②」で使用できます。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/Pt001"
+  },
+  {
+    "id": 59,
+    "cardNumber": "S01-001",
+    "cardName": "ハリー・ポッター",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 4,
+    "mp": 1,
+    "ap": 5,
+    "dp": 5,
+    "text": "〔Pリンク【グリフィンドール】〕〔自動〕〔エントリー〕〔アタック〕\nカードを2枚引き、手札2枚を捨て札にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 2,
+        "value": "スターターデッキ／グリフィンドール"
+      }
+    ],
+    "qas": [
+      {
+        "id": 37,
+        "question": "S01-001「ハリー・ポッター」とT01-001「ハリー・ポッター」は別のカードとして扱いますか。",
+        "answer": "別のカードとして扱います。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 48,
+        "question": "S01-001「ハリー・ポッター」の「カードを2枚引き、手札2枚を捨て札にする。」を使用する際、デッキの枚数が１枚の場合はどのような処理になりますか。",
+        "answer": "何も起こりません。デッキ1枚の場合は「カードを2枚引き」を実行できません。また、「カードを2枚引き」が実行できないため、「～手札2枚を捨て札にする。」も発動しません。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 49,
+        "question": "S01-001「ハリー・ポッター」の「カードを2枚引き、手札2枚を捨て札にする。」は、手札が無い場合でも発動しますか。",
+        "answer": "発動します。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S01-001"
+  },
+  {
+    "id": 60,
+    "cardNumber": "S01-002",
+    "cardName": "ハリー・ポッター",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": 2,
+    "dp": 2,
+    "text": "〔Pリンク【グリフィンドール】〕〔自動〕〔自分のターン終了時〕\n味方キャラ1枚までを活動状態にする。\n\n≪ブレイク≫味方の【グリフィンドール】カード1枚までを、活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 2,
+        "value": "スターターデッキ／グリフィンドール"
+      }
+    ],
+    "qas": [
+      {
+        "id": 61,
+        "question": "自分のターン中、相手の01-022「グレゴリー・ゴイル」がダウンし、「相手キャラ1枚までを、ターン終了時まで、-2/-2する。」によって、S01-002「ハリー・ポッター」が-2/-2され、DPが0になったことで休息状態になりました。このターンの終了時、「〔自動〕〔自分のターン終了時〕味方キャラ1枚までを活動状態にする。」で、-2/-2されたS01-002「ハリー・ポッター」を活動状態にする場合、どうなりますか。",
+        "answer": "まず、手番のプレイヤー（自分）から、ターン終了時の処理を行います。S01-002「ハリー・ポッター」が一度活動状態になりますが、DPが0なので再度休息状態になります。次に手番ではないプレイヤー（相手）の01-022「グレゴリー・ゴイル」の「相手キャラ1枚までを、ターン終了時まで、-2/-2する。」の効果の継続が終了します。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 89,
+        "question": "01-080「9と3/4番線」の効果で、S01-002「ハリー・ポッター」がサポートフィールドからメインフィールドに移った場合、そのターンに「〔自動〕〔自分のターン終了時〕味方キャラ1枚までを活動状態にする。」は発動しますか。",
+        "answer": "発動しません。ターンの終了時に処理が発生する効果を解決する時点で、効果が発動できない状態のカードは、その後効果が発動できる状態になったとしても、効果を発動することはできません。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S01-002"
+  },
+  {
+    "id": 61,
+    "cardNumber": "S01-003",
+    "cardName": "ロン・ウィーズリー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": 1,
+    "dp": 1,
+    "text": "≪サポーター≫\n〔宣言〕〔自分のメインフェイズ〕⤵\n味方の【グリフィンドール】カード1枚までを、ターン終了時まで、+1/+1する。\n\n≪ブレイク≫味方の【グリフィンドール】カード1枚までを、活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 2,
+        "value": "スターターデッキ／グリフィンドール"
+      }
+    ],
+    "qas": [
+      {
+        "id": 70,
+        "question": "01-050\t「ロランダ・フーチ」の「〔Pリンク「アルバス・ダンブルドア」〕〔宣言〕〔決闘中〕⤵　味方の【教師】カード1枚までを、ターン終了時まで+1/+1する。」を発動した後、そのターン中に01-050「ロランダ・フーチ」が活動状態になった場合、再度〔宣言〕〔決闘中〕⤵を発動することはできますか。",
+        "answer": "可能です。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S01-003"
+  },
+  {
+    "id": 62,
+    "cardNumber": "S01-004",
+    "cardName": "ハーマイオニー・グレンジャー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 3,
+    "dp": 5,
+    "text": "〔常時〕\nMagicカードがプレイされた場合、このカードを、ターン終了時まで、+1/+1する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 13,
+        "value": "魔女"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 2,
+        "value": "スターターデッキ／グリフィンドール"
+      }
+    ],
+    "qas": [
+      {
+        "id": 50,
+        "question": "「Magicカードがプレイされた場合」は、相手がプレイしたMagicカードでも効果が発動しますか。",
+        "answer": "発動します。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S01-004"
+  },
+  {
+    "id": 63,
+    "cardNumber": "S01-005",
+    "cardName": "ネビル・ロングボトム",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 4,
+    "dp": 4,
+    "text": "〔突進〕\n※突進を持つキャラはエントリーしたターンからキャラに攻撃できる。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 2,
+        "value": "スターターデッキ／グリフィンドール"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S01-005"
+  },
+  {
+    "id": 64,
+    "cardNumber": "S01-006",
+    "cardName": "シェーマス・フィネガン",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": 3,
+    "dp": 2,
+    "text": null,
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 2,
+        "value": "スターターデッキ／グリフィンドール"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S01-006"
+  },
+  {
+    "id": 65,
+    "cardNumber": "S01-007",
+    "cardName": "ディーン・トーマス",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": 2,
+    "dp": 3,
+    "text": null,
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 2,
+        "value": "スターターデッキ／グリフィンドール"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S01-007"
+  },
+  {
+    "id": 66,
+    "cardNumber": "S01-008",
+    "cardName": "フレッド・ウィーズリー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": 4,
+    "dp": 3,
+    "text": null,
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 2,
+        "value": "スターターデッキ／グリフィンドール"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S01-008"
+  },
+  {
+    "id": 67,
+    "cardNumber": "S01-009",
+    "cardName": "ジョージ・ウィーズリー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": 3,
+    "dp": 4,
+    "text": null,
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 2,
+        "value": "スターターデッキ／グリフィンドール"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S01-009"
+  },
+  {
+    "id": 69,
+    "cardNumber": "S01-011",
+    "cardName": "レパロ",
+    "cardType": {
+      "id": 10,
+      "value": "Magic"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔使用〕〔相手のターン〕〔決闘中〕\n味方キャラ1枚までを活動状態にする。\n\n≪ブレイク≫このカードを、無償で使用できる。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 2,
+        "value": "スターターデッキ／グリフィンドール"
+      }
+    ],
+    "qas": [
+      {
+        "id": 36,
+        "question": "〔決闘中〕は、どのタイミングで使用できますか。",
+        "answer": "ゲームマニュアルの20p「相手のキャラかパートナーにアタックする」の項目の、「4：〔決闘中〕の使用タイミング①」「7：〔決闘中〕の使用タイミング②」で使用できます。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 52,
+        "question": "S01-011「レパロ」のブレイクを使用した場合、Magicカードをプレイした扱いになりますか。",
+        "answer": "はい。Magicカードをプレイした扱いになります。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S01-011"
+  },
+  {
+    "id": 70,
+    "cardNumber": "S01-012",
+    "cardName": "杖",
+    "cardType": {
+      "id": 11,
+      "value": "Item"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 0,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "≪装備≫〔常時〕\nこのカードを装備している【魔法使い】または【魔女】のカードを、+2/±0する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 2,
+        "value": "スターターデッキ／グリフィンドール"
+      }
+    ],
+    "qas": [
+      {
+        "id": 53,
+        "question": "S01-012「杖」は、【魔法使い】または【魔女】以外のキャラにも装備することはできますか。",
+        "answer": "可能です。ただし、効果は得られません。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 54,
+        "question": "メインフィールドにキャラが3枚ある状態で、メインフィールドのキャラにアイテムカードを装備した場合、メインフィールドのカードを捨て札にする必要がありますか？",
+        "answer": "いいえ、必要ありません。カードの下に重ねて置かれるカードは、メインフィールドやサポートフィールドの上限数に数えません。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 69,
+        "question": "01-049「セブルス・スネイプ」をプレイして、相手がS01-012「杖」を装備したキャラを手札に戻す場合、S01-012「杖」はどうなりますか。",
+        "answer": "捨て札に移ります。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S01-012"
+  },
+  {
+    "id": 71,
+    "cardNumber": "S01-013",
+    "cardName": "組分け儀式",
+    "cardType": {
+      "id": 12,
+      "value": "Event"
+    },
+    "rarity": {
+      "id": 7,
+      "value": "ST"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔使用〕〔自分のメインフェイズ〕\n自分のパートナーと同じ寮の味方キャラ全てを、ターン終了時まで、+2/+2する。\n※寮とは【グリフィンドール】【スリザリン】【レイブンクロー】【ハッフルパフ】を示す。\n\n≪ブレイク≫このカードを、無償で使用できる。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 2,
+        "value": "スターターデッキ／グリフィンドール"
+      }
+    ],
+    "qas": [
+      {
+        "id": 55,
+        "question": "S01-013「組分け儀式」の効果のタイミングは、〔使用〕〔自分のメインフェイズ〕ですが、決闘中にライフから公開された場合、「≪ブレイク≫このカードを、無償で使用できる。」によって、このカードの効果を使用することは可能ですか。",
+        "answer": "可能です。ブレイクによって、カードに記載された効果を使用する場合は、〔自分のメインフェイズ〕以外のタイミングでも、カードの効果を使用できます。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/S01-013"
+  },
+  {
+    "id": 84,
+    "cardNumber": "01-001",
+    "cardName": "アルバス・ダンブルドア",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 13,
+      "value": "UR"
+    },
+    "cost": 10,
+    "mp": null,
+    "ap": 10,
+    "dp": 10,
+    "text": "〔常時〕\n自分がMagicカードをプレイした場合、活動状態になる。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-001"
+  },
+  {
+    "id": 85,
+    "cardNumber": "01-002",
+    "cardName": "ルビウス・ハグリッド",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 13,
+      "value": "UR"
+    },
+    "cost": 9,
+    "mp": null,
+    "ap": 9,
+    "dp": 9,
+    "text": "〔自動〕〔エントリー〕\r\n味方「ハリー・ポッター」のカード全てを、活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 41,
+        "question": "Pt003「ハリー・ポッター」の「味方の【グリフィンドール】カード1枚までを、活動状態にする。」によって、Partnerカードを活動状態にできますか。",
+        "answer": "できません。対象となる場所（MPフィールド、デッキなど）が指定されてない効果は、決闘場のカードのみを指定できます。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-002"
+  },
+  {
+    "id": 86,
+    "cardNumber": "01-003",
+    "cardName": "ハリー・ポッター",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 14,
+      "value": "SR"
+    },
+    "cost": 5,
+    "mp": null,
+    "ap": 6,
+    "dp": 6,
+    "text": "〔Pリンク【グリフィンドール】〕〔自動〕〔エントリー〕\nサポートフィールドにいる、コスト4以下の味方キャラ1枚までを、メインフィールドに移す。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 56,
+        "question": "メインフィールドに味方キャラが2枚いるとき、01-003「ハリー・ポッター」をプレイし、01-003を捨て札にしてサポートフィールドのコスト4以下の味方キャラをメインフィールドに移すことは可能でしょうか。",
+        "answer": "可能です。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 57,
+        "question": "01-003「ハリー・ポッター」の「サポートフィールドにいる、コスト4以下の味方キャラ1枚までを、メインフィールドに移す。」によって、メインフィールドに移ったキャラは、アタックできますか。",
+        "answer": "そのターン中にプレイされたキャラでなければ、すぐにアタックすることができます。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-003"
+  },
+  {
+    "id": 87,
+    "cardNumber": "01-003a",
+    "cardName": "ハリー・ポッター",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 15,
+      "value": "SR★"
+    },
+    "cost": 5,
+    "mp": null,
+    "ap": 6,
+    "dp": 6,
+    "text": "〔Pリンク【グリフィンドール】〕〔自動〕〔エントリー〕\r\nサポートフィールドにいる、コスト4以下の味方キャラ1枚までを、メインフィールドに移す。",
+    "parallel": true,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-003a"
+  },
+  {
+    "id": 88,
+    "cardNumber": "01-003b",
+    "cardName": "ハリー・ポッター",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 16,
+      "value": "SR★★"
+    },
+    "cost": 5,
+    "mp": null,
+    "ap": 6,
+    "dp": 6,
+    "text": "〔Pリンク【グリフィンドール】〕〔自動〕〔エントリー〕\r\nサポートフィールドにいる、コスト4以下の味方キャラ1枚までを、メインフィールドに移す。",
+    "parallel": true,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-003b"
+  },
+  {
+    "id": 89,
+    "cardNumber": "01-004",
+    "cardName": "ロン・ウィーズリー＆ハーマイオニー・グレンジャー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 14,
+      "value": "SR"
+    },
+    "cost": 4,
+    "mp": null,
+    "ap": 5,
+    "dp": 5,
+    "text": "〔Pリンク【グリフィンドール】〕〔常時〕\n〔速攻〕を得る。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 13,
+        "value": "魔女"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-004"
+  },
+  {
+    "id": 90,
+    "cardNumber": "01-004a",
+    "cardName": "ロン・ウィーズリー＆ハーマイオニー・グレンジャー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 15,
+      "value": "SR★"
+    },
+    "cost": 4,
+    "mp": null,
+    "ap": 5,
+    "dp": 5,
+    "text": "〔Pリンク【グリフィンドール】〕〔常時〕\r\n〔速攻〕を得る。",
+    "parallel": true,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 13,
+        "value": "魔女"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-004a"
+  },
+  {
+    "id": 91,
+    "cardNumber": "01-005",
+    "cardName": "ネビル・ロングボトム",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 14,
+      "value": "SR"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 3,
+    "dp": 3,
+    "text": "≪サポーター≫\n〔Pリンク【グリフィンドール】〕〔宣言〕〔自分のメインフェイズ〕⤵\n味方キャラ1枚までを、ターン終了時まで、+2/+2する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-005"
+  },
+  {
+    "id": 92,
+    "cardNumber": "01-006",
+    "cardName": "ドラコ・マルフォイ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 14,
+      "value": "SR"
+    },
+    "cost": 5,
+    "mp": null,
+    "ap": 6,
+    "dp": 6,
+    "text": "〔Pリンク【スリザリン】〕〔自動〕〔エントリー〕\n相手メインフィールドいる、コストが4以下のキャラ1枚までを、ダウンさせる。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-006"
+  },
+  {
+    "id": 93,
+    "cardNumber": "01-007",
+    "cardName": "ドラコ・マルフォイ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 14,
+      "value": "SR"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 3,
+    "dp": 3,
+    "text": "≪サポーター≫\n〔Pリンク【スリザリン】〕〔宣言〕〔自分のメインフェイズ〕⤵\n相手キャラ2枚までを、ターン終了時まで、-1/-1する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-007"
+  },
+  {
+    "id": 94,
+    "cardNumber": "01-008",
+    "cardName": "アルバス・ダンブルドア",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 14,
+      "value": "SR"
+    },
+    "cost": 7,
+    "mp": null,
+    "ap": 7,
+    "dp": 7,
+    "text": "〔Pリンク「アルバス・ダンブルドア」〕〔常時〕〔ターン1回〕\n自分がMagicカードをプレイした場合、カードを1枚引く。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 58,
+        "question": "01-008「アルバス・ダンブルドア」の「〔常時〕〔ターン1回〕\n自分がMagicカードをプレイした場合、カードを1枚引く。」を、自分のターンに1回発動した場合、次の相手のターンでも1回発動することはできますか。",
+        "answer": "可能です。〔常時〕〔ターン1回〕は、お互いのプレイヤーのターンで、ターン中に1回だけ発動します。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-008"
+  },
+  {
+    "id": 95,
+    "cardNumber": "01-008a",
+    "cardName": "アルバス・ダンブルドア",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 15,
+      "value": "SR★"
+    },
+    "cost": 7,
+    "mp": null,
+    "ap": 7,
+    "dp": 7,
+    "text": "〔Pリンク「アルバス・ダンブルドア」〕〔常時〕〔ターン1回〕\r\n自分がMagicカードをプレイした場合、カードを1枚引く。",
+    "parallel": true,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-008a"
+  },
+  {
+    "id": 96,
+    "cardNumber": "01-009",
+    "cardName": "ミネルバ・マクゴナガル",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 14,
+      "value": "SR"
+    },
+    "cost": 5,
+    "mp": 1,
+    "ap": 6,
+    "dp": 6,
+    "text": "〔自動〕〔エントリー〕\n相手メインフィールドにいる、元々のAPが4以下のキャラ1枚までを、ダウンさせる。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 13,
+        "value": "魔女"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-009"
+  },
+  {
+    "id": 97,
+    "cardNumber": "01-009a",
+    "cardName": "ミネルバ・マクゴナガル",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 15,
+      "value": "SR★"
+    },
+    "cost": 5,
+    "mp": 1,
+    "ap": 6,
+    "dp": 6,
+    "text": "〔自動〕〔エントリー〕\r\n相手メインフィールドにいる、元々のAPが4以下のキャラ1枚までを、ダウンさせる。",
+    "parallel": true,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 13,
+        "value": "魔女"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-009a"
+  },
+  {
+    "id": 98,
+    "cardNumber": "01-010",
+    "cardName": "セブルス・スネイプ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 14,
+      "value": "SR"
+    },
+    "cost": 5,
+    "mp": 1,
+    "ap": 6,
+    "dp": 6,
+    "text": "〔自動〕〔エントリー〕〔アタック〕\n相手サポートフィールドにいる、コスト2以下のキャラ1枚までを、捨て札にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-010"
+  },
+  {
+    "id": 99,
+    "cardNumber": "01-010a",
+    "cardName": "セブルス・スネイプ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 15,
+      "value": "SR★"
+    },
+    "cost": 5,
+    "mp": 1,
+    "ap": 6,
+    "dp": 6,
+    "text": "〔自動〕〔エントリー〕〔アタック〕\r\n相手サポートフィールドにいる、コスト2以下のキャラ1枚までを、捨て札にする。",
+    "parallel": true,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-010a"
+  },
+  {
+    "id": 100,
+    "cardNumber": "01-011",
+    "cardName": "セブルス・スネイプ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 14,
+      "value": "SR"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 4,
+    "dp": 4,
+    "text": "〔Pリンク【スリザリン】〕〔自動〕〔エントリー〕\n【スリザリン】以外の、相手キャラ1枚までを、ターン終了時まで、-3/-3する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-011"
+  },
+  {
+    "id": 101,
+    "cardNumber": "01-012",
+    "cardName": "ハリー・ポッター",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 14,
+      "value": "SR"
+    },
+    "cost": 5,
+    "mp": 1,
+    "ap": 6,
+    "dp": 6,
+    "text": "〔自動〕〔アタック〕〔ターン1回〕\nメインフィールドにいる、味方の【マグル】カード1枚を休息状態にし、このカードを活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 15,
+        "value": "ダーズリー家"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 59,
+        "question": "01-012「ハリー・ポッター」の「メインフィールドにいる、味方の【マグル】カード1枚を休息状態にし、このカードを活動状態にする。」は、このターンにメインフィールドに出た味方【マグル】カードも休息にできますか。",
+        "answer": "可能です。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-012"
+  },
+  {
+    "id": 102,
+    "cardNumber": "01-013",
+    "cardName": "ハリー・ポッター",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 5,
+    "mp": 1,
+    "ap": 5,
+    "dp": 6,
+    "text": "〔自動〕〔自分のターン終了時〕\nコスト4以下の味方の【グリフィンドール】カード2枚までを活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-013"
+  },
+  {
+    "id": 103,
+    "cardNumber": "01-014",
+    "cardName": "ロン・ウィーズリー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 4,
+    "mp": 1,
+    "ap": 5,
+    "dp": 5,
+    "text": "〔Pリンク【グリフィンドール】〕〔自動〕〔エントリー〕\n味方キャラ2枚までを、ターン終了時まで、+1/+1する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-014"
+  },
+  {
+    "id": 104,
+    "cardNumber": "01-015",
+    "cardName": "ロン・ウィーズリー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 4,
+    "dp": 4,
+    "text": "〔連携〕：【グリフィンドール】",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-015"
+  },
+  {
+    "id": 105,
+    "cardNumber": "01-016",
+    "cardName": "ハーマイオニー・グレンジャー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": 2,
+    "dp": 2,
+    "text": "〔Pリンク【グリフィンドール】〕〔自動〕〔エントリー〕\nカードを1枚引く。\n\n≪ブレイク≫カードを2枚引き、手札1枚を捨て札にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 13,
+        "value": "魔女"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-016"
+  },
+  {
+    "id": 106,
+    "cardNumber": "01-017",
+    "cardName": "ハーマイオニー・グレンジャー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 4,
+    "mp": 1,
+    "ap": 4,
+    "dp": 4,
+    "text": "〔Pリンク【グリフィンドール】〕〔自動〕〔エントリー〕\n相手メインフィールドにいる、元々のAPが2以下のキャラ1枚までを、ダウンさせる。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 13,
+        "value": "魔女"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-017"
+  },
+  {
+    "id": 107,
+    "cardNumber": "01-018",
+    "cardName": "ネビル・ロングボトム",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 3,
+    "dp": 4,
+    "text": "〔Pリンク【グリフィンドール】〕〔自動〕〔ダウン〕\n味方キャラ1枚までを、活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-018"
+  },
+  {
+    "id": 108,
+    "cardNumber": "01-019",
+    "cardName": "ドラコ・マルフォイ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 4,
+    "mp": 1,
+    "ap": 5,
+    "dp": 4,
+    "text": "〔自動〕〔エントリー〕\nサポートフィールドにいる、相手キャラ1枚までを、捨て札にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-019"
+  },
+  {
+    "id": 109,
+    "cardNumber": "01-020",
+    "cardName": "ドラコ・マルフォイ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 4,
+    "dp": 4,
+    "text": "〔Pリンク【スリザリン】〕〔常時〕〔自分のターン〕\nこのカードと決闘中の相手キャラを、-2/-2する。\n\n≪ブレイク≫相手キャラ1枚までを、休息状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 60,
+        "question": "01-020「ドラコ・マルフォイ」の「このカードと決闘中の相手キャラを、-2/-2する。」は、決闘中の相手キャラと、このカード自身の2枚を-2/-2する効果ですか。",
+        "answer": "いいえ。このカードの決闘相手である相手キャラのみを-2/-2する効果です。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-020"
+  },
+  {
+    "id": 110,
+    "cardNumber": "01-021",
+    "cardName": "ビンセント・クラッブ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": 2,
+    "dp": 2,
+    "text": "〔Pリンク【スリザリン】〕〔自動〕〔エントリー〕\nカードを1枚引く。\n\n≪ブレイク≫カードを2枚引き、手札1枚を捨て札にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-021"
+  },
+  {
+    "id": 111,
+    "cardNumber": "01-022",
+    "cardName": "グレゴリー・ゴイル",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": 3,
+    "dp": 3,
+    "text": "〔Pリンク【スリザリン】〕〔自動〕〔ダウン〕\n相手キャラ1枚までを、ターン終了時まで、-2/-2する。\n\n≪ブレイク≫相手キャラ1枚までを、ターン終了時まで、-2/-2する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 61,
+        "question": "自分のターン中、相手の01-022「グレゴリー・ゴイル」がダウンし、「相手キャラ1枚までを、ターン終了時まで、-2/-2する。」によって、S01-002「ハリー・ポッター」が-2/-2され、DPが0になったことで休息状態になりました。このターンの終了時、「〔自動〕〔自分のターン終了時〕味方キャラ1枚までを活動状態にする。」で、-2/-2されたS01-002「ハリー・ポッター」を活動状態にする場合、どうなりますか。",
+        "answer": "まず、手番のプレイヤー（自分）から、ターン終了時の処理を行います。S01-002「ハリー・ポッター」が一度活動状態になりますが、DPが0なので再度休息状態になります。次に手番ではないプレイヤー（相手）の01-022「グレゴリー・ゴイル」の「相手キャラ1枚までを、ターン終了時まで、-2/-2する。」の効果の継続が終了します。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-022"
+  },
+  {
+    "id": 112,
+    "cardNumber": "01-023",
+    "cardName": "アルバス・ダンブルドア",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 5,
+    "mp": 1,
+    "ap": 6,
+    "dp": 6,
+    "text": "〔Pリンク「アルバス・ダンブルドア」〕〔自動〕〔自分のターン終了時〕\nこのカードを活動状態にする。\n\n≪ブレイク≫味方キャラ1枚までを、活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-023"
+  },
+  {
+    "id": 113,
+    "cardNumber": "01-024",
+    "cardName": "ミネルバ・マクゴナガル",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 5,
+    "mp": 1,
+    "ap": 4,
+    "dp": 7,
+    "text": "〔自動〕〔ブロック〕\n〔反撃〕を得る。\n\n≪ブレイク≫味方キャラ1枚は、ターン終了時まで、〔反撃〕を得る。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 13,
+        "value": "魔女"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 62,
+        "question": "休息状態の01-024「ミネルバ・マクゴナガル」が攻撃された場合、反撃は発動しますか。",
+        "answer": "発動しません。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-024"
+  },
+  {
+    "id": 114,
+    "cardNumber": "01-025",
+    "cardName": "ミネルバ・マクゴナガル",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": 2,
+    "dp": 2,
+    "text": "〔Pリンク「アルバス・ダンブルドア」〕〔自動〕〔エントリー〕\nカードを1枚引く。\n\n≪ブレイク≫カードを2枚引き、手札1枚を捨て札にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 13,
+        "value": "魔女"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-025"
+  },
+  {
+    "id": 115,
+    "cardNumber": "01-026",
+    "cardName": "セブルス・スネイプ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 4,
+    "mp": 1,
+    "ap": 4,
+    "dp": 4,
+    "text": "〔自動〕〔エントリー〕\nコスト2以下の相手キャラ1枚までを、ダウンさせる。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-026"
+  },
+  {
+    "id": 116,
+    "cardNumber": "01-027",
+    "cardName": "クィリナス・クィレル",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 4,
+    "dp": 4,
+    "text": "〔自動〕〔エントリー〕\n相手のMPフィールドのカード1枚を休息状態にする。\n\n≪ブレイク≫相手のMPフィールドのカード1枚を休息状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 63,
+        "question": "01-027「クィリナス・クィレル」の「相手のMPフィールドのカード1枚を休息状態にする。」でMPカードを対象にすることはできますか。",
+        "answer": "できません。MPカードは、MPフィールドにあるカードとして扱いません。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-027"
+  },
+  {
+    "id": 117,
+    "cardNumber": "01-028",
+    "cardName": "ミセス・ノリス",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": 0,
+    "dp": 2,
+    "text": "〔自動〕〔エントリー〕\nコスト2以下の相手キャラ1枚までを、休息状態にする。\n\n≪ブレイク≫相手キャラ1枚までを、休息状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 17,
+        "value": "魔法生物"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-028"
+  },
+  {
+    "id": 118,
+    "cardNumber": "01-028a",
+    "cardName": "ミセス・ノリス",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 18,
+      "value": "R★"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": 0,
+    "dp": 2,
+    "text": "〔自動〕〔エントリー〕\r\nコスト2以下の相手キャラ1枚までを、休息状態にする。\r\n\r\n≪ブレイク≫相手キャラ1枚までを、休息状態にする。",
+    "parallel": true,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 17,
+        "value": "魔法生物"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-028a"
+  },
+  {
+    "id": 119,
+    "cardNumber": "01-029",
+    "cardName": "バーノン・ダーズリー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 3,
+    "mp": null,
+    "ap": 3,
+    "dp": 3,
+    "text": "〔Pリンク【ダーズリー家】〕〔自動〕〔エントリー〕\n相手【魔法使い】または【魔女】のカード1枚までを、休息状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 15,
+        "value": "ダーズリー家"
+      },
+      {
+        "id": 18,
+        "value": "マグル"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-029"
+  },
+  {
+    "id": 120,
+    "cardNumber": "01-030",
+    "cardName": "ペチュニア・ダーズリー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": 2,
+    "dp": 2,
+    "text": "〔Pリンク【ダーズリー家】〕〔常時〕\n全てのプレイヤーの手札にあるMagicカードは、コスト+1を得る。\n\n≪ブレイク≫相手【魔法使い】または【魔女】のカード1枚までを休息状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 15,
+        "value": "ダーズリー家"
+      },
+      {
+        "id": 18,
+        "value": "マグル"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-030"
+  },
+  {
+    "id": 121,
+    "cardNumber": "01-031",
+    "cardName": "ダドリー・ダーズリー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": 1,
+    "dp": 1,
+    "text": "〔Pリンク【ダーズリー家】〕〔自動〕〔エントリー〕\n相手【魔法使い】または【魔女】のカード1枚までを、ターン終了時まで-2/-2する。\n\n≪ブレイク≫相手【魔法使い】または【魔女】のカード1枚までを、ターン終了時まで-2/-2する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 15,
+        "value": "ダーズリー家"
+      },
+      {
+        "id": 18,
+        "value": "マグル"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-031"
+  },
+  {
+    "id": 122,
+    "cardNumber": "01-032",
+    "cardName": "ウィンガーディアム・レヴィオーサ",
+    "cardType": {
+      "id": 10,
+      "value": "Magic"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔使用〕〔決闘中〕\n決闘中の相手キャラ1枚までを、この決闘中、-3/-3する。\n\n≪ブレイク≫相手キャラ1枚までを、休息状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 36,
+        "question": "〔決闘中〕は、どのタイミングで使用できますか。",
+        "answer": "ゲームマニュアルの20p「相手のキャラかパートナーにアタックする」の項目の、「4：〔決闘中〕の使用タイミング①」「7：〔決闘中〕の使用タイミング②」で使用できます。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-032"
+  },
+  {
+    "id": 123,
+    "cardNumber": "01-032a",
+    "cardName": "ウィンガーディアム・レヴィオーサ",
+    "cardType": {
+      "id": 10,
+      "value": "Magic"
+    },
+    "rarity": {
+      "id": 18,
+      "value": "R★"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔使用〕〔決闘中〕\r\n決闘中の相手キャラ1枚までを、この決闘中、-3/-3する。\r\n\r\n≪ブレイク≫相手キャラ1枚までを、休息状態にする。",
+    "parallel": true,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-032a"
+  },
+  {
+    "id": 124,
+    "cardNumber": "01-033",
+    "cardName": "入学許可証",
+    "cardType": {
+      "id": 11,
+      "value": "Item"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔使用〕〔自分のメインフェイズ〕\nデッキの上から2枚を見て、その中から【魔法使い】または【魔女】のカード1枚までを公開し、手札に移す。その後、残りのカードを任意の順番でデッキの下に移す。\n\n≪ブレイク≫カードを1枚引く。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 19,
+        "value": "手紙"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 78,
+        "question": "01-033「入学許可証」の「デッキの上から2枚を見て、その中から【魔法使い】または【魔女】のカード1枚までを公開し、手札に移す。」によって、手札にカードを移さなかった場合、「その後、残りのカードを任意の順番でデッキの下に移す。」は発動しますか。",
+        "answer": "発動します。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-033"
+  },
+  {
+    "id": 125,
+    "cardNumber": "01-033a",
+    "cardName": "入学許可証",
+    "cardType": {
+      "id": 11,
+      "value": "Item"
+    },
+    "rarity": {
+      "id": 18,
+      "value": "R★"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔使用〕〔自分のメインフェイズ〕\r\nデッキの上から2枚を見て、その中から【魔法使い】または【魔女】のカード1枚までを公開し、手札に移す。その後、残りのカードを任意の順番でデッキの下に移す。\r\n\r\n≪ブレイク≫カードを1枚引く。",
+    "parallel": true,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 19,
+        "value": "手紙"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-033a"
+  },
+  {
+    "id": 126,
+    "cardNumber": "01-034",
+    "cardName": "ホグワーツ特急",
+    "cardType": {
+      "id": 11,
+      "value": "Item"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 4,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔使用〕〔自分のメインフェイズ〕\nサポートフィールドにいる、味方の【ホグワーツ】カード1枚までを、メインフィールドに移す。\n\n≪ブレイク≫このカードを、無償で使用できる。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 57,
+        "question": "01-003「ハリー・ポッター」の「サポートフィールドにいる、コスト4以下の味方キャラ1枚までを、メインフィールドに移す。」によって、メインフィールドに移ったキャラは、アタックできますか。",
+        "answer": "そのターン中にプレイされたキャラでなければ、すぐにアタックすることができます。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-034"
+  },
+  {
+    "id": 127,
+    "cardNumber": "01-034a",
+    "cardName": "ホグワーツ特急",
+    "cardType": {
+      "id": 11,
+      "value": "Item"
+    },
+    "rarity": {
+      "id": 18,
+      "value": "R★"
+    },
+    "cost": 4,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔使用〕〔自分のメインフェイズ〕\r\nサポートフィールドにいる、味方の【ホグワーツ】カード1枚までを、メインフィールドに移す。\r\n\r\n≪ブレイク≫このカードを、無償で使用できる。",
+    "parallel": true,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-034a"
+  },
+  {
+    "id": 128,
+    "cardNumber": "01-035",
+    "cardName": "談話室",
+    "cardType": {
+      "id": 9,
+      "value": "Location"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔自動〕〔自分のターン終了時〕\n自分のパートナーと同じ寮のキャラ1枚までを活動状態にする。\n\n※寮とは【グリフィンドール】【スリザリン】【レイブンクロー】【ハッフルパフ】を示す。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-035"
+  },
+  {
+    "id": 129,
+    "cardNumber": "01-036",
+    "cardName": "階段下の物置部屋",
+    "cardType": {
+      "id": 9,
+      "value": "Location"
+    },
+    "rarity": {
+      "id": 17,
+      "value": "R"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔常時〕\nメインフィールドに味方の【マグル】カードがいる場合、味方「ハリー・ポッター」全てを、±0/+2をする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-036"
+  },
+  {
+    "id": 130,
+    "cardNumber": "01-037",
+    "cardName": "ハリー・ポッター",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 4,
+    "dp": 4,
+    "text": "〔Pリンク【グリフィンドール】〕〔自動〕〔アタック〕\n味方キャラ1枚までを、ターン終了時まで、+2/+2する。\n\n≪ブレイク≫味方キャラ1枚までを、活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-037"
+  },
+  {
+    "id": 131,
+    "cardNumber": "01-038",
+    "cardName": "ロン・ウィーズリー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 4,
+    "dp": 4,
+    "text": "〔Pリンク【グリフィンドール】〕〔自動〕〔アタック〕\n味方キャラ1枚までは、ターン終了時まで、〔突進〕を得る。\n\n≪ブレイク≫味方キャラ1枚までを、活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-038"
+  },
+  {
+    "id": 132,
+    "cardNumber": "01-039",
+    "cardName": "ハーマイオニー・グレンジャー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 4,
+    "dp": 4,
+    "text": "〔Pリンク【グリフィンドール】〕〔自動〕〔アタック〕\n自分が次にプレイするMagicカード1枚を、コスト-2する。\n\n≪ブレイク≫味方キャラ1枚までを、活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 13,
+        "value": "魔女"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 47,
+        "question": "Pt006「アルバス・ダンブルドア」の「自分が次にプレイする【教師】のカード1枚は、コスト-1を得る。」を使用した後、そのターンに【教師】のカードをプレイしなかった場合どうなりますか。",
+        "answer": "効果はそのターン中に消えます。以降のターンに効果は引き継がれません。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-039"
+  },
+  {
+    "id": 133,
+    "cardNumber": "01-040",
+    "cardName": "パーシー・ウィーズリー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": 3,
+    "dp": 3,
+    "text": "≪ブレイク≫味方キャラ1枚までを、活動状態にし、このカードを手札に移す。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-040"
+  },
+  {
+    "id": 134,
+    "cardNumber": "01-041",
+    "cardName": "フレッド・ウィーズリー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 4,
+    "mp": 1,
+    "ap": 5,
+    "dp": 5,
+    "text": "〔常時〕\nこのカードが手札にある状態で、自分のメインフィールドに「ジョージ・ウィーズリー」のカードがいる場合、このカードをコスト-2する。\n\n≪ブレイク≫自分のメインフィールドに「ジョージ・ウィーズリー」のカードがいる場合、このカードをメインフィールドに出す。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 64,
+        "question": "「ジョージ・ウィーズリー」のカードがメインフィールドにいる場合、メインフィールドにいる01-041「フレッド・ウィーズリー」のカードのコストはいくつですか。",
+        "answer": "4です。手札以外で「〔常時〕このカードが手札にある状態で、自分のメインフィールドに「フレッド・ウィーズリー」のカードがいる場合、このカードをコスト-2する。」は発動しません。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-041"
+  },
+  {
+    "id": 135,
+    "cardNumber": "01-042",
+    "cardName": "ジョージ・ウィーズリー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 4,
+    "mp": 1,
+    "ap": 5,
+    "dp": 5,
+    "text": "〔常時〕\nこのカードが手札にある状態で、自分のメインフィールドに「フレッド・ウィーズリー」のカードがいる場合、このカードをコスト-2する。\n\n≪ブレイク≫自分のメインフィールドに「フレッド・ウィーズリー」のカードがいる場合、このカードをメインフィールドに出す。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 64,
+        "question": "「ジョージ・ウィーズリー」のカードがメインフィールドにいる場合、メインフィールドにいる01-041「フレッド・ウィーズリー」のカードのコストはいくつですか。",
+        "answer": "4です。手札以外で「〔常時〕このカードが手札にある状態で、自分のメインフィールドに「フレッド・ウィーズリー」のカードがいる場合、このカードをコスト-2する。」は発動しません。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-042"
+  },
+  {
+    "id": 136,
+    "cardNumber": "01-043",
+    "cardName": "ドラコ・マルフォイ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 4,
+    "dp": 4,
+    "text": "〔Pリンク【スリザリン】〕〔自動〕〔アタック〕\n相手キャラ1枚までを、ターン終了時まで、コスト-2する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-043"
+  },
+  {
+    "id": 137,
+    "cardNumber": "01-044",
+    "cardName": "ドラコ・マルフォイ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": 2,
+    "dp": 2,
+    "text": "〔挑発〕\n\n≪ブレイク≫相手キャラ1枚までを、休息状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-044"
+  },
+  {
+    "id": 138,
+    "cardNumber": "01-045",
+    "cardName": "スーザン・ボーンズ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 4,
+    "dp": 4,
+    "text": "≪ブレイク≫サポートフィールドにいる味方キャラ1枚までを、メインフィールドに移し、このカードを手札に移す。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 20,
+        "value": "ハッフルパフ"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 13,
+        "value": "魔女"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 51,
+        "question": "「≪ブレイク≫このカードを、サポートフィールドに出す。」のブレイクを使用した場合、そのカードはサポートフィールドから捨て札に行きますか。",
+        "answer": "いいえ、ブレイク効果の処理によって、ライフ以外の場所に移動したカードは、捨て札には行きません。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-045"
+  },
+  {
+    "id": 139,
+    "cardNumber": "01-046",
+    "cardName": "アルバス・ダンブルドア",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 5,
+    "mp": 1,
+    "ap": 6,
+    "dp": 6,
+    "text": "〔常時〕\nMagicカードがプレイされた場合、このカードを、ターン終了時まで、+2/+2する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-046"
+  },
+  {
+    "id": 140,
+    "cardNumber": "01-047",
+    "cardName": "アルバス・ダンブルドア",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 4,
+    "mp": 1,
+    "ap": 4,
+    "dp": 4,
+    "text": "〔常時〕〔自分のターン〕\n味方の【教師】カード全てを、+1/+1する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 65,
+        "question": "01-047「アルバス・ダンブルドア」の「味方の【教師】カード全てを、+1/+1する。」は、01-047「アルバス・ダンブルドア」自身も対象になりますか。",
+        "answer": "対象になります。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-047"
+  },
+  {
+    "id": 141,
+    "cardNumber": "01-048",
+    "cardName": "ミネルバ・マクゴナガル",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 4,
+    "dp": 4,
+    "text": "〔自動〕〔エントリー〕\n手札1枚までをMPフィールドに置く。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 13,
+        "value": "魔女"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 66,
+        "question": "01-048「ミネルバ・マクゴナガル」の「手札1枚までをMPフィールドに置く。」によって、MPフィールドに置くカードは活動状態で置かれますか。",
+        "answer": "活動状態で置かれます。休息状態と指定がされていないものは、すべて活動状態で置かれます。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-048"
+  },
+  {
+    "id": 142,
+    "cardNumber": "01-049",
+    "cardName": "セブルス・スネイプ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 4,
+    "mp": 1,
+    "ap": 5,
+    "dp": 5,
+    "text": "〔Pリンク【スリザリン】〕〔自動〕〔エントリー〕\n相手は、休息状態の自分のキャラ1枚を、手札に移す。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 67,
+        "question": "01-049「セブルス・スネイプ」の「相手は、休息状態の自分のキャラ1枚を、手札に移す。」は、どのプレイヤーがどのキャラを手札に戻しますか。",
+        "answer": "相手プレイヤーが、相手プレイヤーの決闘場にある休息状態のキャラを1枚選び、手札に戻します。その際、相手はサポートフィールドのキャラを選ぶことも可能です。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 68,
+        "question": "01-049「セブルス・スネイプ」をプレイした場合、相手の決闘場に休息状態のキャラがいない場合どうなりますか。",
+        "answer": "何も起こりません。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 69,
+        "question": "01-049「セブルス・スネイプ」をプレイして、相手がS01-012「杖」を装備したキャラを手札に戻す場合、S01-012「杖」はどうなりますか。",
+        "answer": "捨て札に移ります。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-049"
+  },
+  {
+    "id": 143,
+    "cardNumber": "01-050",
+    "cardName": "ロランダ・フーチ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 4,
+    "dp": 4,
+    "text": "≪サポーター≫\n〔Pリンク「アルバス・ダンブルドア」〕〔宣言〕〔決闘中〕⤵\n味方の【教師】カード1枚までを、ターン終了時まで+1/+1する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 13,
+        "value": "魔女"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 36,
+        "question": "〔決闘中〕は、どのタイミングで使用できますか。",
+        "answer": "ゲームマニュアルの20p「相手のキャラかパートナーにアタックする」の項目の、「4：〔決闘中〕の使用タイミング①」「7：〔決闘中〕の使用タイミング②」で使用できます。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 70,
+        "question": "01-050\t「ロランダ・フーチ」の「〔Pリンク「アルバス・ダンブルドア」〕〔宣言〕〔決闘中〕⤵　味方の【教師】カード1枚までを、ターン終了時まで+1/+1する。」を発動した後、そのターン中に01-050「ロランダ・フーチ」が活動状態になった場合、再度〔宣言〕〔決闘中〕⤵を発動することはできますか。",
+        "answer": "可能です。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-050"
+  },
+  {
+    "id": 144,
+    "cardNumber": "01-051",
+    "cardName": "フィリウス・フリットウィック",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 3,
+    "dp": 3,
+    "text": "〔Pリンク「アルバス・ダンブルドア」〕〔自動〕〔自分のターン終了時〕\n味方キャラ1枚までを、活動状態にする。\n\n≪ブレイク≫味方の【教師】カード1枚までを、活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 21,
+        "value": "レイブンクロー"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-051"
+  },
+  {
+    "id": 145,
+    "cardNumber": "01-052",
+    "cardName": "クィリナス・クィレル",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 4,
+    "dp": 4,
+    "text": "≪ブレイク≫相手キャラ1枚までを、休息状態にし、このカードを手札に移す。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 51,
+        "question": "「≪ブレイク≫このカードを、サポートフィールドに出す。」のブレイクを使用した場合、そのカードはサポートフィールドから捨て札に行きますか。",
+        "answer": "いいえ、ブレイク効果の処理によって、ライフ以外の場所に移動したカードは、捨て札には行きません。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-052"
+  },
+  {
+    "id": 146,
+    "cardNumber": "01-053",
+    "cardName": "ルビウス・ハグリッド",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 6,
+    "dp": 6,
+    "text": "〔常時〕\nこのカードは、パートナーにアタックできない。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 71,
+        "question": "01-053「ルビウス・ハグリッド」は、相手のキャラがすべて活動状態の場合、相手のキャラにアタックできますか。",
+        "answer": "できません。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 72,
+        "question": "01-053「ルビウス・ハグリッド」は、パートナーをアタックできるカードと2枚でアタックを行う場合、パートナーにアタックすることはできますか。",
+        "answer": "できません。カード2枚でのアタックは、アタックの宣言を行う際に、同じ対象をアタックできるキャラ2枚を休息状態にすることで行えます。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-053"
+  },
+  {
+    "id": 147,
+    "cardNumber": "01-054",
+    "cardName": "アーガス・フィルチ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": 4,
+    "dp": 4,
+    "text": "〔常時〕\nこのカードの決闘中、自分はMagicカードをプレイできない。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 73,
+        "question": "01-054「アーガス・フィルチ」が相手キャラからアタックされ、そのアタックを他の味方キャラでブロックしました。この決闘中、自分はMagicカードをプレイすることはできますか。",
+        "answer": "可能です。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-054"
+  },
+  {
+    "id": 148,
+    "cardNumber": "01-055",
+    "cardName": "ほとんど首無しニック",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 0,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "≪サポーター≫\n〔宣言〕〔相手のターン〕〔決闘中〕〈このカードを捨て札にする〉\n味方の【グリフィンドール】カード1枚までを、活動状態にする。\n\n≪ブレイク≫味方キャラ1枚までを、活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 22,
+        "value": "ゴースト"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 36,
+        "question": "〔決闘中〕は、どのタイミングで使用できますか。",
+        "answer": "ゲームマニュアルの20p「相手のキャラかパートナーにアタックする」の項目の、「4：〔決闘中〕の使用タイミング①」「7：〔決闘中〕の使用タイミング②」で使用できます。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-055"
+  },
+  {
+    "id": 149,
+    "cardNumber": "01-056",
+    "cardName": "血みどろ男爵",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 0,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "≪サポーター≫\n〔宣言〕〔相手のターン〕〔決闘中〕〈このカードを捨て札にする〉\n味方の【スリザリン】カード1枚までを、活動状態にする。\n\n≪ブレイク≫味方キャラ1枚までを、活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 22,
+        "value": "ゴースト"
+      },
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 36,
+        "question": "〔決闘中〕は、どのタイミングで使用できますか。",
+        "answer": "ゲームマニュアルの20p「相手のキャラかパートナーにアタックする」の項目の、「4：〔決闘中〕の使用タイミング①」「7：〔決闘中〕の使用タイミング②」で使用できます。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-056"
+  },
+  {
+    "id": 150,
+    "cardNumber": "01-057",
+    "cardName": "灰色のレディ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 0,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "≪サポーター≫\n〔宣言〕〔相手のターン〕〔決闘中〕〈このカードを捨て札にする〉\n味方の【レイブンクロー】カード1枚までを、活動状態にする。\n\n≪ブレイク≫味方キャラ1枚までを、活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 22,
+        "value": "ゴースト"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 21,
+        "value": "レイブンクロー"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 36,
+        "question": "〔決闘中〕は、どのタイミングで使用できますか。",
+        "answer": "ゲームマニュアルの20p「相手のキャラかパートナーにアタックする」の項目の、「4：〔決闘中〕の使用タイミング①」「7：〔決闘中〕の使用タイミング②」で使用できます。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-057"
+  },
+  {
+    "id": 151,
+    "cardNumber": "01-058",
+    "cardName": "太った修道士",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 0,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "≪サポーター≫\n〔宣言〕〔相手のターン〕〔決闘中〕〈このカードを捨て札にする〉\n味方の【ハッフルパフ】カード1枚までを、活動状態にする。\n\n≪ブレイク≫味方キャラ1枚までを、活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 22,
+        "value": "ゴースト"
+      },
+      {
+        "id": 20,
+        "value": "ハッフルパフ"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 36,
+        "question": "〔決闘中〕は、どのタイミングで使用できますか。",
+        "answer": "ゲームマニュアルの20p「相手のキャラかパートナーにアタックする」の項目の、「4：〔決闘中〕の使用タイミング①」「7：〔決闘中〕の使用タイミング②」で使用できます。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-058"
+  },
+  {
+    "id": 152,
+    "cardNumber": "01-059",
+    "cardName": "太った婦人",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 0,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "≪サポーター≫\n〔宣言〕〔相手のターン〕〔決闘中〕〈このカードを捨て札にする〉\n自分のMPフィールドのカード1枚までを、活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 23,
+        "value": "肖像画"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 36,
+        "question": "〔決闘中〕は、どのタイミングで使用できますか。",
+        "answer": "ゲームマニュアルの20p「相手のキャラかパートナーにアタックする」の項目の、「4：〔決闘中〕の使用タイミング①」「7：〔決闘中〕の使用タイミング②」で使用できます。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-059"
+  },
+  {
+    "id": 153,
+    "cardNumber": "01-060",
+    "cardName": "ハリー・ポッター",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 5,
+    "mp": 1,
+    "ap": 6,
+    "dp": 6,
+    "text": "〔Pリンク【ダーズリー家】〕〔常時〕\n手札にある場合、サポートフィールドにいる味方の【マグル】カード1枚につき、コスト-1を得る。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 15,
+        "value": "ダーズリー家"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-060"
+  },
+  {
+    "id": 154,
+    "cardNumber": "01-061",
+    "cardName": "ハリー・ポッター",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 4,
+    "mp": 1,
+    "ap": 6,
+    "dp": 6,
+    "text": "〔常時〕\nこのカードは休息状態でフィールドに出る。\n\n〔自動〕〔エントリー〕\nメインフィールドにいる味方の【マグル】カード1枚を手札に移し、このカードを活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 15,
+        "value": "ダーズリー家"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 74,
+        "question": "01-061「ハリー・ポッター」の「〔自動〕〔エントリー〕　メインフィールドにいる味方の【マグル】カード1枚を手札に移し、このカードを活動状態にする。」は、メインフィールドに味方の【マグル】カードがある場合、必ず手札に戻す必要はありますか。",
+        "answer": "メインフィールドに味方の【マグル】カードがある場合、必ず手札に戻す必要があります。また、メインフィールドに味方の【マグル】カードがない場合、「このカードを活動状態にする。」は発動しません。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 75,
+        "question": "メインフィールドに味方の【マグル】カードが無い場合、01-061「ハリー・ポッター」の「このカードを活動状態にする。」は、発動しますか。",
+        "answer": "発動しません。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 76,
+        "question": "01-061「ハリー・ポッター」をサポートフィールドにプレイした場合、〔常時〕や〔自動〕〔エントリー〕は発動しますか。",
+        "answer": "発動しません。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-061"
+  },
+  {
+    "id": 155,
+    "cardNumber": "01-062",
+    "cardName": "ハリー・ポッター",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": 2,
+    "dp": 2,
+    "text": "〔Pリンク【ダーズリー家】〕〔常時〕〔ターン1回〕\n味方の【マグル】カードがダウンした場合、カードを1枚引く。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 15,
+        "value": "ダーズリー家"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-062"
+  },
+  {
+    "id": 156,
+    "cardNumber": "01-063",
+    "cardName": "バーノン・ダーズリー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 3,
+    "dp": 3,
+    "text": "〔自動〕〔アタック〕\n手札からコスト2以下の【マグル】カード1枚までを、メインフィールドに出す。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 15,
+        "value": "ダーズリー家"
+      },
+      {
+        "id": 18,
+        "value": "マグル"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-063"
+  },
+  {
+    "id": 157,
+    "cardNumber": "01-064",
+    "cardName": "バーノン・ダーズリー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 3,
+    "dp": 3,
+    "text": "〔自動〕〔エントリー〕\n手札から【手紙】カード1枚を捨て札にする。その後、相手は手札1枚を捨て札にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 15,
+        "value": "ダーズリー家"
+      },
+      {
+        "id": 18,
+        "value": "マグル"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 77,
+        "question": "01-064「バーノン・ダーズリー」をプレイし、手札から【手紙】カード1枚を捨て札にできない場合、「その後、相手は手札1枚を捨て札にする。」は発動しますか。",
+        "answer": "発動しません。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-064"
+  },
+  {
+    "id": 158,
+    "cardNumber": "01-065",
+    "cardName": "ペチュニア・ダーズリー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": 2,
+    "dp": 2,
+    "text": "〔自動〕〔エントリー〕\n相手のデッキの上から1枚を表向きにする。Magicカードが表になった場合、相手は、手札1枚を捨て札にする。\n\n≪ブレイク≫相手は、手札1枚を捨て札にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 15,
+        "value": "ダーズリー家"
+      },
+      {
+        "id": 18,
+        "value": "マグル"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 79,
+        "question": "01-065「ペチュニア・ダーズリー」で表向きにしたカードは、表向きのままですか、裏向きに戻しますか。",
+        "answer": "表向きのままゲームを進行しますが、デッキにある表向きのカードは、デッキをシャッフルする効果・デッキを見る効果・デッキから公開される効果の対象に含まれ、山札の上や下などに戻る際は、裏向きにしてデッキに戻します。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-065"
+  },
+  {
+    "id": 159,
+    "cardNumber": "01-066",
+    "cardName": "ペチュニア・ダーズリー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": 2,
+    "dp": 2,
+    "text": "〔自動〕〔ブロック〕\n他の味方の【マグル】カード1枚を活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 15,
+        "value": "ダーズリー家"
+      },
+      {
+        "id": 18,
+        "value": "マグル"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-066"
+  },
+  {
+    "id": 160,
+    "cardNumber": "01-067",
+    "cardName": "ダドリー・ダーズリー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": 2,
+    "dp": 2,
+    "text": "〔常時〕〔自分のターン〕\n相手の「ハリー・ポッター」のカードと決闘中、このカードを、+3/±0する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 15,
+        "value": "ダーズリー家"
+      },
+      {
+        "id": 18,
+        "value": "マグル"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-067"
+  },
+  {
+    "id": 161,
+    "cardNumber": "01-068",
+    "cardName": "ダドリー・ダーズリー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": 3,
+    "dp": 3,
+    "text": "〔自動〕〔自分のターン開始時〕〔自分のターン終了時〕\nメインフィールドに「ハリー・ポッター」のカードがいる場合、ダウンする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 15,
+        "value": "ダーズリー家"
+      },
+      {
+        "id": 18,
+        "value": "マグル"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 80,
+        "question": "01-068「ダドリー・ダーズリー」は、相手のメインフィールドに「ハリー・ポッター」のカードがいる場合でもダウンしますか。",
+        "answer": "はい、ダウンします。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-068"
+  },
+  {
+    "id": 162,
+    "cardNumber": "01-069",
+    "cardName": "グリップフック",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": 1,
+    "dp": 1,
+    "text": "〔自動〕〔エントリー〕〔ダウン〕\nカードを1枚引き、手札1枚を捨て札にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 24,
+        "value": "小鬼"
+      },
+      {
+        "id": 17,
+        "value": "魔法生物"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-069"
+  },
+  {
+    "id": 163,
+    "cardNumber": "01-070",
+    "cardName": "ギャリック・オリバンダー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": 0,
+    "dp": 3,
+    "text": "〔自動〕〔エントリー〕\n自分の捨て札にある、名称に「杖」を含むカード1枚までを、手札に移す。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [
+      {
+        "id": 2,
+        "value": "Magic"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-070"
+  },
+  {
+    "id": 164,
+    "cardNumber": "01-071",
+    "cardName": "トロール",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": 6,
+    "dp": 2,
+    "text": null,
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 25,
+        "value": "トロール"
+      },
+      {
+        "id": 17,
+        "value": "魔法生物"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-071"
+  },
+  {
+    "id": 165,
+    "cardNumber": "01-072",
+    "cardName": "ヘドウィグ",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 0,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "≪サポーター≫〔常時〕\n自分が使用する【手紙】カードは、コスト-1を得る。\n\n≪ブレイク≫自分の捨て札にある【手紙】カード1枚までを手札に移す。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 17,
+        "value": "魔法生物"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-072"
+  },
+  {
+    "id": 166,
+    "cardNumber": "01-073",
+    "cardName": "フラッフィー",
+    "cardType": {
+      "id": 8,
+      "value": "Character"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": 3,
+    "dp": 3,
+    "text": "〔常時〕\nこのカードが、Magicカードの効果でデッキから手札に移る場合、相手に見せてもよい。そうした場合、このカードを、メインフィールドに出す。\n\n≪ブレイク≫相手キャラ1枚までを、休息状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 17,
+        "value": "魔法生物"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 81,
+        "question": "01-073「フラッフィー」が、01-076「アロホモラ」の効果で、デッキから手札に移る場合の処理はどうなりますか。",
+        "answer": "まず、01-076「アロホモラ」の効果でカードを2枚引き、この2枚を他の手札と混ぜる前に、その中にある01-073「フラッフィー」を任意の枚数相手に見せて、メインフィールドに出します。その後、01-076「アロホモラ」の「手札1枚を捨て札にする。」を処理します。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-073"
+  },
+  {
+    "id": 167,
+    "cardNumber": "01-074",
+    "cardName": "ウィンガード・レビオーサ",
+    "cardType": {
+      "id": 10,
+      "value": "Magic"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔使用〕〔決闘中〕〔自分のターン中〕\n決闘中の全てのキャラを、次の相手のターン終了時まで、±0/-5する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 36,
+        "question": "〔決闘中〕は、どのタイミングで使用できますか。",
+        "answer": "ゲームマニュアルの20p「相手のキャラかパートナーにアタックする」の項目の、「4：〔決闘中〕の使用タイミング①」「7：〔決闘中〕の使用タイミング②」で使用できます。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 82,
+        "question": "味方キャラ2枚でのアタックを行った決闘中に、自分が01-074「ウィンガード・レビオーサ」をプレイした場合、決闘中の味方キャラ2枚は両方とも±0/-5されますか。",
+        "answer": "はい、決闘中の味方キャラ2枚の両方が±0/-5されます。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 83,
+        "question": "01-074「ウィンガード・レビオーサ」をプレイした後にブロック宣言を行ったキャラは、±0/-5されますか。",
+        "answer": "いいえ、±0/-5されません。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-074"
+  },
+  {
+    "id": 168,
+    "cardNumber": "01-075",
+    "cardName": "お陽さま　ヒナ菊　とろけたバター",
+    "cardType": {
+      "id": 10,
+      "value": "Magic"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 0,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔使用〕〔自分のメインフェイズ〕\n【ねずみ】のカード0枚までを黄色にする。\n\n≪ブレイク≫このカードを、無償で使用できる。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-075"
+  },
+  {
+    "id": 169,
+    "cardNumber": "01-076",
+    "cardName": "アロホモラ",
+    "cardType": {
+      "id": 10,
+      "value": "Magic"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 2,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔使用〕〔自分のメインフェイズ〕\nカードを2枚引き、手札1枚を捨て札にする。\n\n≪ブレイク≫このカードを、無償で使用できる。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 81,
+        "question": "01-073「フラッフィー」が、01-076「アロホモラ」の効果で、デッキから手札に移る場合の処理はどうなりますか。",
+        "answer": "まず、01-076「アロホモラ」の効果でカードを2枚引き、この2枚を他の手札と混ぜる前に、その中にある01-073「フラッフィー」を任意の枚数相手に見せて、メインフィールドに出します。その後、01-076「アロホモラ」の「手札1枚を捨て札にする。」を処理します。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-076"
+  },
+  {
+    "id": 170,
+    "cardNumber": "01-077",
+    "cardName": "思い出し玉",
+    "cardType": {
+      "id": 11,
+      "value": "Item"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 1,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔自動〕〔エントリー〕\n自分のデッキの下から1枚を、このカードの下に裏向きで重ねる。\n\n〔自動〕〔自分のターン終了時〕\nこのカードの下に重ねられているカード1枚を手札に移し、このカードを捨て札にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 84,
+        "question": "01-077「思い出し玉」で、裏向きで重ねたカードの内容を確認することはできますか。",
+        "answer": "できません。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-077"
+  },
+  {
+    "id": 171,
+    "cardNumber": "01-078",
+    "cardName": "校長先生のカード",
+    "cardType": {
+      "id": 11,
+      "value": "Item"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 3,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔自動〕〔エントリー〕\nこのカードを捨て札にし、自分の手札から「アルバス・ダンブルドア」のカード1枚を、メインフィールドに出す。次の自分のターン開始時にそのカードを手札に戻す。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 85,
+        "question": "01-078「校長先生のカード」でメインフィールドに出した「アルバス・ダンブルドア」が、次の自分のターン開始時にサポートフィールドにいる場合、手札に戻りますか。",
+        "answer": "決闘場にいる限り、手札に戻ります。ただし、出したカードが一度でも決闘場から離れていた場合、手札に戻る効果は発動しません。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-078"
+  },
+  {
+    "id": 172,
+    "cardNumber": "01-079",
+    "cardName": "動く階段",
+    "cardType": {
+      "id": 9,
+      "value": "Location"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 0,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔宣言〕〔決闘中〕⑤〈手札1枚を捨て札にする〉\n相手のアタック対象を、味方キャラ1枚に変更する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 36,
+        "question": "〔決闘中〕は、どのタイミングで使用できますか。",
+        "answer": "ゲームマニュアルの20p「相手のキャラかパートナーにアタックする」の項目の、「4：〔決闘中〕の使用タイミング①」「7：〔決闘中〕の使用タイミング②」で使用できます。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 86,
+        "question": "01-079「動く階段」で相手のアタック対象を、活動状態の味方キャラ1枚に変更することはできますか。",
+        "answer": "できません。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-079"
+  },
+  {
+    "id": 173,
+    "cardNumber": "01-080",
+    "cardName": "9と3/4番線",
+    "cardType": {
+      "id": 9,
+      "value": "Location"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 5,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔自動〕〔自分のターン終了時〕\n手札1枚を捨て札にし、味方の【ホグワーツ】カード1枚までをメインフィールドに移す。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 87,
+        "question": "01-080「9と3/4番線」の「〔自動〕〔自分のターン終了時〕　手札1枚を捨て札にし、味方の【ホグワーツ】カード1枚までをメインフィールドに移す。」は、どこからメインフィールドに移しますか。",
+        "answer": "サポートフィールドから、味方の【ホグワーツ】カード1枚までをメインフィールドに移します。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 88,
+        "question": "01-080「9と3/4番線」は、ターン終了時に、手札を捨てず、メインフィールドに移さないことも選べますか。",
+        "answer": "選べません。〔自動〕〔自分のターン終了時〕は必ず発動しなければなりません。サポートフィールドに味方の【ホグワーツ】カード1枚がない場合でも、手札1枚を捨てる必要があります。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 89,
+        "question": "01-080「9と3/4番線」の効果で、S01-002「ハリー・ポッター」がサポートフィールドからメインフィールドに移った場合、そのターンに「〔自動〕〔自分のターン終了時〕味方キャラ1枚までを活動状態にする。」は発動しますか。",
+        "answer": "発動しません。ターンの終了時に処理が発生する効果を解決する時点で、効果が発動できない状態のカードは、その後効果が発動できる状態になったとしても、効果を発動することはできません。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 90,
+        "question": "自分の手札が無い場合、01-080「9と3/4番線」の「味方の【ホグワーツ】カード1枚までをメインフィールドに移す。」を発動できますか。",
+        "answer": "できません。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-080"
+  },
+  {
+    "id": 174,
+    "cardNumber": "01-081",
+    "cardName": "オリバンダーの店",
+    "cardType": {
+      "id": 9,
+      "value": "Location"
+    },
+    "rarity": {
+      "id": 19,
+      "value": "N"
+    },
+    "cost": 0,
+    "mp": 1,
+    "ap": null,
+    "dp": null,
+    "text": "〔宣言〕〔自分のメインフェイズ〕①⤵\nデッキの上から10枚を見て、その中から「杖」のカード1枚までを抜き出し、味方キャラ1枚に装備する。その後、デッキをシャッフルする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 78,
+        "question": "01-033「入学許可証」の「デッキの上から2枚を見て、その中から【魔法使い】または【魔女】のカード1枚までを公開し、手札に移す。」によって、手札にカードを移さなかった場合、「その後、残りのカードを任意の順番でデッキの下に移す。」は発動しますか。",
+        "answer": "発動します。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 91,
+        "question": "01-081「オリバンダーの店」は、「杖」を装備できる味方キャラがいない場合でも、「杖」を抜き出すことはできますか。",
+        "answer": "できません。「杖」を装備できる味方キャラがいない場合は、デッキの上から10枚の中に戻ります。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/01-081"
+  },
+  {
+    "id": 44,
+    "cardNumber": "Pt003",
+    "cardName": "ハリー・ポッター",
+    "cardType": {
+      "id": 7,
+      "value": "Partner"
+    },
+    "rarity": {
+      "id": 8,
+      "value": "Pt"
+    },
+    "cost": null,
+    "mp": null,
+    "ap": null,
+    "dp": null,
+    "text": "〔アシスト〕①⤵ \n味方キャラ1枚までを、この決闘中、+1/±0する。\n\n〔宣言〕〔自分のメインフェイズ〕〔ゲーム中1回〕\n味方の【グリフィンドール】カード1枚までを、活動状態にする。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 39,
+        "question": "Pt003「ハリー・ポッター」の「味方の【グリフィンドール】カード1枚までを、活動状態にする。」によって、このターン既にアタックしたキャラを活動状態にした場合、そのキャラクターはアタックすることは可能ですか。",
+        "answer": "可能です。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 40,
+        "question": "Pt003「ハリー・ポッター」の「味方の【グリフィンドール】カード1枚までを、活動状態にする。」によって、このターン既に〔自動〕〔アタック〕を発動したキャラを活動状態にして再度アタックを行う場合、〔自動〕〔アタック〕は発動しますか。",
+        "answer": "〔ターン1回〕等の条件が無い限り、発動します。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 41,
+        "question": "Pt003「ハリー・ポッター」の「味方の【グリフィンドール】カード1枚までを、活動状態にする。」によって、Partnerカードを活動状態にできますか。",
+        "answer": "できません。対象となる場所（MPフィールド、デッキなど）が指定されてない効果は、決闘場のカードのみを指定できます。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/Pt003"
+  },
+  {
+    "id": 45,
+    "cardNumber": "Pt003a",
+    "cardName": "ハリー・ポッター",
+    "cardType": {
+      "id": 7,
+      "value": "Partner"
+    },
+    "rarity": {
+      "id": 9,
+      "value": "Pt★"
+    },
+    "cost": null,
+    "mp": null,
+    "ap": null,
+    "dp": null,
+    "text": "〔アシスト〕①⤵ \r\n味方キャラ1枚までを、この決闘中、+1/±0する。\r\n\r\n〔宣言〕〔自分のメインフェイズ〕〔ゲーム中1回〕\r\n味方の【グリフィンドール】カード1枚までを、活動状態にする。",
+    "parallel": true,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/Pt003a"
+  },
+  {
+    "id": 46,
+    "cardNumber": "Pt004",
+    "cardName": "ハーマイオニー・グレンジャー",
+    "cardType": {
+      "id": 7,
+      "value": "Partner"
+    },
+    "rarity": {
+      "id": 8,
+      "value": "Pt"
+    },
+    "cost": null,
+    "mp": null,
+    "ap": null,
+    "dp": null,
+    "text": "〔アシスト〕①⤵ \r\n味方キャラ1枚までを、この決闘中、+1/±0する。\r\n\r\n〔宣言〕〔自分のメインフェイズ〕〔ゲーム中1回〕\r\n自分の捨て札からMagicカード2枚をデッキの下に移し、サポートフィールドにいる、味方キャラ1枚までを、メインフィールドに移す。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 13,
+        "value": "魔女"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 42,
+        "question": "Pt004「ハーマイオニー・グレンジャー」の「自分の捨て札からMagicカード2枚をデッキの下に移し、サポートフィールドにいる、味方キャラ1枚までを、メインフィールドに移す。」によって、デッキの下に移すカードの順番は選べますか。",
+        "answer": "選べます。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 43,
+        "question": "Pt004「ハーマイオニー・グレンジャー」の「自分の捨て札からMagicカード2枚をデッキの下に移し、サポートフィールドにいる、味方キャラ1枚までを、メインフィールドに移す。」を使用する際、サポートフィールドに味方キャラがいない場合でも効果を使用できますか。",
+        "answer": "使用できます。「自分の捨て札からMagicカード2枚をデッキの下に移し、」までを処理することは可能です。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 57,
+        "question": "01-003「ハリー・ポッター」の「サポートフィールドにいる、コスト4以下の味方キャラ1枚までを、メインフィールドに移す。」によって、メインフィールドに移ったキャラは、アタックできますか。",
+        "answer": "そのターン中にプレイされたキャラでなければ、すぐにアタックすることができます。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/Pt004"
+  },
+  {
+    "id": 47,
+    "cardNumber": "Pt004a",
+    "cardName": "ハーマイオニー・グレンジャー",
+    "cardType": {
+      "id": 7,
+      "value": "Partner"
+    },
+    "rarity": {
+      "id": 9,
+      "value": "Pt★"
+    },
+    "cost": null,
+    "mp": null,
+    "ap": null,
+    "dp": null,
+    "text": "〔アシスト〕①⤵ \r\n味方キャラ1枚までを、この決闘中、+1/±0する。\r\n\r\n〔宣言〕〔自分のメインフェイズ〕〔ゲーム中1回〕\r\n自分の捨て札からMagicカード2枚をデッキの下に移し、サポートフィールドにいる、味方キャラ1枚までを、メインフィールドに移す。",
+    "parallel": true,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 11,
+        "value": "グリフィンドール"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 13,
+        "value": "魔女"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/Pt004a"
+  },
+  {
+    "id": 48,
+    "cardNumber": "Pt005",
+    "cardName": "ドラコ・マルフォイ",
+    "cardType": {
+      "id": 7,
+      "value": "Partner"
+    },
+    "rarity": {
+      "id": 8,
+      "value": "Pt"
+    },
+    "cost": null,
+    "mp": null,
+    "ap": null,
+    "dp": null,
+    "text": "〔アシスト〕①⤵ \r\n味方キャラ1枚までを、この決闘中、+1/±0する。\r\n\r\n〔宣言〕〔自分のメインフェイズ〕〔ゲーム中1回〕\r\n相手キャラ1枚までを、ターン終了時まで、コスト-3する。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 44,
+        "question": "コストが0になったキャラはどうなりますか。",
+        "answer": "何も起こりません。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 45,
+        "question": "コストは0未満になりますか。",
+        "answer": "いいえ、0未満にはなりません。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/Pt005"
+  },
+  {
+    "id": 49,
+    "cardNumber": "Pt005a",
+    "cardName": "ドラコ・マルフォイ",
+    "cardType": {
+      "id": 7,
+      "value": "Partner"
+    },
+    "rarity": {
+      "id": 9,
+      "value": "Pt★"
+    },
+    "cost": null,
+    "mp": null,
+    "ap": null,
+    "dp": null,
+    "text": "〔アシスト〕①⤵ \r\n味方キャラ1枚までを、この決闘中、+1/±0する。\r\n\r\n〔宣言〕〔自分のメインフェイズ〕〔ゲーム中1回〕\r\n相手キャラ1枚までを、ターン終了時まで、コスト-3する。",
+    "parallel": true,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 12,
+        "value": "スリザリン"
+      },
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/Pt005a"
+  },
+  {
+    "id": 50,
+    "cardNumber": "Pt006",
+    "cardName": "アルバス・ダンブルドア",
+    "cardType": {
+      "id": 7,
+      "value": "Partner"
+    },
+    "rarity": {
+      "id": 8,
+      "value": "Pt"
+    },
+    "cost": null,
+    "mp": null,
+    "ap": null,
+    "dp": null,
+    "text": "〔アシスト〕①⤵ \r\n味方キャラ1枚までを、この決闘中、+1/±0する。\r\n\r\n〔宣言〕〔自分のメインフェイズ〕〔ゲーム中1回〕\r\n自分が次にプレイする【教師】のカード1枚は、コスト-1を得る。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [
+      {
+        "id": 46,
+        "question": "Pt006「アルバス・ダンブルドア」の「自分が次にプレイする【教師】のカード1枚は、コスト-1を得る。」を使用した後、コストが1の【教師】のカードは0コストでプレイできますか。",
+        "answer": "可能です。",
+        "updatedAt": "2026-04-24"
+      },
+      {
+        "id": 47,
+        "question": "Pt006「アルバス・ダンブルドア」の「自分が次にプレイする【教師】のカード1枚は、コスト-1を得る。」を使用した後、そのターンに【教師】のカードをプレイしなかった場合どうなりますか。",
+        "answer": "効果はそのターン中に消えます。以降のターンに効果は引き継がれません。",
+        "updatedAt": "2026-04-24"
+      }
+    ],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/Pt006"
+  },
+  {
+    "id": 51,
+    "cardNumber": "Pt006a",
+    "cardName": "アルバス・ダンブルドア",
+    "cardType": {
+      "id": 7,
+      "value": "Partner"
+    },
+    "rarity": {
+      "id": 9,
+      "value": "Pt★"
+    },
+    "cost": null,
+    "mp": null,
+    "ap": null,
+    "dp": null,
+    "text": "〔アシスト〕①⤵ \r\n味方キャラ1枚までを、この決闘中、+1/±0する。\r\n\r\n〔宣言〕〔自分のメインフェイズ〕〔ゲーム中1回〕\r\n自分が次にプレイする【教師】のカード1枚は、コスト-1を得る。",
+    "parallel": true,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 10,
+        "value": "ホグワーツ"
+      },
+      {
+        "id": 14,
+        "value": "教師"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/Pt006a"
+  },
+  {
+    "id": 52,
+    "cardNumber": "Pt007",
+    "cardName": "ハリー・ポッター",
+    "cardType": {
+      "id": 7,
+      "value": "Partner"
+    },
+    "rarity": {
+      "id": 8,
+      "value": "Pt"
+    },
+    "cost": null,
+    "mp": null,
+    "ap": null,
+    "dp": null,
+    "text": "〔アシスト〕①⤵ \r\n味方キャラ1枚までを、この決闘中、+1/±0する。\r\n\r\n〔宣言〕〔自分のメインフェイズ〕〔ゲーム中1回〕\r\n自分のメインフィールドに【マグル】のカードが3枚いる場合、カードを2枚引く。",
+    "parallel": false,
+    "canAddToDeck": true,
+    "tags": [
+      {
+        "id": 15,
+        "value": "ダーズリー家"
+      },
+      {
+        "id": 9,
+        "value": "魔法使い"
+      }
+    ],
+    "specialIcons": [],
+    "products": [
+      {
+        "id": 1,
+        "value": "ブースターパック／『ハリー・ポッターと賢者の石』 Part.1"
+      }
+    ],
+    "qas": [],
+    "imageUrl": "https://tcg.movic.jp/harrypotter/card-management/storage/cards/Pt007"
+  }
+]
