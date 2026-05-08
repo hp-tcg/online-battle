@@ -1,6 +1,6 @@
 import React, { useState, useReducer, useEffect } from 'react';
 import './ManualBattleBoard.css';
-import { ArrowLeft, BookOpen, User, RefreshCw, Paperclip } from 'lucide-react';
+import { ArrowLeft, BookOpen, User, RefreshCw, Paperclip, Save, Trash2 } from 'lucide-react';
 import { Card, Deck } from '../types';
 import { gameReducer, initialState } from '../engine/GameReducer';
 import { CardInstance, PlayerState, GameState, GameAction } from '../engine/GameState';
@@ -35,14 +35,33 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
   const [viewingTrash, setViewingTrash] = useState<'player' | 'opponent' | null>(null);
   const [gameStarted, setGameStarted] = useState(isOnline || !!deck);
   const [attachMode, setAttachMode] = useState<CardInstance | null>(null);
+  const [savedGame, setSavedGame] = useState<GameState | null>(null);
 
   const [localSavedDecks, setLocalSavedDecks] = useState<Deck[]>(savedDecks);
+  
+  // Load saved game from localStorage on mount
   useEffect(() => {
-    const stored = localStorage.getItem('hp-tcg-decks');
-    if (stored) {
-      setLocalSavedDecks(JSON.parse(stored));
+    const storedDecks = localStorage.getItem('hp-tcg-decks');
+    if (storedDecks) {
+      setLocalSavedDecks(JSON.parse(storedDecks));
+    }
+
+    const storedGame = localStorage.getItem('hp-tcg-save-game');
+    if (storedGame) {
+      try {
+        setSavedGame(JSON.parse(storedGame));
+      } catch (e) {
+        console.error("Failed to load saved game", e);
+      }
     }
   }, [gameStarted]);
+
+  // Auto-save game state to localStorage
+  useEffect(() => {
+    if (gameStarted && !isOnline && !externalState) {
+      localStorage.setItem('hp-tcg-save-game', JSON.stringify(state));
+    }
+  }, [state, gameStarted, isOnline, externalState]);
 
   const startGameWithDeck = (selectedDeck: Deck) => {
     if (allCards.length === 0) return;
@@ -90,6 +109,20 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
       opponentMpCardId: opponentMpCard ? Math.random().toString(36).substr(2, 9) : undefined,
     });
     setGameStarted(true);
+  };
+
+  const resumeSavedGame = () => {
+    if (savedGame) {
+      dispatch({ type: 'SET_STATE', state: savedGame });
+      setGameStarted(true);
+    }
+  };
+
+  const clearSaveAndExit = () => {
+    if (window.confirm("進行状況を削除して終了しますか？")) {
+      localStorage.removeItem('hp-tcg-save-game');
+      onBack();
+    }
   };
 
   useEffect(() => {
@@ -409,6 +442,16 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
         </div>
         <div className="deck-selection-screen">
           <div className="selection-grid">
+            {savedGame && (
+              <div className="deck-select-card resume-card" onClick={resumeSavedGame}>
+                <Save size={32} />
+                <h3>Resume Last Game</h3>
+                <p>前回の続きから再開</p>
+                <div className="deck-select-meta">
+                   <span><User size={12}/> {savedGame.player.name} vs {savedGame.opponent.name}</span>
+                </div>
+              </div>
+            )}
             {localSavedDecks.map(d => (
               <div key={d.name} className="deck-select-card" onClick={() => startGameWithDeck(d)}>
                 <BookOpen size={32} />
@@ -433,20 +476,32 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
       <div className="board-header">
         <button className="back-btn" onClick={onBack}><ArrowLeft size={14} /> Exit</button>
         <div className="board-title">{isOnline ? (isHost ? 'Online Match (Host)' : 'Online Match (Guest)') : 'Manual Duel Simulator'}</div>
-        {isOnline && (
-          <button 
-            className="sync-btn" 
-            onClick={() => {
-              if (window.confirm("自分の盤面状態を相手に送信して強制同期しますか？")) {
-                dispatch({ type: 'SET_STATE', state });
-              }
-            }}
-            title="Force Sync State"
-            style={{ marginLeft: '10px', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '12px', padding: '2px 8px', backgroundColor: '#4a5568', color: 'white', borderRadius: '4px', border: 'none', cursor: 'pointer' }}
-          >
-            <RefreshCw size={12} /> 同期
-          </button>
-        )}
+        <div className="header-actions" style={{ marginLeft: 'auto', display: 'flex', gap: '10px' }}>
+          {!isOnline && (
+            <button 
+              className="action-btn-sm danger" 
+              onClick={clearSaveAndExit}
+              title="Clear Save and Exit"
+              style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '10px', padding: '2px 8px', backgroundColor: '#742a2a', color: 'white', borderRadius: '4px', border: 'none', cursor: 'pointer' }}
+            >
+              <Trash2 size={12} /> データを削除して終了
+            </button>
+          )}
+          {isOnline && (
+            <button 
+              className="sync-btn" 
+              onClick={() => {
+                if (window.confirm("自分の盤面状態を相手に送信して強制同期しますか？")) {
+                  dispatch({ type: 'SET_STATE', state });
+                }
+              }}
+              title="Force Sync State"
+              style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '12px', padding: '2px 8px', backgroundColor: '#4a5568', color: 'white', borderRadius: '4px', border: 'none', cursor: 'pointer' }}
+            >
+              <RefreshCw size={12} /> 同期
+            </button>
+          )}
+        </div>
       </div>
       <div className="battle-area-new">
         <div className="game-boards-column">

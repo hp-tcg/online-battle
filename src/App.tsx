@@ -61,6 +61,7 @@ function App() {
   const [cards, setCards] = useState<Card[]>([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('')
   const [selectedType, setSelectedType] = useState<string>('All')
   const [currentDeck, setCurrentDeck] = useState<Deck>({
     name: 'New Deck',
@@ -69,9 +70,20 @@ function App() {
   const [savedDecks, setSavedDecks] = useState<Deck[]>([])
   const [showDeckEditor, setShowDeckEditor] = useState(false)
   const [isExporting, setIsExporting] = useState(false)
+  const [previewCardId, setPreviewCardId] = useState<string | null>(null)
   
   const deckRef = useRef<HTMLDivElement>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm)
+    }, 300)
+
+    return () => {
+      clearTimeout(handler)
+    }
+  }, [searchTerm])
 
   useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}data/cards.json`)
@@ -97,13 +109,14 @@ function App() {
 
   const filteredCards = useMemo(() => {
     return cards.filter(card => {
-      const matchesSearch = card.cardName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          card.text.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          card.cardNumber.toLowerCase().includes(searchTerm.toLowerCase());
+      const searchLower = debouncedSearchTerm.toLowerCase();
+      const matchesSearch = (card.cardName || '').toLowerCase().includes(searchLower) ||
+                          (card.text || '').toLowerCase().includes(searchLower) ||
+                          (card.cardNumber || '').toLowerCase().includes(searchLower);
       const matchesType = selectedType === 'All' || card.cardType.value === selectedType;
       return matchesSearch && matchesType;
     })
-  }, [cards, searchTerm, selectedType])
+  }, [cards, debouncedSearchTerm, selectedType])
   
   const deckCounts = useMemo(() => {
     const counts: Record<string, number> = {}
@@ -177,6 +190,19 @@ function App() {
       alert('デッキ名を入力してください。')
       return
     }
+    if (!currentDeck.partnerId) {
+      alert('パートナーカードを1枚選んでください。')
+      return
+    }
+    if (!currentDeck.mpCardId) {
+      alert('MPカードを1枚選んでください。')
+      return
+    }
+    if (currentDeck.cardIds.length !== 50) {
+      alert('メインデッキは50枚である必要があります。')
+      return
+    }
+
     const newSavedDecks = [...savedDecks]
     const existingIndex = newSavedDecks.findIndex(d => d.name === currentDeck.name)
     if (existingIndex > -1) {
@@ -306,6 +332,8 @@ function App() {
 
   const types = ['All', ...Array.from(new Set(cards.map(c => c.cardType.value)))]
 
+  const previewCard = previewCardId ? cards.find(c => c.cardNumber === previewCardId) : null;
+
   return (
     <div className="app-container">
       <header className="app-header">
@@ -383,54 +411,43 @@ function App() {
                </div>
             )}
             
-            {currentDeck.partnerId && (
-              <div className="deck-item partner">
-                 <img 
-                  src={`${import.meta.env.BASE_URL}images/${currentDeck.partnerId.replace('/', '_')}.png`} 
-                  alt={cards.find(c => c.cardNumber === currentDeck.partnerId)?.cardName} 
-                  className="list-card-image"
-                  loading="lazy"
-                />
-                <span className="name">{cards.find(c => c.cardNumber === currentDeck.partnerId)?.cardName}</span>
-                {!isExporting && <button onClick={() => setCurrentDeck({...currentDeck, partnerId: undefined})}><Trash2 size={16}/></button>}
-              </div>
-            )}
-            {currentDeck.mpCardId && (
-              <div className="deck-item mp-card">
-                 <img 
-                  src={`${import.meta.env.BASE_URL}images/${currentDeck.mpCardId.replace('/', '_')}.png`} 
-                  alt={cards.find(c => c.cardNumber === currentDeck.mpCardId)?.cardName} 
-                  className="list-card-image"
-                  loading="lazy"
-                />
-                <span className="name">{cards.find(c => c.cardNumber === currentDeck.mpCardId)?.cardName}</span>
-                {!isExporting && <button onClick={() => setCurrentDeck({...currentDeck, mpCardId: undefined})}><Trash2 size={16}/></button>}
-              </div>
-            )}
-            {Object.entries(deckCounts).map(([id, count]) => {
-              const card = cards.find(c => c.cardNumber === id)
-              if (!card) return null;
-              return (
-                <div key={id} className="deck-item">
+            <div className="deck-grid">
+              {currentDeck.partnerId && (
+                <div className="deck-item-mini partner" onClick={() => setPreviewCardId(currentDeck.partnerId!)}>
                   <img 
-                    src={`${import.meta.env.BASE_URL}images/${id.replace('/', '_')}.png`} 
-                    alt={card.cardName} 
-                    className="list-card-image"
+                    src={`${import.meta.env.BASE_URL}images/${currentDeck.partnerId.replace('/', '_')}.png`} 
+                    alt="Partner" 
+                    className="mini-card-image"
                     loading="lazy"
                   />
-                  <div className="item-details">
-                    <span className="name">{card.cardName}</span>
-                    <span className="count">{count}x</span>
-                  </div>
-                  {!isExporting && (
-                    <div className="item-actions">
-                      <button onClick={() => addCardToDeck(card)}><Plus size={16}/></button>
-                      <button onClick={() => removeCardFromDeck(id)}><Trash2 size={16}/></button>
-                    </div>
-                  )}
+                  <div className="mini-badge">P</div>
                 </div>
-              )
-            })}
+              )}
+              {currentDeck.mpCardId && (
+                <div className="deck-item-mini mp-card" onClick={() => setPreviewCardId(currentDeck.mpCardId!)}>
+                  <img 
+                    src={`${import.meta.env.BASE_URL}images/${currentDeck.mpCardId.replace('/', '_')}.png`} 
+                    alt="MP" 
+                    className="mini-card-image"
+                    loading="lazy"
+                  />
+                  <div className="mini-badge">M</div>
+                </div>
+              )}
+              {Object.entries(deckCounts).map(([id, count]) => {
+                return (
+                  <div key={id} className="deck-item-mini" onClick={() => setPreviewCardId(id)}>
+                    <img 
+                      src={`${import.meta.env.BASE_URL}images/${id.replace('/', '_')}.png`} 
+                      alt={id} 
+                      className="mini-card-image"
+                      loading="lazy"
+                    />
+                    <div className="mini-count-badge">{count}</div>
+                  </div>
+                )
+              })}
+            </div>
           </div>
         </aside>
 
@@ -486,6 +503,65 @@ function App() {
           </div>
         </section>
       </div>
+
+      {previewCard && (
+        <div className="modal-overlay" onClick={() => setPreviewCardId(null)}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <div className="modal-preview">
+              <img 
+                src={`${import.meta.env.BASE_URL}images/${previewCard.cardNumber.replace('/', '_')}.png`} 
+                alt={previewCard.cardName} 
+                className="modal-card-image"
+              />
+              <div className="modal-info">
+                <div className="modal-header">
+                  <span className="card-no">{previewCard.cardNumber}</span>
+                  <span className={`card-type ${previewCard.cardType.value}`}>{previewCard.cardType.value}</span>
+                </div>
+                <h2>{previewCard.cardName}</h2>
+                <div className="card-stats">
+                  {previewCard.cost !== null && <span className="stat-cost">Cost: {previewCard.cost}</span>}
+                  {previewCard.ap !== null && <span className="stat-ap">AP: {previewCard.ap}</span>}
+                  {previewCard.dp !== null && <span className="stat-dp">DP: {previewCard.dp}</span>}
+                </div>
+                <div className="modal-text">
+                  {previewCard.text?.split('\n').map((line, i) => <p key={i}>{line}</p>)}
+                </div>
+                <div className="modal-actions">
+                  {previewCard.cardType.value === 'Partner' ? (
+                    <button 
+                      className="delete-btn" 
+                      onClick={() => {
+                        setCurrentDeck({...currentDeck, partnerId: undefined});
+                        setPreviewCardId(null);
+                      }}
+                    >
+                      <Trash2 size={20} /> パートナー解除
+                    </button>
+                  ) : previewCard.cardNumber.startsWith('MP-') ? (
+                    <button 
+                      className="delete-btn" 
+                      onClick={() => {
+                        setCurrentDeck({...currentDeck, mpCardId: undefined});
+                        setPreviewCardId(null);
+                      }}
+                    >
+                      <Trash2 size={20} /> MPカード解除
+                    </button>
+                  ) : (
+                    <div className="quantity-controls">
+                      <button onClick={() => removeCardFromDeck(previewCard.cardNumber)}><Trash2 size={20} /> 1枚減らす</button>
+                      <span className="current-count">{deckCounts[previewCard.cardNumber] || 0}枚</span>
+                      <button onClick={() => addCardToDeck(previewCard)}><Plus size={20} /> 1枚増やす</button>
+                    </div>
+                  )}
+                  <button className="close-btn" onClick={() => setPreviewCardId(null)}>閉じる</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
