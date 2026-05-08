@@ -74,7 +74,7 @@ function App() {
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    fetch('/data/cards.json')
+    fetch(`${import.meta.env.BASE_URL}data/cards.json`)
       .then(res => res.json())
       .then(data => {
         setCards(data)
@@ -386,7 +386,7 @@ function App() {
             {currentDeck.partnerId && (
               <div className="deck-item partner">
                  <img 
-                  src={`/images/${currentDeck.partnerId.replace('/', '_')}.png`} 
+                  src={`${import.meta.env.BASE_URL}images/${currentDeck.partnerId.replace('/', '_')}.png`} 
                   alt={cards.find(c => c.cardNumber === currentDeck.partnerId)?.cardName} 
                   className="list-card-image"
                   loading="lazy"
@@ -398,7 +398,7 @@ function App() {
             {currentDeck.mpCardId && (
               <div className="deck-item mp-card">
                  <img 
-                  src={`/images/${currentDeck.mpCardId.replace('/', '_')}.png`} 
+                  src={`${import.meta.env.BASE_URL}images/${currentDeck.mpCardId.replace('/', '_')}.png`} 
                   alt={cards.find(c => c.cardNumber === currentDeck.mpCardId)?.cardName} 
                   className="list-card-image"
                   loading="lazy"
@@ -413,7 +413,7 @@ function App() {
               return (
                 <div key={id} className="deck-item">
                   <img 
-                    src={`/images/${id.replace('/', '_')}.png`} 
+                    src={`${import.meta.env.BASE_URL}images/${id.replace('/', '_')}.png`} 
                     alt={card.cardName} 
                     className="list-card-image"
                     loading="lazy"
@@ -460,7 +460,7 @@ function App() {
               return (
                 <div key={card.cardNumber} className="card-card" onClick={() => addCardToDeck(card)}>
                   <div className="card-image-container">
-                    <img src={`/images/${card.cardNumber.replace('/', '_')}.png`} alt={card.cardName} loading="lazy" />
+                    <img src={`${import.meta.env.BASE_URL}images/${card.cardNumber.replace('/', '_')}.png`} alt={card.cardName} loading="lazy" />
                     {countInDeck > 0 && (
                       <div className="card-count-badge">{countInDeck}</div>
                     )}

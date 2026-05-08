@@ -49,7 +49,7 @@ const BattleBoard: React.FC<BattleBoardProps> = ({ playerDeck, opponentDeck, pla
       <div className="field-cards">
         {cards.map(c => (
           <div key={c.instanceId} className={`battle-card ${c.isActive ? 'active' : 'rest'}`}>
-            <img src={`/images/${c.card.cardNumber.replace('/', '_')}.png`} alt={c.card.cardName} />
+            <img src={`${import.meta.env.BASE_URL}images/${c.card.cardNumber.replace('/', '_')}.png`} alt={c.card.cardName} />
           </div>
         ))}
       </div>
@@ -79,7 +79,7 @@ const BattleBoard: React.FC<BattleBoardProps> = ({ playerDeck, opponentDeck, pla
             <div className="partner-area">
               {state.opponent.partner && (
                 <div className="battle-card active partner-card">
-                   <img src={`/images/${state.opponent.partner.card.cardNumber.replace('/', '_')}.png`} alt="partner" />
+                   <img src={`${import.meta.env.BASE_URL}images/${state.opponent.partner.card.cardNumber.replace('/', '_')}.png`} alt="partner" />
                 </div>
               )}
             </div>
@@ -94,7 +94,7 @@ const BattleBoard: React.FC<BattleBoardProps> = ({ playerDeck, opponentDeck, pla
             <div className="partner-area">
               {state.player.partner && (
                 <div className="battle-card active partner-card">
-                   <img src={`/images/${state.player.partner.card.cardNumber.replace('/', '_')}.png`} alt="partner" />
+                   <img src={`${import.meta.env.BASE_URL}images/${state.player.partner.card.cardNumber.replace('/', '_')}.png`} alt="partner" />
                 </div>
               )}
             </div>
@@ -109,7 +109,7 @@ const BattleBoard: React.FC<BattleBoardProps> = ({ playerDeck, opponentDeck, pla
                 className="battle-card hand-card"
                 onClick={() => dispatch({ type: 'PLAY_CARD', playerId: 'player', instanceId: c.instanceId, targetField: 'mainField' })}
               >
-                <img src={`/images/${c.card.cardNumber.replace('/', '_')}.png`} alt={c.card.cardName} />
+                <img src={`${import.meta.env.BASE_URL}images/${c.card.cardNumber.replace('/', '_')}.png`} alt={c.card.cardName} />
               </div>
             ))}
           </div>

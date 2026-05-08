@@ -174,10 +174,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
           ) : (
              <>
                <img 
-                 src={`/images/${instance.card.cardNumber.replace('/', '_')}.png`} 
-                 alt={instance.card.cardName} 
-                 className="card-image"
-               />
+                 src={`${import.meta.env.BASE_URL}images/${instance.card.cardNumber.replace('/', '_')}.png`} alt={instance.card.cardName} className="card-image" />
                {isResting && <div className="resting-overlay">休息</div>}
                {isLife && isRevealed && <div className="revealed-badge">Revealed</div>}
              </>
@@ -325,7 +322,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
     return (
       <div className="side-panel-content detail-content">
         <div className="detail-image-container-side">
-          <img src={`/images/${card.cardNumber.replace('/', '_')}.png`} alt={card.cardName} className="detail-image-side" />
+          <img src={`${import.meta.env.BASE_URL}images/${card.cardNumber.replace('/', '_')}.png`} alt={card.cardName} className="detail-image-side" />
         </div>
         <div className="detail-info-side">
           <h3>{card.cardName}</h3>
@@ -467,7 +464,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
                     <div key={instanceId} className="deck-top-item">
                       <div className="card-slot small">
                         {showContent ? (
-                          <img src={`/images/${card.cardNumber.replace('/', '_')}.png`} alt={card.cardName} className="card-image" />
+                          <img src={`${import.meta.env.BASE_URL}images/${card.cardNumber.replace('/', '_')}.png`} alt={card.cardName} className="card-image" />
                         ) : (
                           <div className="deck-back"></div>
                         )}
@@ -498,7 +495,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
             <div className="deck-top-grid">
               {state[viewingTrash].trash.map((inst, idx) => (
                 <div key={inst.instanceId} className="deck-top-item">
-                  <div className="card-slot small"><img src={`/images/${inst.card.cardNumber.replace('/', '_')}.png`} alt={inst.card.cardName} className="card-image" /></div>
+                  <div className="card-slot small"><img src={`${import.meta.env.BASE_URL}images/${inst.card.cardNumber.replace('/', '_')}.png`} alt={inst.card.cardName} className="card-image" /></div>
                   <div className="deck-top-actions">
                     {viewingTrash === 'player' && (
                       <>
