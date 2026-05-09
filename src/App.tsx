@@ -1,7 +1,11 @@
 import { useState, useEffect, useMemo, useRef } from 'react'
 import { Card, Deck } from './types'
 import './App.css'
-import { Search, Filter, Plus, Trash2, Save, Sword, UserSquare, BookOpen, Download, Upload, Image as ImageIcon } from 'lucide-react'
+import { 
+  Search, Filter, Plus, Trash2, Save, Sword, UserSquare, 
+  BookOpen, Download, Upload, Image as ImageIcon,
+  RotateCcw, Info, ArrowUpDown, ChevronUp, ChevronDown
+} from 'lucide-react'
 import ManualBattleBoard from './components/ManualBattleBoard'
 import OnlineBattleBoard from './components/OnlineBattleBoard'
 import { toPng } from 'html-to-image'
@@ -55,6 +59,8 @@ const DEFAULT_DECKS: Deck[] = [
 ]
 
 type AppView = 'menu' | 'builder' | 'manual-battle' | 'online-battle'
+type SortField = 'number' | 'cost'
+type SortOrder = 'asc' | 'desc'
 
 function App() {
   const [view, setView] = useState<AppView>('menu')
@@ -63,6 +69,10 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('')
   const [selectedType, setSelectedType] = useState<string>('All')
+  const [selectedRarity, setSelectedRarity] = useState<string>('All')
+  const [selectedCost, setSelectedCost] = useState<string>('All')
+  const [sortField, setSortField] = useState<SortField>('number')
+  const [sortOrder, setSortOrder] = useState<SortOrder>('asc')
   const [currentDeck, setCurrentDeck] = useState<Deck>({
     name: 'New Deck',
     cardIds: []
@@ -108,15 +118,34 @@ function App() {
   }, [])
 
   const filteredCards = useMemo(() => {
-    return cards.filter(card => {
+    let result = cards.filter(card => {
       const searchLower = debouncedSearchTerm.toLowerCase();
       const matchesSearch = (card.cardName || '').toLowerCase().includes(searchLower) ||
                           (card.text || '').toLowerCase().includes(searchLower) ||
                           (card.cardNumber || '').toLowerCase().includes(searchLower);
       const matchesType = selectedType === 'All' || card.cardType.value === selectedType;
-      return matchesSearch && matchesType;
-    })
-  }, [cards, debouncedSearchTerm, selectedType])
+      const matchesRarity = selectedRarity === 'All' || card.rarity.value === selectedRarity;
+      const matchesCost = selectedCost === 'All' || (
+        selectedCost === '4+' ? (card.cost || 0) >= 4 : (card.cost || 0) === parseInt(selectedCost)
+      );
+      return matchesSearch && matchesType && matchesRarity && matchesCost;
+    });
+
+    result.sort((a, b) => {
+      let comparison = 0;
+      if (sortField === 'number') {
+        comparison = a.cardNumber.localeCompare(b.cardNumber);
+      } else if (sortField === 'cost') {
+        comparison = (a.cost || 0) - (b.cost || 0);
+        if (comparison === 0) {
+          comparison = a.cardNumber.localeCompare(b.cardNumber);
+        }
+      }
+      return sortOrder === 'asc' ? comparison : -comparison;
+    });
+
+    return result;
+  }, [cards, debouncedSearchTerm, selectedType, selectedRarity, selectedCost, sortField, sortOrder])
   
   const deckCounts = useMemo(() => {
     const counts: Record<string, number> = {}
@@ -183,6 +212,15 @@ function App() {
       }
       return prev
     })
+  }
+
+  const resetDeck = () => {
+    if (confirm('デッキをリセットしてもよろしいですか？')) {
+      setCurrentDeck({
+        name: 'New Deck',
+        cardIds: []
+      })
+    }
   }
 
   const saveDeck = () => {
@@ -269,7 +307,6 @@ function App() {
     if (!deckRef.current) return
     setIsExporting(true)
     
-    // Give time for images to be ready and UI to update
     setTimeout(async () => {
       try {
         const dataUrl = await toPng(deckRef.current!, { 
@@ -290,6 +327,31 @@ function App() {
         setIsExporting(false)
       }
     }, 500)
+  }
+
+  const onDragStart = (e: React.DragEvent, card: Card) => {
+    e.dataTransfer.setData('cardId', card.cardNumber);
+  }
+
+  const onDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+  }
+
+  const onDropToDeck = (e: React.DragEvent) => {
+    e.preventDefault();
+    const cardId = e.dataTransfer.getData('cardId');
+    const card = cards.find(c => c.cardNumber === cardId);
+    if (card) {
+      addCardToDeck(card);
+    }
+  }
+
+  const onDropToRemove = (e: React.DragEvent) => {
+    e.preventDefault();
+    const cardId = e.dataTransfer.getData('cardId');
+    if (cardId) {
+      removeCardFromDeck(cardId);
+    }
   }
 
   if (view === 'manual-battle') {
@@ -331,6 +393,8 @@ function App() {
   }
 
   const types = ['All', ...Array.from(new Set(cards.map(c => c.cardType.value)))]
+  const rarities = ['All', ...Array.from(new Set(cards.map(c => c.rarity.value)))]
+  const costs = ['All', '0', '1', '2', '3', '4+']
 
   const previewCard = previewCardId ? cards.find(c => c.cardNumber === previewCardId) : null;
 
@@ -350,6 +414,7 @@ function App() {
           
           <div className="button-group">
             <button onClick={saveDeck} title="デッキを保存" className="action-btn"><Save size={18} /> 保存</button>
+            <button onClick={resetDeck} title="デッキをリセット" className="action-btn"><RotateCcw size={18} /> リセット</button>
             <button onClick={downloadDeckImage} title="デッキ画像を出力" className="action-btn"><ImageIcon size={18} /> 画像</button>
             <button onClick={exportDecks} title="デッキをエクスポート" className="action-btn"><Download size={18} /> 出力</button>
             <button onClick={() => fileInputRef.current?.click()} title="デッキをインポート" className="action-btn">
@@ -366,7 +431,11 @@ function App() {
       </header>
 
       <div className="main-layout">
-        <aside className={`sidebar ${showDeckEditor ? 'visible' : ''}`}>
+        <aside 
+          className={`sidebar ${showDeckEditor ? 'visible' : ''}`}
+          onDragOver={onDragOver}
+          onDrop={onDropToDeck}
+        >
           <div className="deck-info">
             <input 
               type="text" 
@@ -413,7 +482,15 @@ function App() {
             
             <div className="deck-grid">
               {currentDeck.partnerId && (
-                <div className="deck-item-mini partner" onClick={() => setPreviewCardId(currentDeck.partnerId!)}>
+                <div 
+                  className="deck-item-mini partner" 
+                  onClick={() => setPreviewCardId(currentDeck.partnerId!)}
+                  draggable
+                  onDragStart={(e) => {
+                    const card = cards.find(c => c.cardNumber === currentDeck.partnerId);
+                    if (card) onDragStart(e, card);
+                  }}
+                >
                   <img 
                     src={`${import.meta.env.BASE_URL}images/${currentDeck.partnerId.replace('/', '_')}.png`} 
                     alt="Partner" 
@@ -424,7 +501,15 @@ function App() {
                 </div>
               )}
               {currentDeck.mpCardId && (
-                <div className="deck-item-mini mp-card" onClick={() => setPreviewCardId(currentDeck.mpCardId!)}>
+                <div 
+                  className="deck-item-mini mp-card" 
+                  onClick={() => setPreviewCardId(currentDeck.mpCardId!)}
+                  draggable
+                  onDragStart={(e) => {
+                    const card = cards.find(c => c.cardNumber === currentDeck.mpCardId);
+                    if (card) onDragStart(e, card);
+                  }}
+                >
                   <img 
                     src={`${import.meta.env.BASE_URL}images/${currentDeck.mpCardId.replace('/', '_')}.png`} 
                     alt="MP" 
@@ -436,7 +521,16 @@ function App() {
               )}
               {Object.entries(deckCounts).map(([id, count]) => {
                 return (
-                  <div key={id} className="deck-item-mini" onClick={() => setPreviewCardId(id)}>
+                  <div 
+                    key={id} 
+                    className="deck-item-mini" 
+                    onClick={() => setPreviewCardId(id)}
+                    draggable
+                    onDragStart={(e) => {
+                      const card = cards.find(c => c.cardNumber === id);
+                      if (card) onDragStart(e, card);
+                    }}
+                  >
                     <img 
                       src={`${import.meta.env.BASE_URL}images/${id.replace('/', '_')}.png`} 
                       alt={id} 
@@ -451,7 +545,11 @@ function App() {
           </div>
         </aside>
 
-        <section className="card-explorer">
+        <section 
+          className="card-explorer"
+          onDragOver={onDragOver}
+          onDrop={onDropToRemove}
+        >
           <div className="search-bar">
             <div className="input-group">
               <Search size={20} />
@@ -465,8 +563,30 @@ function App() {
             <div className="filter-group">
               <Filter size={20} />
               <select value={selectedType} onChange={e => setSelectedType(e.target.value)}>
-                {types.map(t => <option key={t} value={t}>{t}</option>)}
+                <option value="All">Type: All</option>
+                {types.filter(t => t !== 'All').map(t => <option key={t} value={t}>{t}</option>)}
               </select>
+              <select value={selectedRarity} onChange={e => setSelectedRarity(e.target.value)}>
+                <option value="All">Rarity: All</option>
+                {rarities.filter(r => r !== 'All').map(r => <option key={r} value={r}>{r}</option>)}
+              </select>
+              <select value={selectedCost} onChange={e => setSelectedCost(e.target.value)}>
+                <option value="All">Cost: All</option>
+                {costs.filter(c => c !== 'All').map(c => <option key={c} value={c}>Cost: {c}</option>)}
+              </select>
+            </div>
+            <div className="sort-group">
+              <ArrowUpDown size={20} />
+              <select value={sortField} onChange={e => setSortField(e.target.value as SortField)}>
+                <option value="number">No.</option>
+                <option value="cost">Cost</option>
+              </select>
+              <button 
+                className="sort-order-btn" 
+                onClick={() => setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc')}
+              >
+                {sortOrder === 'asc' ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+              </button>
             </div>
           </div>
 
@@ -475,7 +595,13 @@ function App() {
               const baseId = getCardNumberBase(card.cardNumber);
               const countInDeck = deckCardNumberCounts[baseId] || 0;
               return (
-                <div key={card.cardNumber} className="card-card" onClick={() => addCardToDeck(card)}>
+                <div 
+                  key={card.cardNumber} 
+                  className="card-card" 
+                  onClick={() => addCardToDeck(card)}
+                  draggable
+                  onDragStart={(e) => onDragStart(e, card)}
+                >
                   <div className="card-image-container">
                     <img src={`${import.meta.env.BASE_URL}images/${card.cardNumber.replace('/', '_')}.png`} alt={card.cardName} loading="lazy" />
                     {countInDeck > 0 && (
@@ -484,6 +610,16 @@ function App() {
                     <div className="card-overlay">
                       <Plus size={32} />
                     </div>
+                    <button 
+                      className="card-preview-btn" 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setPreviewCardId(card.cardNumber);
+                      }}
+                      title="詳細を見る"
+                    >
+                      <Info size={20} />
+                    </button>
                   </div>
                   <div className="card-info">
                     <div className="card-header">
@@ -520,6 +656,7 @@ function App() {
                 </div>
                 <h2>{previewCard.cardName}</h2>
                 <div className="card-stats">
+                  {previewCard.rarity && <span className="stat-rarity">Rarity: {previewCard.rarity.value}</span>}
                   {previewCard.cost !== null && <span className="stat-cost">Cost: {previewCard.cost}</span>}
                   {previewCard.ap !== null && <span className="stat-ap">AP: {previewCard.ap}</span>}
                   {previewCard.dp !== null && <span className="stat-dp">DP: {previewCard.dp}</span>}

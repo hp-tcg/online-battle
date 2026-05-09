@@ -1,6 +1,6 @@
-import React, { useState, useReducer, useEffect } from 'react';
+import React, { useState, useReducer, useEffect, useRef } from 'react';
 import Peer, { DataConnection } from 'peerjs';
-import { ArrowLeft, BookOpen, Copy, Check, Link as LinkIcon } from 'lucide-react';
+import { ArrowLeft, BookOpen, Copy, Check, Link as LinkIcon, Upload } from 'lucide-react';
 import { Card, Deck } from '../types';
 import { gameReducer, initialState } from '../engine/GameReducer';
 import { GameAction } from '../engine/GameState';
@@ -28,6 +28,13 @@ const OnlineBattleBoard: React.FC<OnlineBattleBoardProps> = ({ onBack, allCards,
   const [selectedDeck, setSelectedDeck] = useState<Deck | null>(null);
   const [opponentReady, setOpponentReady] = useState(false);
   const [opponentDeck, setOpponentDeck] = useState<Deck | null>(null);
+  const [localSavedDecks, setLocalSavedDecks] = useState<Deck[]>(savedDecks);
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    setLocalSavedDecks(savedDecks);
+  }, [savedDecks]);
 
   useEffect(() => {
     const newPeer = new Peer();
@@ -153,7 +160,8 @@ const OnlineBattleBoard: React.FC<OnlineBattleBoardProps> = ({ onBack, allCards,
         opponentPartnerId: Math.random().toString(36).substr(2, 9),
         playerMpCardId: pMp ? Math.random().toString(36).substr(2, 9) : undefined,
         opponentMpCardId: oMp ? Math.random().toString(36).substr(2, 9) : undefined,
-      });
+        });
+
       setGameStarted(true);
     }
   }, [selectedDeck, opponentDeck, opponentReady, connectionState, isHost, gameStarted]);
@@ -165,6 +173,50 @@ const OnlineBattleBoard: React.FC<OnlineBattleBoardProps> = ({ onBack, allCards,
   const onSelectDeck = (deck: Deck) => {
     setSelectedDeck(deck);
     if (conn) conn.send({ type: 'READY', payload: { deck } });
+  };
+
+  const importDeck = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const fileReader = new FileReader();
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    fileReader.onload = (e) => {
+      try {
+        const data = JSON.parse(e.target?.result as string);
+        const importedDecks: Deck[] = Array.isArray(data) ? data : [data];
+        
+        const validDecks = importedDecks.filter(d => 
+          d && d.cardIds && d.partnerId && d.mpCardId && d.name
+        );
+
+        if (validDecks.length > 0) {
+          setLocalSavedDecks(prev => {
+            const next = [...prev];
+            validDecks.forEach(deck => {
+              const existingIndex = next.findIndex(d => d.name === deck.name);
+              if (existingIndex > -1) {
+                next[existingIndex] = deck;
+              } else {
+                next.push(deck);
+              }
+            });
+            return next;
+          });
+          
+          if (validDecks.length === 1) {
+            onSelectDeck(validDecks[0]);
+          }
+          
+          alert(`${validDecks.length}個のデッキを読み込みました。`);
+        } else {
+          alert('有効なデッキデータが見つかりませんでした。');
+        }
+      } catch (err) {
+        console.error('Failed to import deck:', err);
+        alert('インポートに失敗しました。');
+      }
+    };
+    fileReader.readAsText(file);
   };
 
   if (gameStarted) {
@@ -205,9 +257,15 @@ const OnlineBattleBoard: React.FC<OnlineBattleBoardProps> = ({ onBack, allCards,
         )}
         {connectionState === 'CONNECTED' && (
           <div className="deck-selection-screen">
-            <h2>Select Your Deck</h2>
+            <div className="selection-header">
+              <h2>Select Your Deck</h2>
+              <button className="import-btn" onClick={() => fileInputRef.current?.click()}>
+                <Upload size={18} /> Import Deck
+                <input type="file" ref={fileInputRef} onChange={importDeck} style={{display: 'none'}} accept=".json" />
+              </button>
+            </div>
             <div className="selection-grid">
-              {savedDecks.map(d => (
+              {localSavedDecks.map(d => (
                 <div key={d.name} className={`deck-select-card ${selectedDeck?.name === d.name ? 'selected' : ''}`} onClick={() => onSelectDeck(d)}>
                   <BookOpen size={32} /><h3>{d.name}</h3><p>{d.cardIds.length} cards</p>
                 </div>
