@@ -14,16 +14,18 @@ interface ManualBattleBoardProps {
   externalDispatch?: (action: GameAction) => void;
   isOnline?: boolean;
   isHost?: boolean;
+  isSpectator?: boolean;
 }
 
 const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({ 
   onBack, deck, allCards = [], savedDecks = [], 
-  externalState, externalDispatch, isOnline = false, isHost = false 
+  externalState, externalDispatch, isOnline = false, isHost = false, isSpectator = false
 }) => {
   const [internalState, internalDispatch] = useReducer(gameReducer, initialState);
   
   const state = externalState || internalState;
   const dispatch = (action: GameAction) => {
+      if (isSpectator) return;
       if (externalDispatch) {
           externalDispatch(action);
       } else {
@@ -39,7 +41,6 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
 
   const [localSavedDecks, setLocalSavedDecks] = useState<Deck[]>(savedDecks);
   
-  // Load saved game from localStorage on mount
   useEffect(() => {
     const storedDecks = localStorage.getItem('hp-tcg-decks');
     if (storedDecks) {
@@ -56,7 +57,6 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
     }
   }, [gameStarted]);
 
-  // Auto-save game state to localStorage
   useEffect(() => {
     if (gameStarted && !isOnline && !externalState) {
       localStorage.setItem('hp-tcg-save-game', JSON.stringify(state));
@@ -132,6 +132,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
   }, [deck]);
 
   const handleMoveCard = (instanceId: string, from: string, to: string, card?: Card, index?: number) => {
+    if (isSpectator) return;
     if (to === 'mainField' && state.player.mainField.length >= 3) {
       alert("メインフィールドは3枚までです。");
       return;
@@ -151,6 +152,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
   };
 
   const handleAttach = (parentInstanceId: string) => {
+    if (isSpectator) return;
     if (!attachMode) return;
     dispatch({ type: 'ATTACH_CARD', playerId: 'player', instanceId: attachMode.instanceId, parentInstanceId });
     setAttachMode(null);
@@ -158,6 +160,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
   };
 
   const promptOpenTopN = (isPublic: boolean) => {
+    if (isSpectator) return;
     const val = window.prompt(`山札の上から何枚${isPublic ? '公開' : '非公開'}でオープンしますか？`, "3");
     if (val) {
       const n = parseInt(val);
@@ -176,6 +179,10 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
         <div 
           className={`card-slot ${isResting ? 'resting' : ''} ${isAttached ? 'attached-card-offset' : ''} ${isSmall ? 'small-card' : ''}`}
           onClick={() => {
+            if (isSpectator) {
+              setSelectedCard({ instance, location, isOpponent: isOpponentSide });
+              return;
+            }
             if (attachMode) {
                 if (isOpponentSide) return;
                 const targetLocs = ['mainField', 'supportField', 'partner'];
@@ -244,7 +251,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
         <div className="zone main-field-zone">
           <div className="zone-label">
             Main Field
-            {!isOpponent && <button className="reset-all-btn" onClick={() => dispatch({ type: 'RESET_ALL_RESTED', playerId: 'player' })} title="Stand All"><RefreshCw size={10}/></button>}
+            {!isOpponent && !isSpectator && <button className="reset-all-btn" onClick={() => dispatch({ type: 'RESET_ALL_RESTED', playerId: 'player' })} title="Stand All"><RefreshCw size={10}/></button>}
           </div>
           <div className="slots">
             {player.mainField.map(inst => renderCard(inst, 'mainField', isOpponent))}
@@ -259,7 +266,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
           {player.partner ? (
             <div className="partner-container">
               {renderCard(player.partner, 'partner', isOpponent)}
-              {!isOpponent && (
+              {!isOpponent && !isSpectator && (
                 <div className="partner-effect-toggle">
                   <label>
                     <input 
@@ -278,7 +285,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
         <div className="zone deck-zone">
           <div className="zone-label">Deck ({player.deck.length})</div>
           <div className={`card-slot deck-back ${isOpponent ? 'small-card' : ''}`} onClick={() => {
-            if (!isOpponent) {
+            if (!isOpponent && !isSpectator) {
               const instanceId = Math.random().toString(36).substr(2, 9);
               dispatch({ type: 'DRAW_CARD', playerId: 'player', instanceId });
             }
@@ -359,7 +366,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
         <div className="detail-info-side">
           <h3>{card.cardName}</h3>
           <p className="card-no">{card.cardNumber}</p>
-          {!isOpponent && (
+          {!isOpponent && !isSpectator && (
             <div className="action-groups-side">
               <div className="action-group-side">
                 <h4>状態</h4>
@@ -398,7 +405,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
               {card.text}
             </div>
           )}
-          {isOpponent && <div className="opponent-view-only">相手のカード</div>}
+          {(isOpponent || isSpectator) && <div className="opponent-view-only">{isSpectator ? '観戦モード' : '相手のカード'}</div>}
           <button className="close-btn-side" onClick={() => setSelectedCard(null)}>閉じる</button>
         </div>
       </div>
@@ -406,6 +413,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
   };
 
   const renderDeckMenuSide = () => {
+    if (isSpectator) return <div className="side-panel-placeholder"><p>観戦中</p></div>;
     return (
       <div className="side-panel-content deck-menu-content">
         <h4>デッキ操作</h4>
@@ -468,6 +476,12 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
     );
   }
 
+  const getBoardTitle = () => {
+    if (isSpectator) return 'Spectator Mode';
+    if (isOnline) return isHost ? 'Online Match (Host)' : 'Online Match (Guest)';
+    return 'Manual Duel Simulator';
+  };
+
   return (
     <div className="manual-battle-container">
       {attachMode && (
@@ -475,9 +489,9 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
       )}
       <div className="board-header">
         <button className="back-btn" onClick={onBack}><ArrowLeft size={14} /> Exit</button>
-        <div className="board-title">{isOnline ? (isHost ? 'Online Match (Host)' : 'Online Match (Guest)') : 'Manual Duel Simulator'}</div>
+        <div className="board-title">{getBoardTitle()}</div>
         <div className="header-actions" style={{ marginLeft: 'auto', display: 'flex', gap: '10px' }}>
-          {!isOnline && (
+          {!isOnline && !isSpectator && (
             <button 
               className="action-btn-sm danger" 
               onClick={clearSaveAndExit}
@@ -487,7 +501,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
               <Trash2 size={12} /> データを削除して終了
             </button>
           )}
-          {isOnline && (
+          {isOnline && !isSpectator && (
             <button 
               className="sync-btn" 
               onClick={() => {
@@ -533,9 +547,6 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
                 const searcher = state[state.activeSearch.playerId];
                 const isMe = state.activeSearch.playerId === 'player';
                 const showContent = state.activeSearch.isPublic || isMe;
-                
-                // Use snapshot if available (for Open N), otherwise use the current deck (for full search)
-                // Note: For full deck search, we create temporary instances with stable-ish IDs for this modal session
                 const cards = state.activeSearch.snapshot || searcher.deck.map((c, i) => ({ 
                   instanceId: `deck-${i}-${c.cardNumber}`, 
                   card: c 
@@ -554,7 +565,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
                           <div className="deck-back"></div>
                         )}
                       </div>
-                      {isMe && (
+                      {isMe && !isSpectator && (
                         <div className="deck-top-actions">
                           <button onClick={() => handleMoveCard(instanceId, 'deck', 'hand', card, idx)}>Hand</button>
                           <button onClick={() => handleMoveCard(instanceId, 'deck', 'deckTop', card, idx)}>Top</button>
@@ -567,7 +578,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
                 });
               })()}
             </div>
-            {state.activeSearch.playerId === 'player' && (
+            {state.activeSearch.playerId === 'player' && !isSpectator && (
                <button className="close-btn" onClick={() => dispatch({type:'CLOSE_SEARCH', playerId:'player'})}>Done</button>
             )}
           </div>
@@ -582,7 +593,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
                 <div key={inst.instanceId} className="deck-top-item">
                   <div className="card-slot small"><img src={`${import.meta.env.BASE_URL}images/${inst.card.cardNumber.replace('/', '_')}.png`} alt={inst.card.cardName} className="card-image" /></div>
                   <div className="deck-top-actions">
-                    {viewingTrash === 'player' && (
+                    {viewingTrash === 'player' && !isSpectator && (
                       <>
                         <button onClick={() => { dispatch({ type: 'MANUAL_MOVE', playerId: 'player', from: 'trash', to: 'hand', instanceId: inst.instanceId }); }}>Hand</button>
                         <button onClick={() => { dispatch({ type: 'MANUAL_MOVE', playerId: 'player', from: 'trash', to: 'deckBottom', instanceId: inst.instanceId }); }}>Deck Btm</button>

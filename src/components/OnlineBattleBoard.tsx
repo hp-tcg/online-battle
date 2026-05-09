@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect, useRef } from 'react';
+﻿import React, { useState, useReducer, useEffect, useRef } from 'react';
 import Peer, { DataConnection } from 'peerjs';
 import { ArrowLeft, BookOpen, Copy, Check, Link as LinkIcon, Upload } from 'lucide-react';
 import { Card, Deck } from '../types';
@@ -12,15 +12,17 @@ interface OnlineBattleBoardProps {
   savedDecks: Deck[];
 }
 
-type ConnectionState = 'IDLE' | 'HOSTING' | 'JOINING' | 'CONNECTED' | 'DISCONNECTED';
+type ConnectionState = 'IDLE' | 'HOSTING' | 'JOINING' | 'CONNECTED' | 'DISCONNECTED' | 'SPECTATING';
 
 const OnlineBattleBoard: React.FC<OnlineBattleBoardProps> = ({ onBack, allCards, savedDecks }) => {
   const [peer, setPeer] = useState<Peer | null>(null);
   const [conn, setConn] = useState<DataConnection | null>(null);
+  const [spectators, setSpectators] = useState<DataConnection[]>([]);
   const [peerId, setPeerId] = useState<string>('');
   const [remotePeerId, setRemotePeerId] = useState<string>('');
   const [connectionState, setConnectionState] = useState<ConnectionState>('IDLE');
   const [isHost, setIsHost] = useState(false);
+  const [isSpectator, setIsSpectator] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const [state, dispatch] = useReducer(gameReducer, initialState);
@@ -31,34 +33,35 @@ const OnlineBattleBoard: React.FC<OnlineBattleBoardProps> = ({ onBack, allCards,
   const [localSavedDecks, setLocalSavedDecks] = useState<Deck[]>(savedDecks);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const stateRef = useRef(state);
+  const spectatorsRef = useRef(spectators);
+  const isHostRef = useRef(isHost);
+  const isSpectatorRef = useRef(isSpectator);
+  const gameStartedRef = useRef(gameStarted);
+  const connRef = useRef<DataConnection | null>(null);
+
+  useEffect(() => { stateRef.current = state; }, [state]);
+  useEffect(() => { spectatorsRef.current = spectators; }, [spectators]);
+  useEffect(() => { isHostRef.current = isHost; }, [isHost]);
+  useEffect(() => { isSpectatorRef.current = isSpectator; }, [isSpectator]);
+  useEffect(() => { gameStartedRef.current = gameStarted; }, [gameStarted]);
+  useEffect(() => { connRef.current = conn; }, [conn]);
 
   useEffect(() => {
     setLocalSavedDecks(savedDecks);
   }, [savedDecks]);
 
-  useEffect(() => {
-    const newPeer = new Peer();
-    newPeer.on('open', (id) => setPeerId(id));
-    newPeer.on('connection', (c) => {
-      if (isHost) {
-        setConn(c);
-        setConnectionState('CONNECTED');
-      }
-    });
-    setPeer(newPeer);
-    return () => newPeer.destroy();
-  }, [isHost]);
+  const handleData = (data: any, fromConn: DataConnection) => {
+    const message = data as { type: string; payload: any };
+    if (message.type === 'ACTION') {
+      const action = message.payload as GameAction;
+      let processedAction: GameAction = action;
 
-  useEffect(() => {
-    if (!conn) return;
-    conn.on('data', (data: any) => {
-      const message = data as { type: string; payload: any };
-      if (message.type === 'ACTION') {
-        const action = message.payload as GameAction;
-        let flippedAction: GameAction = action;
-
+      const isReceivedFromOpponent = !isSpectatorRef.current && fromConn === connRef.current;
+      
+      if (isReceivedFromOpponent) {
         if (action.type === 'START_GAME') {
-          flippedAction = {
+          processedAction = {
             ...action,
             playerDeck: action.opponentDeck,
             opponentDeck: action.playerDeck,
@@ -72,7 +75,7 @@ const OnlineBattleBoard: React.FC<OnlineBattleBoardProps> = ({ onBack, allCards,
             opponentMpCardId: action.playerMpCardId,
           };
         } else if (action.type === 'SET_STATE') {
-          flippedAction = {
+          processedAction = {
             type: 'SET_STATE',
             state: {
               ...action.state,
@@ -86,32 +89,98 @@ const OnlineBattleBoard: React.FC<OnlineBattleBoardProps> = ({ onBack, allCards,
             }
           };
         } else if ('playerId' in action) {
-          flippedAction = { ...action, playerId: (action as any).playerId === 'player' ? 'opponent' : 'player' } as any;
+          processedAction = { ...action, playerId: (action as any).playerId === 'player' ? 'opponent' : 'player' } as any;
         }
-
-        dispatch(flippedAction);
-
-        // Guest automatically starts game upon receiving START_GAME
-        if (action.type === 'START_GAME' && !isHost) {
-          setGameStarted(true);
-        }
-      } else if (message.type === 'READY') {
-        setOpponentDeck(message.payload.deck);
-        setOpponentReady(true);
       }
-    });
-    conn.on('close', () => setConnectionState('DISCONNECTED'));
-  }, [conn, isHost]);
 
-  const hostGame = () => { setIsHost(true); setConnectionState('HOSTING'); };
-  const joinGame = () => {
+      dispatch(processedAction);
+
+      if (isHostRef.current) {
+        let broadcastAction = action;
+        if (fromConn === connRef.current) {
+            broadcastAction = processedAction;
+        }
+        spectatorsRef.current.forEach(s => s.send({ type: 'ACTION', payload: broadcastAction }));
+      }
+
+      if (action.type === 'START_GAME' && !gameStartedRef.current) {
+        setGameStarted(true);
+      }
+    } else if (message.type === 'READY') {
+      setOpponentDeck(message.payload.deck);
+      setOpponentReady(true);
+    } else if (message.type === 'ERROR') {
+      alert(message.payload);
+      setConnectionState('IDLE');
+    }
+  };
+
+  useEffect(() => {
+    const newPeer = new Peer();
+    
+    newPeer.on('open', (id) => {
+      setPeerId(id);
+    });
+
+    newPeer.on('connection', (c) => {
+      c.on('open', () => {
+        c.on('data', (data: any) => {
+          if (data && data.type === 'JOIN_TYPE') {
+            if (data.payload === 'PLAYER') {
+              if (isHostRef.current && !connRef.current) {
+                setConn(c);
+                setConnectionState('CONNECTED');
+                c.on('data', (d) => handleData(d, c));
+              } else if (isHostRef.current) {
+                c.send({ type: 'ERROR', payload: '対戦相手が既に存在します。観戦モードで参加してください。' });
+                setTimeout(() => c.close(), 500);
+              }
+            } else if (data.payload === 'SPECTATOR') {
+              setSpectators(prev => [...prev, c]);
+              if (gameStartedRef.current || stateRef.current.turnCount > 0 || stateRef.current.player.partner) {
+                c.send({ type: 'ACTION', payload: { type: 'SET_STATE', state: stateRef.current } });
+              }
+              c.on('data', (d) => handleData(d, c));
+            }
+          }
+        });
+      });
+
+      c.on('close', () => {
+        setSpectators(prev => prev.filter(s => s !== c));
+        if (c === connRef.current) {
+            setConn(null);
+            if (isHostRef.current) setConnectionState('HOSTING');
+            else setConnectionState('DISCONNECTED');
+        }
+      });
+    });
+
+    setPeer(newPeer);
+
+    return () => {
+      newPeer.destroy();
+    };
+  }, []);
+
+  const hostGame = () => { 
+    setIsHost(true); 
+    setConnectionState('HOSTING'); 
+  };
+  
+  const joinGame = (asSpectator: boolean = false) => {
     if (!peer || !remotePeerId) return;
     const c = peer.connect(remotePeerId);
+    
     c.on('open', () => {
         setConn(c);
         setIsHost(false);
-        setConnectionState('CONNECTED');
+        setIsSpectator(asSpectator);
+        setConnectionState(asSpectator ? 'SPECTATING' : 'CONNECTED');
+        c.send({ type: 'JOIN_TYPE', payload: asSpectator ? 'SPECTATOR' : 'PLAYER' });
+        c.on('data', (d) => handleData(d, c));
     });
+
     c.on('error', (err) => {
         console.error('Connection error:', err);
         alert('接続に失敗しました。IDを確認してください。');
@@ -128,11 +197,14 @@ const OnlineBattleBoard: React.FC<OnlineBattleBoardProps> = ({ onBack, allCards,
   const handleAction = (action: GameAction) => {
     dispatch(action);
     if (conn) conn.send({ type: 'ACTION', payload: action });
+    if (isHost) {
+      spectators.forEach(s => s.send({ type: 'ACTION', payload: action }));
+    }
   };
 
   useEffect(() => {
     if (selectedDeck && opponentDeck && opponentReady && connectionState === 'CONNECTED' && !gameStarted && isHost) {
-      const shuffle = (array: any[]) => {
+      const shuffleDeck = (array: any[]) => {
         const newArray = [...array];
         for (let i = newArray.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
@@ -141,8 +213,8 @@ const OnlineBattleBoard: React.FC<OnlineBattleBoardProps> = ({ onBack, allCards,
         return newArray;
       };
 
-      const pDeckCards = shuffle(selectedDeck.cardIds.map(id => allCards.find(c => c.cardNumber === id)).filter(Boolean) as Card[]);
-      const oDeckCards = shuffle(opponentDeck.cardIds.map(id => allCards.find(c => c.cardNumber === id)).filter(Boolean) as Card[]);
+      const pDeckCards = shuffleDeck(selectedDeck.cardIds.map(id => allCards.find(c => c.cardNumber === id)).filter(Boolean) as Card[]);
+      const oDeckCards = shuffleDeck(opponentDeck.cardIds.map(id => allCards.find(c => c.cardNumber === id)).filter(Boolean) as Card[]);
       const pPartner = allCards.find(c => c.cardNumber === selectedDeck.partnerId)!;
       const oPartner = allCards.find(c => c.cardNumber === opponentDeck.partnerId)!;
       const pMp = allCards.find(c => c.cardNumber === selectedDeck.mpCardId);
@@ -160,15 +232,16 @@ const OnlineBattleBoard: React.FC<OnlineBattleBoardProps> = ({ onBack, allCards,
         opponentPartnerId: Math.random().toString(36).substr(2, 9),
         playerMpCardId: pMp ? Math.random().toString(36).substr(2, 9) : undefined,
         opponentMpCardId: oMp ? Math.random().toString(36).substr(2, 9) : undefined,
-        });
+      });
 
       setGameStarted(true);
     }
-  }, [selectedDeck, opponentDeck, opponentReady, connectionState, isHost, gameStarted]);
+  }, [selectedDeck, opponentDeck, opponentReady, connectionState, isHost, gameStarted, allCards]);
 
   useEffect(() => {
-    if (!isHost && state.turnCount > 0 && !gameStarted) setGameStarted(true);
-  }, [state.turnCount, isHost, gameStarted]);
+    if (!isHost && !isSpectator && state.turnCount > 0 && !gameStarted) setGameStarted(true);
+    if (isSpectator && (state.turnCount > 0 || state.player.partner) && !gameStarted) setGameStarted(true);
+  }, [state.turnCount, state.player.partner, isHost, isSpectator, gameStarted]);
 
   const onSelectDeck = (deck: Deck) => {
     setSelectedDeck(deck);
@@ -184,29 +257,18 @@ const OnlineBattleBoard: React.FC<OnlineBattleBoardProps> = ({ onBack, allCards,
       try {
         const data = JSON.parse(e.target?.result as string);
         const importedDecks: Deck[] = Array.isArray(data) ? data : [data];
-        
-        const validDecks = importedDecks.filter(d => 
-          d && d.cardIds && d.partnerId && d.mpCardId && d.name
-        );
+        const validDecks = importedDecks.filter(d => d && d.cardIds && d.partnerId && d.mpCardId && d.name);
 
         if (validDecks.length > 0) {
           setLocalSavedDecks(prev => {
             const next = [...prev];
             validDecks.forEach(deck => {
               const existingIndex = next.findIndex(d => d.name === deck.name);
-              if (existingIndex > -1) {
-                next[existingIndex] = deck;
-              } else {
-                next.push(deck);
-              }
+              if (existingIndex > -1) { next[existingIndex] = deck; } else { next.push(deck); }
             });
             return next;
           });
-          
-          if (validDecks.length === 1) {
-            onSelectDeck(validDecks[0]);
-          }
-          
+          if (validDecks.length === 1) { onSelectDeck(validDecks[0]); }
           alert(`${validDecks.length}個のデッキを読み込みました。`);
         } else {
           alert('有効なデッキデータが見つかりませんでした。');
@@ -228,6 +290,7 @@ const OnlineBattleBoard: React.FC<OnlineBattleBoardProps> = ({ onBack, allCards,
         externalDispatch={handleAction}
         isOnline={true}
         isHost={isHost}
+        isSpectator={isSpectator}
       />
     );
   }
@@ -239,13 +302,16 @@ const OnlineBattleBoard: React.FC<OnlineBattleBoardProps> = ({ onBack, allCards,
         <div className="board-title">Online Battle Lobby</div>
       </div>
       <div className="lobby-content">
-        {connectionState === 'IDLE' && (
+        {(connectionState === 'IDLE' || connectionState === 'DISCONNECTED') && (
           <div className="lobby-actions">
             <button className="lobby-btn host" onClick={hostGame}><LinkIcon size={24} /><span>Host Game</span></button>
             <div className="lobby-divider">OR</div>
             <div className="join-group">
               <input type="text" placeholder="Enter Host ID..." value={remotePeerId} onChange={e => setRemotePeerId(e.target.value)} />
-              <button className="lobby-btn join" onClick={joinGame}>Join Game</button>
+              <div className="join-buttons">
+                <button className="lobby-btn join" onClick={() => joinGame(false)}>Join Game</button>
+                <button className="lobby-btn spectate" onClick={() => joinGame(true)}>Spectate</button>
+              </div>
             </div>
           </div>
         )}
@@ -253,6 +319,7 @@ const OnlineBattleBoard: React.FC<OnlineBattleBoardProps> = ({ onBack, allCards,
           <div className="hosting-info">
             <h3>Waiting for opponent...</h3>
             <div className="id-display"><code>{peerId}</code><button onClick={copyToClipboard}>{copied ? <Check size={16} color="green" /> : <Copy size={16} />}</button></div>
+            {spectators.length > 0 && <div className="spectator-count">Spectators: {spectators.length}</div>}
           </div>
         )}
         {connectionState === 'CONNECTED' && (
@@ -272,6 +339,13 @@ const OnlineBattleBoard: React.FC<OnlineBattleBoardProps> = ({ onBack, allCards,
               ))}
             </div>
             {selectedDeck && <div className="waiting-msg">{opponentReady ? 'Opponent is ready! Starting...' : 'Waiting for opponent to select deck...'}</div>}
+            {spectators.length > 0 && <div className="spectator-count">Spectators: {spectators.length}</div>}
+          </div>
+        )}
+        {connectionState === 'SPECTATING' && (
+          <div className="spectating-info">
+            <h3>Joined as Spectator</h3>
+            <p>Waiting for game to start...</p>
           </div>
         )}
       </div>
