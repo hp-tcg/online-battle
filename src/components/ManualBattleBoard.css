@@ -408,6 +408,43 @@
     cursor: pointer;
 }
 
+.partner-effect-status {
+    margin-top: 4px;
+    display: flex;
+    justify-content: center;
+}
+
+.status-badge {
+    font-size: 0.55rem;
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.status-badge.used {
+    background-color: #742a2a;
+    color: #feb2b2;
+    border: 1px solid #9b2c2c;
+}
+
+.status-badge.unused {
+    background-color: #276749;
+    color: #9ae6b4;
+    border: 1px solid #2f855a;
+}
+
+.opponent-view-only {
+    margin-top: 10px;
+    font-size: 0.75rem;
+    color: #feb2b2;
+    text-align: center;
+    font-style: italic;
+    background: rgba(116, 42, 42, 0.2);
+    padding: 4px;
+    border-radius: 4px;
+}
+
 .deck-zone {
   grid-column: 6;
   grid-row: 1;

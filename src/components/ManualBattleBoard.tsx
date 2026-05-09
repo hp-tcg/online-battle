@@ -180,7 +180,12 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
           className={`card-slot ${isResting ? 'resting' : ''} ${isAttached ? 'attached-card-offset' : ''} ${isSmall ? 'small-card' : ''}`}
           onClick={() => {
             if (isSpectator) {
-              setSelectedCard({ instance, location, isOpponent: isOpponentSide });
+              // Spectators only see details if the card is revealed or naturally face-up
+              if (isLife || location === 'hand') {
+                if (isRevealed) setSelectedCard({ instance, location, isOpponent: isOpponentSide });
+              } else if (location !== 'deck') {
+                setSelectedCard({ instance, location, isOpponent: isOpponentSide });
+              }
               return;
             }
             if (attachMode) {
@@ -201,14 +206,17 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
                 }
             } else {
                 if (isOpponentSide) {
-                  setSelectedCard({ instance, location, isOpponent: true });
+                  // Hand is always hidden from opponent, and deck is face-down
+                  if (location !== 'hand' && location !== 'deck') {
+                    setSelectedCard({ instance, location, isOpponent: true });
+                  }
                 } else {
                   setSelectedCard({ instance, location, isOpponent: false });
                 }
             }
           }}
         >
-          {(isLife || (isOpponentSide && location === 'hand')) && !isRevealed ? (
+          {(isLife && !isRevealed) || (isOpponentSide && location === 'hand') ? (
              <div className="deck-back"></div>
           ) : (
              <>
@@ -276,6 +284,13 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
                     />
                     <span>効果使用済</span>
                   </label>
+                </div>
+              )}
+              {(isOpponent || isSpectator) && (
+                <div className="partner-effect-status">
+                  <span className={`status-badge ${player.isPartnerEffectUsed ? 'used' : 'unused'}`}>
+                    {player.isPartnerEffectUsed ? '効果使用済' : '効果未使用'}
+                  </span>
                 </div>
               )}
             </div>
