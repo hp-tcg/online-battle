@@ -63,5 +63,8 @@ export type GameAction =
   | { type: 'CLOSE_SEARCH', playerId: 'player' | 'opponent' }
   | { type: 'REVEAL_CARD', playerId: 'player' | 'opponent'; instanceId: string }
   | { type: 'HIDE_CARD', playerId: 'player' | 'opponent'; instanceId: string }
+  | { type: 'REST_ALL_MP', playerId: 'player' | 'opponent' }
+  | { type: 'SHUFFLE_HAND_INTO_DECK', playerId: 'player' | 'opponent' }
+  | { type: 'DETERMINE_TURN_ORDER' }
   | { type: 'MANUAL_MOVE', playerId: 'player' | 'opponent'; instanceId?: string; from: string; to: string; index?: number; card?: Card };
 

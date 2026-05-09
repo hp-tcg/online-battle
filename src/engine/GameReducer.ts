@@ -394,6 +394,43 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       };
     }
 
+    case 'REST_ALL_MP': {
+      const target = action.playerId === 'player' ? 'player' : 'opponent';
+      const player = state[target];
+      return {
+        ...state,
+        [target]: {
+          ...player,
+          mpField: player.mpField.map(c => ({ ...c, isActive: false })),
+        },
+        log: [...state.log, `${player.name} rested all MP cards.`],
+      };
+    }
+
+    case 'SHUFFLE_HAND_INTO_DECK': {
+      const target = action.playerId === 'player' ? 'player' : 'opponent';
+      const player = state[target];
+      const newDeck = shuffle([...player.deck, ...player.hand.map(c => c.card)]);
+      return {
+        ...state,
+        [target]: {
+          ...player,
+          hand: [],
+          deck: newDeck,
+        },
+        log: [...state.log, `${player.name} shuffled their hand back into the deck.`],
+      };
+    }
+
+    case 'DETERMINE_TURN_ORDER': {
+      const first = Math.random() < 0.5 ? 'player' : 'opponent';
+      return {
+        ...state,
+        turnOwner: first,
+        log: [...state.log, `${state[first].name} goes first!`],
+      };
+    }
+
     case 'MANUAL_MOVE': {
       const target = action.playerId === 'player' ? 'player' : 'opponent';
       const player = state[target];
