@@ -1,6 +1,6 @@
 import React, { useState, useReducer, useEffect } from 'react';
 import './ManualBattleBoard.css';
-import { ArrowLeft, BookOpen, User, RefreshCw, Paperclip, Save, Trash2, Zap, Hand, RefreshCcw, Info, Settings, PlayCircle, ChevronDown, LogOut } from 'lucide-react';
+import { ArrowLeft, BookOpen, User, RefreshCw, Paperclip, Save, Zap, Hand, RefreshCcw, Info, Settings, PlayCircle, ChevronDown, LogOut } from 'lucide-react';
 import { Card, Deck } from '../types';
 import { gameReducer, initialState } from '../engine/GameReducer';
 import { CardInstance, PlayerState, GameState, GameAction } from '../engine/GameState';
@@ -124,13 +124,6 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
     if (savedGame) {
       dispatch({ type: 'SET_STATE', state: savedGame });
       setGameStarted(true);
-    }
-  };
-
-  const clearSaveAndExit = () => {
-    if (window.confirm("進行状況を削除して終了しますか？")) {
-      localStorage.removeItem('hp-tcg-save-game');
-      onBack();
     }
   };
 
@@ -621,7 +614,7 @@ const ManualBattleBoard: React.FC<ManualBattleBoardProps> = ({
                 const searcher = state[state.activeSearch.playerId];
                 const isMe = state.activeSearch.playerId === 'player';
                 const showContent = state.activeSearch.isPublic || isMe;
-                const cards = state.activeSearch.snapshot || searcher.deck.map((c, i) => ({ instanceId: `deck-${i}-${c.cardNumber}`, card: c }));
+                const cards = state.activeSearch.snapshot || searcher.deck.map((c, i) => ({ instanceId: `deck-${i}-${c.cardNumber}`, card: c, isActive: true, attachedItems: [] }));
                 return cards.map((inst, idx) => {
                   const card = inst.card;
                   return (
